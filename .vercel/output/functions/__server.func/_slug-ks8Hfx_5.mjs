@@ -1,11 +1,11 @@
 import { t as getProjectBySlug } from "./_ssr/projects-ohaOBEnb.mjs";
 import { n as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-DHE1QRLG.mjs";
+import { t as Route } from "./_slug-DDJpBLj9.mjs";
 import { d as ExternalLink, f as Check, h as ArrowLeft, p as ArrowUpRight, u as Github } from "./_libs/lucide-react.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-ClPHcJ1l.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-ks8Hfx_5.js
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
 	return twMerge(clsx(inputs));
@@ -22,8 +22,9 @@ function DeviceMockup({ src, alt, variant = "desktop", className }) {
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 						src,
 						alt,
-						className: "h-auto w-full object-cover object-top",
-						loading: "lazy"
+						loading: "lazy",
+						decoding: "async",
+						className: "h-auto w-full object-cover object-top"
 					})
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "absolute bottom-3 left-1/2 h-1 w-1/3 -translate-x-1/2 rounded-full bg-muted" })
@@ -39,8 +40,9 @@ function DeviceMockup({ src, alt, variant = "desktop", className }) {
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 					src,
 					alt,
-					className: "h-auto w-full object-cover object-top",
-					loading: "lazy"
+					loading: "lazy",
+					decoding: "async",
+					className: "h-auto w-full object-cover object-top"
 				})
 			})]
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {

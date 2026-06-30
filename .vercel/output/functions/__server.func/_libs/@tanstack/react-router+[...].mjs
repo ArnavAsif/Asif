@@ -594,7 +594,8 @@ function parseSegments(defaultCaseSensitive, data, route, start, node, depth, on
 						const existingNode = node.static?.get(value);
 						if (existingNode) nextNode = existingNode;
 						else {
-							node.static ??= /* @__PURE__ */ new Map();
+							var _node;
+							(_node = node).static ?? (_node.static = /* @__PURE__ */ new Map());
 							const next = createStaticNode(route.fullPath ?? route.from);
 							next.parent = node;
 							next.depth = depth;
@@ -606,7 +607,8 @@ function parseSegments(defaultCaseSensitive, data, route, start, node, depth, on
 						const existingNode = node.staticInsensitive?.get(name);
 						if (existingNode) nextNode = existingNode;
 						else {
-							node.staticInsensitive ??= /* @__PURE__ */ new Map();
+							var _node2;
+							(_node2 = node).staticInsensitive ?? (_node2.staticInsensitive = /* @__PURE__ */ new Map());
 							const next = createStaticNode(route.fullPath ?? route.from);
 							next.parent = node;
 							next.depth = depth;
@@ -625,11 +627,12 @@ function parseSegments(defaultCaseSensitive, data, route, start, node, depth, on
 					const existingNode = !parseParams && node.dynamic?.find((s) => !s.parse && s.caseSensitive === actuallyCaseSensitive && s.prefix === prefix && s.suffix === suffix);
 					if (existingNode) nextNode = existingNode;
 					else {
+						var _node3;
 						const next = createDynamicNode(1, route.fullPath ?? route.from, actuallyCaseSensitive, prefix, suffix);
 						nextNode = next;
 						next.depth = depth;
 						next.parent = node;
-						node.dynamic ??= [];
+						(_node3 = node).dynamic ?? (_node3.dynamic = []);
 						node.dynamic.push(next);
 					}
 					break;
@@ -643,16 +646,18 @@ function parseSegments(defaultCaseSensitive, data, route, start, node, depth, on
 					const existingNode = !parseParams && node.optional?.find((s) => !s.parse && s.caseSensitive === actuallyCaseSensitive && s.prefix === prefix && s.suffix === suffix);
 					if (existingNode) nextNode = existingNode;
 					else {
+						var _node4;
 						const next = createDynamicNode(3, route.fullPath ?? route.from, actuallyCaseSensitive, prefix, suffix);
 						nextNode = next;
 						next.parent = node;
 						next.depth = depth;
-						node.optional ??= [];
+						(_node4 = node).optional ?? (_node4.optional = []);
 						node.optional.push(next);
 					}
 					break;
 				}
 				case 2: {
+					var _node5;
 					const prefix_raw = path.substring(start, segment[1]);
 					const suffix_raw = path.substring(segment[4], end);
 					const actuallyCaseSensitive = caseSensitive && !!(prefix_raw || suffix_raw);
@@ -662,19 +667,20 @@ function parseSegments(defaultCaseSensitive, data, route, start, node, depth, on
 					nextNode = next;
 					next.parent = node;
 					next.depth = depth;
-					node.wildcard ??= [];
+					(_node5 = node).wildcard ?? (_node5.wildcard = []);
 					node.wildcard.push(next);
 				}
 			}
 			node = nextNode;
 		}
 		if (parseParams && route.children && !route.isRoot && route.id && route.id.charCodeAt(route.id.lastIndexOf("/") + 1) === 95) {
+			var _node6;
 			const pathlessNode = createStaticNode(route.fullPath ?? route.from);
 			pathlessNode.kind = SEGMENT_TYPE_PATHLESS;
 			pathlessNode.parent = node;
 			depth++;
 			pathlessNode.depth = depth;
-			node.pathless ??= [];
+			(_node6 = node).pathless ?? (_node6.pathless = []);
 			node.pathless.push(pathlessNode);
 			node = pathlessNode;
 		}
@@ -789,7 +795,7 @@ function processRouteMasks(routeList, processedTree) {
 * Take an arbitrary list of routes, create a tree from them (if it hasn't been created already), and match a path against it.
 */
 function findFlatMatch(path, processedTree) {
-	path ||= "/";
+	path || (path = "/");
 	const cached = processedTree.flatCache.get(path);
 	if (cached) return cached;
 	const result = findMatch(path, processedTree.masksTree);
@@ -800,8 +806,8 @@ function findFlatMatch(path, processedTree) {
 * @deprecated keep until v2 so that `router.matchRoute` can keep not caring about the actual route tree
 */
 function findSingleMatch(from, caseSensitive, fuzzy, path, processedTree) {
-	from ||= "/";
-	path ||= "/";
+	from || (from = "/");
+	path || (path = "/");
 	const key = caseSensitive ? `case\0${from}` : from;
 	let tree = processedTree.singleCache.get(key);
 	if (!tree) {
@@ -815,7 +821,7 @@ function findRouteMatch(path, processedTree, fuzzy = false) {
 	const key = fuzzy ? path : `nofuzz\0${path}`;
 	const cached = processedTree.matchCache.get(key);
 	if (cached !== void 0) return cached;
-	path ||= "/";
+	path || (path = "/");
 	let result;
 	try {
 		result = findMatch(path, processedTree.segmentTree, fuzzy);
@@ -906,7 +912,7 @@ function extractParams(path, parts, leaf) {
 		const currentPathIndex = pathIndex;
 		if (part) pathIndex += part.length;
 		if (node.kind === 1) {
-			nodeParts ??= leaf.node.fullPath.split("/");
+			nodeParts ?? (nodeParts = leaf.node.fullPath.split("/"));
 			const nodePart = nodeParts[segmentCount];
 			const preLength = node.prefix?.length ?? 0;
 			if (nodePart.charCodeAt(preLength) === 123) {
@@ -924,7 +930,7 @@ function extractParams(path, parts, leaf) {
 				pathIndex = currentPathIndex - 1;
 				continue;
 			}
-			nodeParts ??= leaf.node.fullPath.split("/");
+			nodeParts ?? (nodeParts = leaf.node.fullPath.split("/"));
 			const nodePart = nodeParts[segmentCount];
 			const preLength = node.prefix?.length ?? 0;
 			const sufLength = node.suffix?.length ?? 0;
@@ -1028,7 +1034,7 @@ function getNodeMatch(path, parts, segmentTree, fuzzy) {
 			const { prefix, suffix } = segment;
 			if (prefix) {
 				if (isBeyondPath) continue;
-				if (!(segment.caseSensitive ? part : lowerPart ??= part.toLowerCase()).startsWith(prefix)) continue;
+				if (!(segment.caseSensitive ? part : lowerPart ?? (lowerPart = part.toLowerCase())).startsWith(prefix)) continue;
 			}
 			if (suffix) {
 				if (isBeyondPath) continue;
@@ -1068,7 +1074,7 @@ function getNodeMatch(path, parts, segmentTree, fuzzy) {
 				const segment = node.optional[i];
 				const { prefix, suffix } = segment;
 				if (prefix || suffix) {
-					const casePart = segment.caseSensitive ? part : lowerPart ??= part.toLowerCase();
+					const casePart = segment.caseSensitive ? part : lowerPart ?? (lowerPart = part.toLowerCase());
 					if (prefix && !casePart.startsWith(prefix)) continue;
 					if (suffix && !casePart.endsWith(suffix)) continue;
 				}
@@ -1089,7 +1095,7 @@ function getNodeMatch(path, parts, segmentTree, fuzzy) {
 			const segment = node.dynamic[i];
 			const { prefix, suffix } = segment;
 			if (prefix || suffix) {
-				const casePart = segment.caseSensitive ? part : lowerPart ??= part.toLowerCase();
+				const casePart = segment.caseSensitive ? part : lowerPart ?? (lowerPart = part.toLowerCase());
 				if (prefix && !casePart.startsWith(prefix)) continue;
 				if (suffix && !casePart.endsWith(suffix)) continue;
 			}
@@ -1106,7 +1112,7 @@ function getNodeMatch(path, parts, segmentTree, fuzzy) {
 			});
 		}
 		if (!isBeyondPath && node.staticInsensitive) {
-			const match = node.staticInsensitive.get(lowerPart ??= part.toLowerCase());
+			const match = node.staticInsensitive.get(lowerPart ?? (lowerPart = part.toLowerCase()));
 			if (match) stack.push({
 				node: match,
 				index: index + 1,
@@ -1153,10 +1159,11 @@ function getNodeMatch(path, parts, segmentTree, fuzzy) {
 	}
 	if (bestMatch) return bestMatch;
 	if (fuzzy && bestFuzzy) {
+		var _bestFuzzy;
 		let sliceIndex = bestFuzzy.index;
 		for (let i = 0; i < bestFuzzy.index; i++) sliceIndex += parts[i].length;
 		const splat = sliceIndex === path.length ? "/" : path.slice(sliceIndex);
-		bestFuzzy.rawParams ??= Object.create(null);
+		(_bestFuzzy = bestFuzzy).rawParams ?? (_bestFuzzy.rawParams = Object.create(null));
 		bestFuzzy.rawParams["**"] = decodeURIComponent(splat);
 		return bestFuzzy;
 	}
@@ -1900,7 +1907,7 @@ var handleSerialError = (inner, index, err) => {
 	const { id: matchId, routeId } = inner.matches[index];
 	const route = inner.router.looseRoutesById[routeId];
 	if (err instanceof Promise) throw err;
-	inner.firstBadMatchIndex ??= index;
+	inner.firstBadMatchIndex ?? (inner.firstBadMatchIndex = index);
 	handleRedirectAndNotFound(inner, inner.router.getMatch(matchId), err);
 	try {
 		route.options.onError?.(err);
@@ -1921,7 +1928,7 @@ var handleSerialError = (inner, index, err) => {
 			abortController: new AbortController()
 		};
 	});
-	if (!inner.preload && !isRedirect(err) && !isNotFound(err)) inner.serialError ??= err;
+	if (!inner.preload && !isRedirect(err) && !isNotFound(err)) inner.serialError ?? (inner.serialError = err);
 };
 var isBeforeLoadSsr = (inner, matchId, index, route) => {
 	const existingMatch = inner.router.getMatch(matchId);
@@ -2333,8 +2340,8 @@ async function loadMatches(arg) {
 			if (result.status !== "rejected") continue;
 			const reason = result.reason;
 			if (isRedirect(reason)) throw reason;
-			if (isNotFound(reason)) firstNotFound ??= reason;
-			else firstUnhandledRejection ??= reason;
+			if (isNotFound(reason)) firstNotFound ?? (firstNotFound = reason);
+			else firstUnhandledRejection ?? (firstUnhandledRejection = reason);
 		}
 		if (firstUnhandledRejection !== void 0) throw firstUnhandledRejection;
 	}
@@ -3495,7 +3502,7 @@ function buildMiddlewareChain(destRoutes) {
 				if (includeValidateSearch) try {
 					const validated = validateSearch(routeValidateSearch, result);
 					if (meta && validated) {
-						for (const key in validated) if (!(key in result)) (meta.defaulted ||= /* @__PURE__ */ new Map()).set(key, validated[key]);
+						for (const key in validated) if (!(key in result)) (meta.defaulted || (meta.defaulted = /* @__PURE__ */ new Map())).set(key, validated[key]);
 					}
 					return {
 						...result,
@@ -5270,14 +5277,14 @@ function MatchView({ router, matchId, resetKey, matchState }) {
 				errorComponent: routeErrorComponent || ErrorComponent,
 				onCatch: (error, errorInfo) => {
 					if (isNotFound(error)) {
-						error.routeId ??= matchState.routeId;
+						error.routeId ?? (error.routeId = matchState.routeId);
 						throw error;
 					}
 					routeOnCatch?.(error, errorInfo);
 				},
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ResolvedNotFoundBoundary, {
 					fallback: (error) => {
-						error.routeId ??= matchState.routeId;
+						error.routeId ?? (error.routeId = matchState.routeId);
 						if (!routeNotFoundComponent || error.routeId && error.routeId !== matchState.routeId || !error.routeId && !route.isRoot) throw error;
 						return import_react.createElement(routeNotFoundComponent, error);
 					},
@@ -8037,8 +8044,8 @@ var require_react_dom_server_legacy_node_production = /* @__PURE__ */ __commonJS
 		} else previousDispatcher.M(src, options);
 	}
 	function adoptPreloadCredentials(target, preloadState) {
-		target.crossOrigin ??= preloadState[0];
-		target.integrity ??= preloadState[1];
+		target.crossOrigin ?? (target.crossOrigin = preloadState[0]);
+		target.integrity ?? (target.integrity = preloadState[1]);
 	}
 	function getPreloadAsHeader(href, as, params) {
 		href = ("" + href).replace(regexForHrefInLinkHeaderURLContext, escapeHrefForLinkHeaderURLContextReplacer);
@@ -11999,8 +12006,8 @@ var require_react_dom_server_node_production = /* @__PURE__ */ __commonJSMin(((e
 		} else previousDispatcher.M(src, options);
 	}
 	function adoptPreloadCredentials(target, preloadState) {
-		target.crossOrigin ??= preloadState[0];
-		target.integrity ??= preloadState[1];
+		target.crossOrigin ?? (target.crossOrigin = preloadState[0]);
+		target.integrity ?? (target.integrity = preloadState[1]);
 	}
 	function getPreloadAsHeader(href, as, params) {
 		href = ("" + href).replace(regexForHrefInLinkHeaderURLContext, escapeHrefForLinkHeaderURLContextReplacer);

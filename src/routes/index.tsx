@@ -24,7 +24,7 @@ const skills = [
   { label: "E-commerce", items: ["CRO", "SEO", "Performance", "App Integration"], color: "bg-quaternary text-foreground", icon: Rocket },
 ];
 
-const headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
+import headshotImg from "/headshot.png";
 
 const marqueeWords = ["Liquid", "✦", "Shopify 2.0", "●", "Metafields", "△", "Theme Dev", "◆", "Sections", "✿", "CRO", "▲"];
 
@@ -119,9 +119,11 @@ function Hero() {
           <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="relative aspect-square rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] border-2 border-foreground bg-accent pop-shadow-lg">
             <img
-              src={headshot}
+              src={headshotImg}
               alt="MD Asif Shah Diner"
-              loading="eager"
+              width={512}
+              height={512}
+              fetchPriority="high"
               className="absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap">
@@ -286,7 +288,10 @@ function Projects() {
                     <img
                       src={p.image}
                       alt={`${p.name} — ${p.tag}`}
+                      width={400}
+                      height={192}
                       loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">{p.shape}</span>

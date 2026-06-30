@@ -1,30 +1,63 @@
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/checkPrivateRedeclaration.js
+function _checkPrivateRedeclaration(e, t) {
+	if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object");
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/classPrivateMethodInitSpec.js
+function _classPrivateMethodInitSpec(e, a) {
+	_checkPrivateRedeclaration(e, a), a.add(e);
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/classPrivateFieldInitSpec.js
+function _classPrivateFieldInitSpec(e, t, a) {
+	_checkPrivateRedeclaration(e, t), t.set(e, a);
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/assertClassBrand.js
+function _assertClassBrand(e, t, n) {
+	if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n;
+	throw new TypeError("Private element is not present on this object");
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/classPrivateFieldSet2.js
+function _classPrivateFieldSet2(s, a, r) {
+	return s.set(_assertClassBrand(s, a), r), r;
+}
+//#endregion
+//#region \0@oxc-project+runtime@0.137.0/helpers/esm/classPrivateFieldGet2.js
+function _classPrivateFieldGet2(s, a) {
+	return s.get(_assertClassBrand(s, a));
+}
+//#endregion
 //#region node_modules/@tanstack/query-core/build/modern/timeoutManager.js
+var _provider, _providerCalled;
 var defaultTimeoutProvider = {
 	setTimeout: (callback, delay) => setTimeout(callback, delay),
 	clearTimeout: (timeoutId) => clearTimeout(timeoutId),
 	setInterval: (callback, delay) => setInterval(callback, delay),
 	clearInterval: (intervalId) => clearInterval(intervalId)
 };
-var TimeoutManager = class {
-	#provider = defaultTimeoutProvider;
-	#providerCalled = false;
+var timeoutManager = new (_provider = /* @__PURE__ */ new WeakMap(), _providerCalled = /* @__PURE__ */ new WeakMap(), class {
+	constructor() {
+		_classPrivateFieldInitSpec(this, _provider, defaultTimeoutProvider);
+		_classPrivateFieldInitSpec(this, _providerCalled, false);
+	}
 	setTimeoutProvider(provider) {
-		this.#provider = provider;
+		_classPrivateFieldSet2(_provider, this, provider);
 	}
 	setTimeout(callback, delay) {
-		return this.#provider.setTimeout(callback, delay);
+		return _classPrivateFieldGet2(_provider, this).setTimeout(callback, delay);
 	}
 	clearTimeout(timeoutId) {
-		this.#provider.clearTimeout(timeoutId);
+		_classPrivateFieldGet2(_provider, this).clearTimeout(timeoutId);
 	}
 	setInterval(callback, delay) {
-		return this.#provider.setInterval(callback, delay);
+		return _classPrivateFieldGet2(_provider, this).setInterval(callback, delay);
 	}
 	clearInterval(intervalId) {
-		this.#provider.clearInterval(intervalId);
+		_classPrivateFieldGet2(_provider, this).clearInterval(intervalId);
 	}
-};
-var timeoutManager = new TimeoutManager();
+})();
 function systemSetTimeoutZero(callback) {
 	setTimeout(callback, 0);
 }
@@ -167,7 +200,7 @@ function addConsumeAwareSignal(object, getSignal, onCancelled) {
 	Object.defineProperty(object, "signal", {
 		enumerable: true,
 		get: () => {
-			signal ??= getSignal();
+			signal ?? (signal = getSignal());
 			if (consumed) return signal;
 			consumed = true;
 			if (signal.aborted) onCancelled();
@@ -273,13 +306,14 @@ var Subscribable = class {
 };
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/focusManager.js
-var FocusManager = class extends Subscribable {
-	#focused;
-	#cleanup;
-	#setup;
+var _focused, _cleanup$1, _setup$1;
+var focusManager = new (_focused = /* @__PURE__ */ new WeakMap(), _cleanup$1 = /* @__PURE__ */ new WeakMap(), _setup$1 = /* @__PURE__ */ new WeakMap(), class extends Subscribable {
 	constructor() {
 		super();
-		this.#setup = (onFocus) => {
+		_classPrivateFieldInitSpec(this, _focused, void 0);
+		_classPrivateFieldInitSpec(this, _cleanup$1, void 0);
+		_classPrivateFieldInitSpec(this, _setup$1, void 0);
+		_classPrivateFieldSet2(_setup$1, this, (onFocus) => {
 			if (typeof window !== "undefined" && window.addEventListener) {
 				const listener = () => onFocus();
 				window.addEventListener("visibilitychange", listener, false);
@@ -287,28 +321,28 @@ var FocusManager = class extends Subscribable {
 					window.removeEventListener("visibilitychange", listener);
 				};
 			}
-		};
+		});
 	}
 	onSubscribe() {
-		if (!this.#cleanup) this.setEventListener(this.#setup);
+		if (!_classPrivateFieldGet2(_cleanup$1, this)) this.setEventListener(_classPrivateFieldGet2(_setup$1, this));
 	}
 	onUnsubscribe() {
 		if (!this.hasListeners()) {
-			this.#cleanup?.();
-			this.#cleanup = void 0;
+			_classPrivateFieldGet2(_cleanup$1, this)?.call(this);
+			_classPrivateFieldSet2(_cleanup$1, this, void 0);
 		}
 	}
 	setEventListener(setup) {
-		this.#setup = setup;
-		this.#cleanup?.();
-		this.#cleanup = setup((focused) => {
+		_classPrivateFieldSet2(_setup$1, this, setup);
+		_classPrivateFieldGet2(_cleanup$1, this)?.call(this);
+		_classPrivateFieldSet2(_cleanup$1, this, setup((focused) => {
 			if (typeof focused === "boolean") this.setFocused(focused);
 			else this.onFocus();
-		});
+		}));
 	}
 	setFocused(focused) {
-		if (this.#focused !== focused) {
-			this.#focused = focused;
+		if (_classPrivateFieldGet2(_focused, this) !== focused) {
+			_classPrivateFieldSet2(_focused, this, focused);
 			this.onFocus();
 		}
 	}
@@ -319,20 +353,20 @@ var FocusManager = class extends Subscribable {
 		});
 	}
 	isFocused() {
-		if (typeof this.#focused === "boolean") return this.#focused;
+		if (typeof _classPrivateFieldGet2(_focused, this) === "boolean") return _classPrivateFieldGet2(_focused, this);
 		return globalThis.document?.visibilityState !== "hidden";
 	}
-};
-var focusManager = new FocusManager();
+})();
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/onlineManager.js
-var OnlineManager = class extends Subscribable {
-	#online = true;
-	#cleanup;
-	#setup;
+var _online, _cleanup, _setup;
+var onlineManager = new (_online = /* @__PURE__ */ new WeakMap(), _cleanup = /* @__PURE__ */ new WeakMap(), _setup = /* @__PURE__ */ new WeakMap(), class extends Subscribable {
 	constructor() {
 		super();
-		this.#setup = (onOnline) => {
+		_classPrivateFieldInitSpec(this, _online, true);
+		_classPrivateFieldInitSpec(this, _cleanup, void 0);
+		_classPrivateFieldInitSpec(this, _setup, void 0);
+		_classPrivateFieldSet2(_setup, this, (onOnline) => {
 			if (typeof window !== "undefined" && window.addEventListener) {
 				const onlineListener = () => onOnline(true);
 				const offlineListener = () => onOnline(false);
@@ -343,35 +377,34 @@ var OnlineManager = class extends Subscribable {
 					window.removeEventListener("offline", offlineListener);
 				};
 			}
-		};
+		});
 	}
 	onSubscribe() {
-		if (!this.#cleanup) this.setEventListener(this.#setup);
+		if (!_classPrivateFieldGet2(_cleanup, this)) this.setEventListener(_classPrivateFieldGet2(_setup, this));
 	}
 	onUnsubscribe() {
 		if (!this.hasListeners()) {
-			this.#cleanup?.();
-			this.#cleanup = void 0;
+			_classPrivateFieldGet2(_cleanup, this)?.call(this);
+			_classPrivateFieldSet2(_cleanup, this, void 0);
 		}
 	}
 	setEventListener(setup) {
-		this.#setup = setup;
-		this.#cleanup?.();
-		this.#cleanup = setup(this.setOnline.bind(this));
+		_classPrivateFieldSet2(_setup, this, setup);
+		_classPrivateFieldGet2(_cleanup, this)?.call(this);
+		_classPrivateFieldSet2(_cleanup, this, setup(this.setOnline.bind(this)));
 	}
 	setOnline(online) {
-		if (this.#online !== online) {
-			this.#online = online;
+		if (_classPrivateFieldGet2(_online, this) !== online) {
+			_classPrivateFieldSet2(_online, this, online);
 			this.listeners.forEach((listener) => {
 				listener(online);
 			});
 		}
 	}
 	isOnline() {
-		return this.#online;
+		return _classPrivateFieldGet2(_online, this);
 	}
-};
-var onlineManager = new OnlineManager();
+})();
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/thenable.js
 function pendingThenable() {
@@ -531,27 +564,30 @@ function createRetryer(config) {
 }
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/removable.js
-var Removable = class {
-	#gcTimeout;
+var _gcTimeout;
+var Removable = (_gcTimeout = /* @__PURE__ */ new WeakMap(), class {
+	constructor() {
+		_classPrivateFieldInitSpec(this, _gcTimeout, void 0);
+	}
 	destroy() {
 		this.clearGcTimeout();
 	}
 	scheduleGc() {
 		this.clearGcTimeout();
-		if (isValidTimeout(this.gcTime)) this.#gcTimeout = timeoutManager.setTimeout(() => {
+		if (isValidTimeout(this.gcTime)) _classPrivateFieldSet2(_gcTimeout, this, timeoutManager.setTimeout(() => {
 			this.optionalRemove();
-		}, this.gcTime);
+		}, this.gcTime));
 	}
 	updateGcTime(newGcTime) {
 		this.gcTime = Math.max(this.gcTime || 0, newGcTime ?? (environmentManager.isServer() ? Infinity : 300 * 1e3));
 	}
 	clearGcTimeout() {
-		if (this.#gcTimeout !== void 0) {
-			timeoutManager.clearTimeout(this.#gcTimeout);
-			this.#gcTimeout = void 0;
+		if (_classPrivateFieldGet2(_gcTimeout, this) !== void 0) {
+			timeoutManager.clearTimeout(_classPrivateFieldGet2(_gcTimeout, this));
+			_classPrivateFieldSet2(_gcTimeout, this, void 0);
 		}
 	}
-};
+});
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js
 function infiniteQueryBehavior(pages) {
@@ -632,59 +668,61 @@ function getPreviousPageParam(options, { pages, pageParams }) {
 }
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/query.js
-var Query = class extends Removable {
-	#queryType;
-	#initialState;
-	#revertState;
-	#cache;
-	#client;
-	#retryer;
-	#defaultOptions;
-	#abortSignalConsumed;
+var _queryType, _initialState, _revertState, _cache, _client$1, _retryer$1, _defaultOptions$1, _abortSignalConsumed, _Class_brand$1;
+var Query = (_queryType = /* @__PURE__ */ new WeakMap(), _initialState = /* @__PURE__ */ new WeakMap(), _revertState = /* @__PURE__ */ new WeakMap(), _cache = /* @__PURE__ */ new WeakMap(), _client$1 = /* @__PURE__ */ new WeakMap(), _retryer$1 = /* @__PURE__ */ new WeakMap(), _defaultOptions$1 = /* @__PURE__ */ new WeakMap(), _abortSignalConsumed = /* @__PURE__ */ new WeakMap(), _Class_brand$1 = /* @__PURE__ */ new WeakSet(), class extends Removable {
 	constructor(config) {
 		super();
-		this.#abortSignalConsumed = false;
-		this.#defaultOptions = config.defaultOptions;
+		_classPrivateMethodInitSpec(this, _Class_brand$1);
+		_classPrivateFieldInitSpec(this, _queryType, void 0);
+		_classPrivateFieldInitSpec(this, _initialState, void 0);
+		_classPrivateFieldInitSpec(this, _revertState, void 0);
+		_classPrivateFieldInitSpec(this, _cache, void 0);
+		_classPrivateFieldInitSpec(this, _client$1, void 0);
+		_classPrivateFieldInitSpec(this, _retryer$1, void 0);
+		_classPrivateFieldInitSpec(this, _defaultOptions$1, void 0);
+		_classPrivateFieldInitSpec(this, _abortSignalConsumed, void 0);
+		_classPrivateFieldSet2(_abortSignalConsumed, this, false);
+		_classPrivateFieldSet2(_defaultOptions$1, this, config.defaultOptions);
 		this.setOptions(config.options);
 		this.observers = [];
-		this.#client = config.client;
-		this.#cache = this.#client.getQueryCache();
+		_classPrivateFieldSet2(_client$1, this, config.client);
+		_classPrivateFieldSet2(_cache, this, _classPrivateFieldGet2(_client$1, this).getQueryCache());
 		this.queryKey = config.queryKey;
 		this.queryHash = config.queryHash;
-		this.#initialState = getDefaultState$1(this.options);
-		this.state = config.state ?? this.#initialState;
+		_classPrivateFieldSet2(_initialState, this, getDefaultState$1(this.options));
+		this.state = config.state ?? _classPrivateFieldGet2(_initialState, this);
 		this.scheduleGc();
 	}
 	get meta() {
 		return this.options.meta;
 	}
 	get queryType() {
-		return this.#queryType;
+		return _classPrivateFieldGet2(_queryType, this);
 	}
 	get promise() {
-		return this.#retryer?.promise;
+		return _classPrivateFieldGet2(_retryer$1, this)?.promise;
 	}
 	setOptions(options) {
 		this.options = {
-			...this.#defaultOptions,
+			..._classPrivateFieldGet2(_defaultOptions$1, this),
 			...options
 		};
-		if (options?._type) this.#queryType = options._type;
+		if (options?._type) _classPrivateFieldSet2(_queryType, this, options._type);
 		this.updateGcTime(this.options.gcTime);
 		if (this.state && this.state.data === void 0) {
 			const defaultState = getDefaultState$1(this.options);
 			if (defaultState.data !== void 0) {
 				this.setState(successState(defaultState.data, defaultState.dataUpdatedAt));
-				this.#initialState = defaultState;
+				_classPrivateFieldSet2(_initialState, this, defaultState);
 			}
 		}
 	}
 	optionalRemove() {
-		if (!this.observers.length && this.state.fetchStatus === "idle") this.#cache.remove(this);
+		if (!this.observers.length && this.state.fetchStatus === "idle") _classPrivateFieldGet2(_cache, this).remove(this);
 	}
 	setData(newData, options) {
 		const data = replaceData(this.state.data, newData, this.options);
-		this.#dispatch({
+		_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, {
 			data,
 			type: "success",
 			dataUpdatedAt: options?.updatedAt,
@@ -693,14 +731,14 @@ var Query = class extends Removable {
 		return data;
 	}
 	setState(state) {
-		this.#dispatch({
+		_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, {
 			type: "setState",
 			state
 		});
 	}
 	cancel(options) {
-		const promise = this.#retryer?.promise;
-		this.#retryer?.cancel(options);
+		const promise = _classPrivateFieldGet2(_retryer$1, this)?.promise;
+		_classPrivateFieldGet2(_retryer$1, this)?.cancel(options);
 		return promise ? promise.then(noop).catch(noop) : Promise.resolve();
 	}
 	destroy() {
@@ -708,7 +746,7 @@ var Query = class extends Removable {
 		this.cancel({ silent: true });
 	}
 	get resetState() {
-		return this.#initialState;
+		return _classPrivateFieldGet2(_initialState, this);
 	}
 	reset() {
 		this.destroy();
@@ -740,17 +778,17 @@ var Query = class extends Removable {
 	}
 	onFocus() {
 		this.observers.find((x) => x.shouldFetchOnWindowFocus())?.refetch({ cancelRefetch: false });
-		this.#retryer?.continue();
+		_classPrivateFieldGet2(_retryer$1, this)?.continue();
 	}
 	onOnline() {
 		this.observers.find((x) => x.shouldFetchOnReconnect())?.refetch({ cancelRefetch: false });
-		this.#retryer?.continue();
+		_classPrivateFieldGet2(_retryer$1, this)?.continue();
 	}
 	addObserver(observer) {
 		if (!this.observers.includes(observer)) {
 			this.observers.push(observer);
 			this.clearGcTimeout();
-			this.#cache.notify({
+			_classPrivateFieldGet2(_cache, this).notify({
 				type: "observerAdded",
 				query: this,
 				observer
@@ -761,11 +799,11 @@ var Query = class extends Removable {
 		if (this.observers.includes(observer)) {
 			this.observers = this.observers.filter((x) => x !== observer);
 			if (!this.observers.length) {
-				if (this.#retryer) if (this.#abortSignalConsumed || this.#isInitialPausedFetch()) this.#retryer.cancel({ revert: true });
-				else this.#retryer.cancelRetry();
+				if (_classPrivateFieldGet2(_retryer$1, this)) if (_classPrivateFieldGet2(_abortSignalConsumed, this) || _assertClassBrand(_Class_brand$1, this, _isInitialPausedFetch).call(this)) _classPrivateFieldGet2(_retryer$1, this).cancel({ revert: true });
+				else _classPrivateFieldGet2(_retryer$1, this).cancelRetry();
 				this.scheduleGc();
 			}
-			this.#cache.notify({
+			_classPrivateFieldGet2(_cache, this).notify({
 				type: "observerRemoved",
 				query: this,
 				observer
@@ -775,18 +813,15 @@ var Query = class extends Removable {
 	getObserversCount() {
 		return this.observers.length;
 	}
-	#isInitialPausedFetch() {
-		return this.state.fetchStatus === "paused" && this.state.status === "pending";
-	}
 	invalidate() {
-		if (!this.state.isInvalidated) this.#dispatch({ type: "invalidate" });
+		if (!this.state.isInvalidated) _assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, { type: "invalidate" });
 	}
 	async fetch(options, fetchOptions) {
-		if (this.state.fetchStatus !== "idle" && this.#retryer?.status() !== "rejected") {
+		if (this.state.fetchStatus !== "idle" && _classPrivateFieldGet2(_retryer$1, this)?.status() !== "rejected") {
 			if (this.state.data !== void 0 && fetchOptions?.cancelRefetch) this.cancel({ silent: true });
-			else if (this.#retryer) {
-				this.#retryer.continueRetry();
-				return this.#retryer.promise;
+			else if (_classPrivateFieldGet2(_retryer$1, this)) {
+				_classPrivateFieldGet2(_retryer$1, this).continueRetry();
+				return _classPrivateFieldGet2(_retryer$1, this).promise;
 			}
 		}
 		if (options) this.setOptions(options);
@@ -799,7 +834,7 @@ var Query = class extends Removable {
 			Object.defineProperty(object, "signal", {
 				enumerable: true,
 				get: () => {
-					this.#abortSignalConsumed = true;
+					_classPrivateFieldSet2(_abortSignalConsumed, this, true);
 					return abortController.signal;
 				}
 			});
@@ -808,7 +843,7 @@ var Query = class extends Removable {
 			const queryFn = ensureQueryFn(this.options, fetchOptions);
 			const createQueryFnContext = () => {
 				const queryFnContext2 = {
-					client: this.#client,
+					client: _classPrivateFieldGet2(_client$1, this),
 					queryKey: this.queryKey,
 					meta: this.meta
 				};
@@ -816,7 +851,7 @@ var Query = class extends Removable {
 				return queryFnContext2;
 			};
 			const queryFnContext = createQueryFnContext();
-			this.#abortSignalConsumed = false;
+			_classPrivateFieldSet2(_abortSignalConsumed, this, false);
 			if (this.options.persister) return this.options.persister(queryFn, queryFnContext, this);
 			return queryFn(queryFnContext);
 		};
@@ -825,7 +860,7 @@ var Query = class extends Removable {
 				fetchOptions,
 				options: this.options,
 				queryKey: this.queryKey,
-				client: this.#client,
+				client: _classPrivateFieldGet2(_client$1, this),
 				state: this.state,
 				fetchFn
 			};
@@ -833,136 +868,139 @@ var Query = class extends Removable {
 			return context2;
 		};
 		const context = createFetchContext();
-		(this.#queryType === "infinite" ? infiniteQueryBehavior(this.options.pages) : this.options.behavior)?.onFetch(context, this);
-		this.#revertState = this.state;
-		if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== context.fetchOptions?.meta) this.#dispatch({
+		(_classPrivateFieldGet2(_queryType, this) === "infinite" ? infiniteQueryBehavior(this.options.pages) : this.options.behavior)?.onFetch(context, this);
+		_classPrivateFieldSet2(_revertState, this, this.state);
+		if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== context.fetchOptions?.meta) _assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, {
 			type: "fetch",
 			meta: context.fetchOptions?.meta
 		});
-		this.#retryer = createRetryer({
+		_classPrivateFieldSet2(_retryer$1, this, createRetryer({
 			initialPromise: fetchOptions?.initialPromise,
 			fn: context.fetchFn,
 			onCancel: (error) => {
 				if (error instanceof CancelledError && error.revert) this.setState({
-					...this.#revertState,
+					..._classPrivateFieldGet2(_revertState, this),
 					fetchStatus: "idle"
 				});
 				abortController.abort();
 			},
 			onFail: (failureCount, error) => {
-				this.#dispatch({
+				_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, {
 					type: "failed",
 					failureCount,
 					error
 				});
 			},
 			onPause: () => {
-				this.#dispatch({ type: "pause" });
+				_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, { type: "pause" });
 			},
 			onContinue: () => {
-				this.#dispatch({ type: "continue" });
+				_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, { type: "continue" });
 			},
 			retry: context.options.retry,
 			retryDelay: context.options.retryDelay,
 			networkMode: context.options.networkMode,
 			canRun: () => true
-		});
+		}));
 		try {
-			const data = await this.#retryer.start();
+			const data = await _classPrivateFieldGet2(_retryer$1, this).start();
 			if (data === void 0) throw new Error(`${this.queryHash} data is undefined`);
 			this.setData(data);
-			this.#cache.config.onSuccess?.(data, this);
-			this.#cache.config.onSettled?.(data, this.state.error, this);
+			_classPrivateFieldGet2(_cache, this).config.onSuccess?.(data, this);
+			_classPrivateFieldGet2(_cache, this).config.onSettled?.(data, this.state.error, this);
 			return data;
 		} catch (error) {
 			if (error instanceof CancelledError) {
-				if (error.silent) return this.#retryer.promise;
+				if (error.silent) return _classPrivateFieldGet2(_retryer$1, this).promise;
 				else if (error.revert) {
 					if (this.state.data === void 0) throw error;
 					return this.state.data;
 				}
 			}
-			this.#dispatch({
+			_assertClassBrand(_Class_brand$1, this, _dispatch$1).call(this, {
 				type: "error",
 				error
 			});
-			this.#cache.config.onError?.(error, this);
-			this.#cache.config.onSettled?.(this.state.data, error, this);
+			_classPrivateFieldGet2(_cache, this).config.onError?.(error, this);
+			_classPrivateFieldGet2(_cache, this).config.onSettled?.(this.state.data, error, this);
 			throw error;
 		} finally {
 			this.scheduleGc();
 		}
 	}
-	#dispatch(action) {
-		const reducer = (state) => {
-			switch (action.type) {
-				case "failed": return {
+});
+function _isInitialPausedFetch() {
+	return this.state.fetchStatus === "paused" && this.state.status === "pending";
+}
+function _dispatch$1(action) {
+	const reducer = (state) => {
+		switch (action.type) {
+			case "failed": return {
+				...state,
+				fetchFailureCount: action.failureCount,
+				fetchFailureReason: action.error
+			};
+			case "pause": return {
+				...state,
+				fetchStatus: "paused"
+			};
+			case "continue": return {
+				...state,
+				fetchStatus: "fetching"
+			};
+			case "fetch": return {
+				...state,
+				...fetchState(state.data, this.options),
+				fetchMeta: action.meta ?? null
+			};
+			case "success":
+				const newState = {
 					...state,
-					fetchFailureCount: action.failureCount,
-					fetchFailureReason: action.error
-				};
-				case "pause": return {
-					...state,
-					fetchStatus: "paused"
-				};
-				case "continue": return {
-					...state,
-					fetchStatus: "fetching"
-				};
-				case "fetch": return {
-					...state,
-					...fetchState(state.data, this.options),
-					fetchMeta: action.meta ?? null
-				};
-				case "success":
-					const newState = {
-						...state,
-						...successState(action.data, action.dataUpdatedAt),
-						dataUpdateCount: state.dataUpdateCount + 1,
-						...!action.manual && {
-							fetchStatus: "idle",
-							fetchFailureCount: 0,
-							fetchFailureReason: null
-						}
-					};
-					this.#revertState = action.manual ? newState : void 0;
-					return newState;
-				case "error":
-					const error = action.error;
-					return {
-						...state,
-						error,
-						errorUpdateCount: state.errorUpdateCount + 1,
-						errorUpdatedAt: Date.now(),
-						fetchFailureCount: state.fetchFailureCount + 1,
-						fetchFailureReason: error,
+					...successState(action.data, action.dataUpdatedAt),
+					dataUpdateCount: state.dataUpdateCount + 1,
+					...!action.manual && {
 						fetchStatus: "idle",
-						status: "error",
-						isInvalidated: true
-					};
-				case "invalidate": return {
+						fetchFailureCount: 0,
+						fetchFailureReason: null
+					}
+				};
+				_classPrivateFieldSet2(_revertState, this, action.manual ? newState : void 0);
+				return newState;
+			case "error":
+				const error = action.error;
+				return {
 					...state,
+					error,
+					errorUpdateCount: state.errorUpdateCount + 1,
+					errorUpdatedAt: Date.now(),
+					fetchFailureCount: state.fetchFailureCount + 1,
+					fetchFailureReason: error,
+					fetchStatus: "idle",
+					status: "error",
 					isInvalidated: true
 				};
-				case "setState": return {
-					...state,
-					...action.state
-				};
-			}
-		};
-		this.state = reducer(this.state);
-		notifyManager.batch(() => {
-			this.observers.forEach((observer) => {
-				observer.onQueryUpdate();
-			});
-			this.#cache.notify({
-				query: this,
-				type: "updated",
-				action
-			});
+			case "invalidate": return {
+				...state,
+				isInvalidated: true
+			};
+			case "setState": return {
+				...state,
+				...action.state
+			};
+		}
+	};
+	this.state = reducer(this.state);
+	notifyManager.batch(() => {
+		this.observers.forEach((observer) => {
+			observer.onQueryUpdate();
 		});
-	}
-};
+		_classPrivateFieldGet2(_cache, this).notify({
+			query: this,
+			type: "updated",
+			action
+		});
+	});
+}
 function fetchState(data, options) {
 	return {
 		fetchFailureCount: 0,
@@ -1004,13 +1042,14 @@ function getDefaultState$1(options) {
 }
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/queryCache.js
-var QueryCache = class extends Subscribable {
+var _queries;
+var QueryCache = (_queries = /* @__PURE__ */ new WeakMap(), class extends Subscribable {
 	constructor(config = {}) {
 		super();
+		_classPrivateFieldInitSpec(this, _queries, void 0);
 		this.config = config;
-		this.#queries = /* @__PURE__ */ new Map();
+		_classPrivateFieldSet2(_queries, this, /* @__PURE__ */ new Map());
 	}
-	#queries;
 	build(client, options, state) {
 		const queryKey = options.queryKey;
 		const queryHash = options.queryHash ?? hashQueryKeyByOptions(queryKey, options);
@@ -1029,8 +1068,8 @@ var QueryCache = class extends Subscribable {
 		return query;
 	}
 	add(query) {
-		if (!this.#queries.has(query.queryHash)) {
-			this.#queries.set(query.queryHash, query);
+		if (!_classPrivateFieldGet2(_queries, this).has(query.queryHash)) {
+			_classPrivateFieldGet2(_queries, this).set(query.queryHash, query);
 			this.notify({
 				type: "added",
 				query
@@ -1038,10 +1077,10 @@ var QueryCache = class extends Subscribable {
 		}
 	}
 	remove(query) {
-		const queryInMap = this.#queries.get(query.queryHash);
+		const queryInMap = _classPrivateFieldGet2(_queries, this).get(query.queryHash);
 		if (queryInMap) {
 			query.destroy();
-			if (queryInMap === query) this.#queries.delete(query.queryHash);
+			if (queryInMap === query) _classPrivateFieldGet2(_queries, this).delete(query.queryHash);
 			this.notify({
 				type: "removed",
 				query
@@ -1056,10 +1095,10 @@ var QueryCache = class extends Subscribable {
 		});
 	}
 	get(queryHash) {
-		return this.#queries.get(queryHash);
+		return _classPrivateFieldGet2(_queries, this).get(queryHash);
 	}
 	getAll() {
-		return [...this.#queries.values()];
+		return [..._classPrivateFieldGet2(_queries, this).values()];
 	}
 	find(filters) {
 		const defaultedFilters = {
@@ -1093,20 +1132,22 @@ var QueryCache = class extends Subscribable {
 			});
 		});
 	}
-};
+});
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/mutation.js
-var Mutation = class extends Removable {
-	#client;
-	#observers;
-	#mutationCache;
-	#retryer;
+var _client, _observers, _mutationCache$1, _retryer, _Class_brand;
+var Mutation = (_client = /* @__PURE__ */ new WeakMap(), _observers = /* @__PURE__ */ new WeakMap(), _mutationCache$1 = /* @__PURE__ */ new WeakMap(), _retryer = /* @__PURE__ */ new WeakMap(), _Class_brand = /* @__PURE__ */ new WeakSet(), class extends Removable {
 	constructor(config) {
 		super();
-		this.#client = config.client;
+		_classPrivateMethodInitSpec(this, _Class_brand);
+		_classPrivateFieldInitSpec(this, _client, void 0);
+		_classPrivateFieldInitSpec(this, _observers, void 0);
+		_classPrivateFieldInitSpec(this, _mutationCache$1, void 0);
+		_classPrivateFieldInitSpec(this, _retryer, void 0);
+		_classPrivateFieldSet2(_client, this, config.client);
 		this.mutationId = config.mutationId;
-		this.#mutationCache = config.mutationCache;
-		this.#observers = [];
+		_classPrivateFieldSet2(_mutationCache$1, this, config.mutationCache);
+		_classPrivateFieldSet2(_observers, this, []);
 		this.state = config.state || getDefaultState();
 		this.setOptions(config.options);
 		this.scheduleGc();
@@ -1119,10 +1160,10 @@ var Mutation = class extends Removable {
 		return this.options.meta;
 	}
 	addObserver(observer) {
-		if (!this.#observers.includes(observer)) {
-			this.#observers.push(observer);
+		if (!_classPrivateFieldGet2(_observers, this).includes(observer)) {
+			_classPrivateFieldGet2(_observers, this).push(observer);
 			this.clearGcTimeout();
-			this.#mutationCache.notify({
+			_classPrivateFieldGet2(_mutationCache$1, this).notify({
 				type: "observerAdded",
 				mutation: this,
 				observer
@@ -1130,83 +1171,83 @@ var Mutation = class extends Removable {
 		}
 	}
 	removeObserver(observer) {
-		this.#observers = this.#observers.filter((x) => x !== observer);
+		_classPrivateFieldSet2(_observers, this, _classPrivateFieldGet2(_observers, this).filter((x) => x !== observer));
 		this.scheduleGc();
-		this.#mutationCache.notify({
+		_classPrivateFieldGet2(_mutationCache$1, this).notify({
 			type: "observerRemoved",
 			mutation: this,
 			observer
 		});
 	}
 	optionalRemove() {
-		if (!this.#observers.length) if (this.state.status === "pending") this.scheduleGc();
-		else this.#mutationCache.remove(this);
+		if (!_classPrivateFieldGet2(_observers, this).length) if (this.state.status === "pending") this.scheduleGc();
+		else _classPrivateFieldGet2(_mutationCache$1, this).remove(this);
 	}
 	continue() {
-		return this.#retryer?.continue() ?? this.execute(this.state.variables);
+		return _classPrivateFieldGet2(_retryer, this)?.continue() ?? this.execute(this.state.variables);
 	}
 	async execute(variables) {
 		const onContinue = () => {
-			this.#dispatch({ type: "continue" });
+			_assertClassBrand(_Class_brand, this, _dispatch).call(this, { type: "continue" });
 		};
 		const mutationFnContext = {
-			client: this.#client,
+			client: _classPrivateFieldGet2(_client, this),
 			meta: this.options.meta,
 			mutationKey: this.options.mutationKey
 		};
-		this.#retryer = createRetryer({
+		_classPrivateFieldSet2(_retryer, this, createRetryer({
 			fn: () => {
 				if (!this.options.mutationFn) return Promise.reject(/* @__PURE__ */ new Error("No mutationFn found"));
 				return this.options.mutationFn(variables, mutationFnContext);
 			},
 			onFail: (failureCount, error) => {
-				this.#dispatch({
+				_assertClassBrand(_Class_brand, this, _dispatch).call(this, {
 					type: "failed",
 					failureCount,
 					error
 				});
 			},
 			onPause: () => {
-				this.#dispatch({ type: "pause" });
+				_assertClassBrand(_Class_brand, this, _dispatch).call(this, { type: "pause" });
 			},
 			onContinue,
 			retry: this.options.retry ?? 0,
 			retryDelay: this.options.retryDelay,
 			networkMode: this.options.networkMode,
-			canRun: () => this.#mutationCache.canRun(this)
-		});
+			canRun: () => _classPrivateFieldGet2(_mutationCache$1, this).canRun(this)
+		}));
 		const restored = this.state.status === "pending";
-		const isPaused = !this.#retryer.canStart();
+		const isPaused = !_classPrivateFieldGet2(_retryer, this).canStart();
 		try {
 			if (restored) onContinue();
 			else {
-				this.#dispatch({
+				_assertClassBrand(_Class_brand, this, _dispatch).call(this, {
 					type: "pending",
 					variables,
 					isPaused
 				});
-				if (this.#mutationCache.config.onMutate) await this.#mutationCache.config.onMutate(variables, this, mutationFnContext);
+				if (_classPrivateFieldGet2(_mutationCache$1, this).config.onMutate) await _classPrivateFieldGet2(_mutationCache$1, this).config.onMutate(variables, this, mutationFnContext);
 				const context = await this.options.onMutate?.(variables, mutationFnContext);
-				if (context !== this.state.context) this.#dispatch({
+				if (context !== this.state.context) _assertClassBrand(_Class_brand, this, _dispatch).call(this, {
 					type: "pending",
 					context,
 					variables,
 					isPaused
 				});
 			}
-			const data = await this.#retryer.start();
-			await this.#mutationCache.config.onSuccess?.(data, variables, this.state.context, this, mutationFnContext);
+			const data = await _classPrivateFieldGet2(_retryer, this).start();
+			await _classPrivateFieldGet2(_mutationCache$1, this).config.onSuccess?.(data, variables, this.state.context, this, mutationFnContext);
 			await this.options.onSuccess?.(data, variables, this.state.context, mutationFnContext);
-			await this.#mutationCache.config.onSettled?.(data, null, this.state.variables, this.state.context, this, mutationFnContext);
+			await _classPrivateFieldGet2(_mutationCache$1, this).config.onSettled?.(data, null, this.state.variables, this.state.context, this, mutationFnContext);
 			await this.options.onSettled?.(data, null, variables, this.state.context, mutationFnContext);
-			this.#dispatch({
+			_assertClassBrand(_Class_brand, this, _dispatch).call(this, {
 				type: "success",
 				data
 			});
 			return data;
 		} catch (error) {
 			try {
-				await this.#mutationCache.config.onError?.(error, variables, this.state.context, this, mutationFnContext);
+				await _classPrivateFieldGet2(_mutationCache$1, this).config.onError?.(error, variables, this.state.context, this, mutationFnContext);
 			} catch (e) {
 				Promise.reject(e);
 			}
@@ -1216,7 +1257,7 @@ var Mutation = class extends Removable {
 				Promise.reject(e);
 			}
 			try {
-				await this.#mutationCache.config.onSettled?.(void 0, error, this.state.variables, this.state.context, this, mutationFnContext);
+				await _classPrivateFieldGet2(_mutationCache$1, this).config.onSettled?.(void 0, error, this.state.variables, this.state.context, this, mutationFnContext);
 			} catch (e) {
 				Promise.reject(e);
 			}
@@ -1225,76 +1266,76 @@ var Mutation = class extends Removable {
 			} catch (e) {
 				Promise.reject(e);
 			}
-			this.#dispatch({
+			_assertClassBrand(_Class_brand, this, _dispatch).call(this, {
 				type: "error",
 				error
 			});
 			throw error;
 		} finally {
-			this.#mutationCache.runNext(this);
+			_classPrivateFieldGet2(_mutationCache$1, this).runNext(this);
 		}
 	}
-	#dispatch(action) {
-		const reducer = (state) => {
-			switch (action.type) {
-				case "failed": return {
-					...state,
-					failureCount: action.failureCount,
-					failureReason: action.error
-				};
-				case "pause": return {
-					...state,
-					isPaused: true
-				};
-				case "continue": return {
-					...state,
-					isPaused: false
-				};
-				case "pending": return {
-					...state,
-					context: action.context,
-					data: void 0,
-					failureCount: 0,
-					failureReason: null,
-					error: null,
-					isPaused: action.isPaused,
-					status: "pending",
-					variables: action.variables,
-					submittedAt: Date.now()
-				};
-				case "success": return {
-					...state,
-					data: action.data,
-					failureCount: 0,
-					failureReason: null,
-					error: null,
-					status: "success",
-					isPaused: false
-				};
-				case "error": return {
-					...state,
-					data: void 0,
-					error: action.error,
-					failureCount: state.failureCount + 1,
-					failureReason: action.error,
-					isPaused: false,
-					status: "error"
-				};
-			}
-		};
-		this.state = reducer(this.state);
-		notifyManager.batch(() => {
-			this.#observers.forEach((observer) => {
-				observer.onMutationUpdate(action);
-			});
-			this.#mutationCache.notify({
-				mutation: this,
-				type: "updated",
-				action
-			});
+});
+function _dispatch(action) {
+	const reducer = (state) => {
+		switch (action.type) {
+			case "failed": return {
+				...state,
+				failureCount: action.failureCount,
+				failureReason: action.error
+			};
+			case "pause": return {
+				...state,
+				isPaused: true
+			};
+			case "continue": return {
+				...state,
+				isPaused: false
+			};
+			case "pending": return {
+				...state,
+				context: action.context,
+				data: void 0,
+				failureCount: 0,
+				failureReason: null,
+				error: null,
+				isPaused: action.isPaused,
+				status: "pending",
+				variables: action.variables,
+				submittedAt: Date.now()
+			};
+			case "success": return {
+				...state,
+				data: action.data,
+				failureCount: 0,
+				failureReason: null,
+				error: null,
+				status: "success",
+				isPaused: false
+			};
+			case "error": return {
+				...state,
+				data: void 0,
+				error: action.error,
+				failureCount: state.failureCount + 1,
+				failureReason: action.error,
+				isPaused: false,
+				status: "error"
+			};
+		}
+	};
+	this.state = reducer(this.state);
+	notifyManager.batch(() => {
+		_classPrivateFieldGet2(_observers, this).forEach((observer) => {
+			observer.onMutationUpdate(action);
 		});
-	}
-};
+		_classPrivateFieldGet2(_mutationCache$1, this).notify({
+			mutation: this,
+			type: "updated",
+			action
+		});
+	});
+}
 function getDefaultState() {
 	return {
 		context: void 0,
@@ -1310,22 +1351,24 @@ function getDefaultState() {
 }
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/mutationCache.js
-var MutationCache = class extends Subscribable {
+var _mutations, _scopes, _mutationId;
+var MutationCache = (_mutations = /* @__PURE__ */ new WeakMap(), _scopes = /* @__PURE__ */ new WeakMap(), _mutationId = /* @__PURE__ */ new WeakMap(), class extends Subscribable {
 	constructor(config = {}) {
 		super();
+		_classPrivateFieldInitSpec(this, _mutations, void 0);
+		_classPrivateFieldInitSpec(this, _scopes, void 0);
+		_classPrivateFieldInitSpec(this, _mutationId, void 0);
 		this.config = config;
-		this.#mutations = /* @__PURE__ */ new Set();
-		this.#scopes = /* @__PURE__ */ new Map();
-		this.#mutationId = 0;
+		_classPrivateFieldSet2(_mutations, this, /* @__PURE__ */ new Set());
+		_classPrivateFieldSet2(_scopes, this, /* @__PURE__ */ new Map());
+		_classPrivateFieldSet2(_mutationId, this, 0);
 	}
-	#mutations;
-	#scopes;
-	#mutationId;
 	build(client, options, state) {
+		var _this$mutationId;
 		const mutation = new Mutation({
 			client,
 			mutationCache: this,
-			mutationId: ++this.#mutationId,
+			mutationId: _classPrivateFieldSet2(_mutationId, this, (_this$mutationId = _classPrivateFieldGet2(_mutationId, this), ++_this$mutationId)),
 			options: client.defaultMutationOptions(options),
 			state
 		});
@@ -1333,12 +1376,12 @@ var MutationCache = class extends Subscribable {
 		return mutation;
 	}
 	add(mutation) {
-		this.#mutations.add(mutation);
+		_classPrivateFieldGet2(_mutations, this).add(mutation);
 		const scope = scopeFor(mutation);
 		if (typeof scope === "string") {
-			const scopedMutations = this.#scopes.get(scope);
+			const scopedMutations = _classPrivateFieldGet2(_scopes, this).get(scope);
 			if (scopedMutations) scopedMutations.push(mutation);
-			else this.#scopes.set(scope, [mutation]);
+			else _classPrivateFieldGet2(_scopes, this).set(scope, [mutation]);
 		}
 		this.notify({
 			type: "added",
@@ -1346,15 +1389,15 @@ var MutationCache = class extends Subscribable {
 		});
 	}
 	remove(mutation) {
-		if (this.#mutations.delete(mutation)) {
+		if (_classPrivateFieldGet2(_mutations, this).delete(mutation)) {
 			const scope = scopeFor(mutation);
 			if (typeof scope === "string") {
-				const scopedMutations = this.#scopes.get(scope);
+				const scopedMutations = _classPrivateFieldGet2(_scopes, this).get(scope);
 				if (scopedMutations) {
 					if (scopedMutations.length > 1) {
 						const index = scopedMutations.indexOf(mutation);
 						if (index !== -1) scopedMutations.splice(index, 1);
-					} else if (scopedMutations[0] === mutation) this.#scopes.delete(scope);
+					} else if (scopedMutations[0] === mutation) _classPrivateFieldGet2(_scopes, this).delete(scope);
 				}
 			}
 		}
@@ -1366,29 +1409,29 @@ var MutationCache = class extends Subscribable {
 	canRun(mutation) {
 		const scope = scopeFor(mutation);
 		if (typeof scope === "string") {
-			const firstPendingMutation = this.#scopes.get(scope)?.find((m) => m.state.status === "pending");
+			const firstPendingMutation = _classPrivateFieldGet2(_scopes, this).get(scope)?.find((m) => m.state.status === "pending");
 			return !firstPendingMutation || firstPendingMutation === mutation;
 		} else return true;
 	}
 	runNext(mutation) {
 		const scope = scopeFor(mutation);
-		if (typeof scope === "string") return (this.#scopes.get(scope)?.find((m) => m !== mutation && m.state.isPaused))?.continue() ?? Promise.resolve();
+		if (typeof scope === "string") return (_classPrivateFieldGet2(_scopes, this).get(scope)?.find((m) => m !== mutation && m.state.isPaused))?.continue() ?? Promise.resolve();
 		else return Promise.resolve();
 	}
 	clear() {
 		notifyManager.batch(() => {
-			this.#mutations.forEach((mutation) => {
+			_classPrivateFieldGet2(_mutations, this).forEach((mutation) => {
 				this.notify({
 					type: "removed",
 					mutation
 				});
 			});
-			this.#mutations.clear();
-			this.#scopes.clear();
+			_classPrivateFieldGet2(_mutations, this).clear();
+			_classPrivateFieldGet2(_scopes, this).clear();
 		});
 	}
 	getAll() {
-		return Array.from(this.#mutations);
+		return Array.from(_classPrivateFieldGet2(_mutations, this));
 	}
 	find(filters) {
 		const defaultedFilters = {
@@ -1411,61 +1454,64 @@ var MutationCache = class extends Subscribable {
 		const pausedMutations = this.getAll().filter((x) => x.state.isPaused);
 		return notifyManager.batch(() => Promise.all(pausedMutations.map((mutation) => mutation.continue().catch(noop))));
 	}
-};
+});
 function scopeFor(mutation) {
 	return mutation.options.scope?.id;
 }
 //#endregion
 //#region node_modules/@tanstack/query-core/build/modern/queryClient.js
-var QueryClient = class {
-	#queryCache;
-	#mutationCache;
-	#defaultOptions;
-	#queryDefaults;
-	#mutationDefaults;
-	#mountCount;
-	#unsubscribeFocus;
-	#unsubscribeOnline;
+var _queryCache, _mutationCache, _defaultOptions, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline;
+var QueryClient = (_queryCache = /* @__PURE__ */ new WeakMap(), _mutationCache = /* @__PURE__ */ new WeakMap(), _defaultOptions = /* @__PURE__ */ new WeakMap(), _queryDefaults = /* @__PURE__ */ new WeakMap(), _mutationDefaults = /* @__PURE__ */ new WeakMap(), _mountCount = /* @__PURE__ */ new WeakMap(), _unsubscribeFocus = /* @__PURE__ */ new WeakMap(), _unsubscribeOnline = /* @__PURE__ */ new WeakMap(), class {
 	constructor(config = {}) {
-		this.#queryCache = config.queryCache || new QueryCache();
-		this.#mutationCache = config.mutationCache || new MutationCache();
-		this.#defaultOptions = config.defaultOptions || {};
-		this.#queryDefaults = /* @__PURE__ */ new Map();
-		this.#mutationDefaults = /* @__PURE__ */ new Map();
-		this.#mountCount = 0;
+		_classPrivateFieldInitSpec(this, _queryCache, void 0);
+		_classPrivateFieldInitSpec(this, _mutationCache, void 0);
+		_classPrivateFieldInitSpec(this, _defaultOptions, void 0);
+		_classPrivateFieldInitSpec(this, _queryDefaults, void 0);
+		_classPrivateFieldInitSpec(this, _mutationDefaults, void 0);
+		_classPrivateFieldInitSpec(this, _mountCount, void 0);
+		_classPrivateFieldInitSpec(this, _unsubscribeFocus, void 0);
+		_classPrivateFieldInitSpec(this, _unsubscribeOnline, void 0);
+		_classPrivateFieldSet2(_queryCache, this, config.queryCache || new QueryCache());
+		_classPrivateFieldSet2(_mutationCache, this, config.mutationCache || new MutationCache());
+		_classPrivateFieldSet2(_defaultOptions, this, config.defaultOptions || {});
+		_classPrivateFieldSet2(_queryDefaults, this, /* @__PURE__ */ new Map());
+		_classPrivateFieldSet2(_mutationDefaults, this, /* @__PURE__ */ new Map());
+		_classPrivateFieldSet2(_mountCount, this, 0);
 	}
 	mount() {
-		this.#mountCount++;
-		if (this.#mountCount !== 1) return;
-		this.#unsubscribeFocus = focusManager.subscribe(async (focused) => {
+		var _this$mountCount;
+		_classPrivateFieldSet2(_mountCount, this, (_this$mountCount = _classPrivateFieldGet2(_mountCount, this), _this$mountCount++, _this$mountCount));
+		if (_classPrivateFieldGet2(_mountCount, this) !== 1) return;
+		_classPrivateFieldSet2(_unsubscribeFocus, this, focusManager.subscribe(async (focused) => {
 			if (focused) {
 				await this.resumePausedMutations();
-				this.#queryCache.onFocus();
+				_classPrivateFieldGet2(_queryCache, this).onFocus();
 			}
-		});
-		this.#unsubscribeOnline = onlineManager.subscribe(async (online) => {
+		}));
+		_classPrivateFieldSet2(_unsubscribeOnline, this, onlineManager.subscribe(async (online) => {
 			if (online) {
 				await this.resumePausedMutations();
-				this.#queryCache.onOnline();
+				_classPrivateFieldGet2(_queryCache, this).onOnline();
 			}
-		});
+		}));
 	}
 	unmount() {
-		this.#mountCount--;
-		if (this.#mountCount !== 0) return;
-		this.#unsubscribeFocus?.();
-		this.#unsubscribeFocus = void 0;
-		this.#unsubscribeOnline?.();
-		this.#unsubscribeOnline = void 0;
+		var _this$mountCount3;
+		_classPrivateFieldSet2(_mountCount, this, (_this$mountCount3 = _classPrivateFieldGet2(_mountCount, this), _this$mountCount3--, _this$mountCount3));
+		if (_classPrivateFieldGet2(_mountCount, this) !== 0) return;
+		_classPrivateFieldGet2(_unsubscribeFocus, this)?.call(this);
+		_classPrivateFieldSet2(_unsubscribeFocus, this, void 0);
+		_classPrivateFieldGet2(_unsubscribeOnline, this)?.call(this);
+		_classPrivateFieldSet2(_unsubscribeOnline, this, void 0);
 	}
 	isFetching(filters) {
-		return this.#queryCache.findAll({
+		return _classPrivateFieldGet2(_queryCache, this).findAll({
 			...filters,
 			fetchStatus: "fetching"
 		}).length;
 	}
 	isMutating(filters) {
-		return this.#mutationCache.findAll({
+		return _classPrivateFieldGet2(_mutationCache, this).findAll({
 			...filters,
 			status: "pending"
 		}).length;
@@ -1479,40 +1525,40 @@ var QueryClient = class {
 	*/
 	getQueryData(queryKey) {
 		const options = this.defaultQueryOptions({ queryKey });
-		return this.#queryCache.get(options.queryHash)?.state.data;
+		return _classPrivateFieldGet2(_queryCache, this).get(options.queryHash)?.state.data;
 	}
 	ensureQueryData(options) {
 		const defaultedOptions = this.defaultQueryOptions(options);
-		const query = this.#queryCache.build(this, defaultedOptions);
+		const query = _classPrivateFieldGet2(_queryCache, this).build(this, defaultedOptions);
 		const cachedData = query.state.data;
 		if (cachedData === void 0) return this.fetchQuery(options);
 		if (options.revalidateIfStale && query.isStaleByTime(resolveStaleTime(defaultedOptions.staleTime, query))) this.prefetchQuery(defaultedOptions);
 		return Promise.resolve(cachedData);
 	}
 	getQueriesData(filters) {
-		return this.#queryCache.findAll(filters).map(({ queryKey, state }) => {
+		return _classPrivateFieldGet2(_queryCache, this).findAll(filters).map(({ queryKey, state }) => {
 			return [queryKey, state.data];
 		});
 	}
 	setQueryData(queryKey, updater, options) {
 		const defaultedOptions = this.defaultQueryOptions({ queryKey });
-		const prevData = this.#queryCache.get(defaultedOptions.queryHash)?.state.data;
+		const prevData = _classPrivateFieldGet2(_queryCache, this).get(defaultedOptions.queryHash)?.state.data;
 		const data = functionalUpdate(updater, prevData);
 		if (data === void 0) return;
-		return this.#queryCache.build(this, defaultedOptions).setData(data, {
+		return _classPrivateFieldGet2(_queryCache, this).build(this, defaultedOptions).setData(data, {
 			...options,
 			manual: true
 		});
 	}
 	setQueriesData(filters, updater, options) {
-		return notifyManager.batch(() => this.#queryCache.findAll(filters).map(({ queryKey }) => [queryKey, this.setQueryData(queryKey, updater, options)]));
+		return notifyManager.batch(() => _classPrivateFieldGet2(_queryCache, this).findAll(filters).map(({ queryKey }) => [queryKey, this.setQueryData(queryKey, updater, options)]));
 	}
 	getQueryState(queryKey) {
 		const options = this.defaultQueryOptions({ queryKey });
-		return this.#queryCache.get(options.queryHash)?.state;
+		return _classPrivateFieldGet2(_queryCache, this).get(options.queryHash)?.state;
 	}
 	removeQueries(filters) {
-		const queryCache = this.#queryCache;
+		const queryCache = _classPrivateFieldGet2(_queryCache, this);
 		notifyManager.batch(() => {
 			queryCache.findAll(filters).forEach((query) => {
 				queryCache.remove(query);
@@ -1520,7 +1566,7 @@ var QueryClient = class {
 		});
 	}
 	resetQueries(filters, options) {
-		const queryCache = this.#queryCache;
+		const queryCache = _classPrivateFieldGet2(_queryCache, this);
 		return notifyManager.batch(() => {
 			queryCache.findAll(filters).forEach((query) => {
 				query.reset();
@@ -1536,12 +1582,12 @@ var QueryClient = class {
 			revert: true,
 			...cancelOptions
 		};
-		const promises = notifyManager.batch(() => this.#queryCache.findAll(filters).map((query) => query.cancel(defaultedCancelOptions)));
+		const promises = notifyManager.batch(() => _classPrivateFieldGet2(_queryCache, this).findAll(filters).map((query) => query.cancel(defaultedCancelOptions)));
 		return Promise.all(promises).then(noop).catch(noop);
 	}
 	invalidateQueries(filters, options = {}) {
 		return notifyManager.batch(() => {
-			this.#queryCache.findAll(filters).forEach((query) => {
+			_classPrivateFieldGet2(_queryCache, this).findAll(filters).forEach((query) => {
 				query.invalidate();
 			});
 			if (filters?.refetchType === "none") return Promise.resolve();
@@ -1556,7 +1602,7 @@ var QueryClient = class {
 			...options,
 			cancelRefetch: options.cancelRefetch ?? true
 		};
-		const promises = notifyManager.batch(() => this.#queryCache.findAll(filters).filter((query) => !query.isDisabled() && !query.isStatic()).map((query) => {
+		const promises = notifyManager.batch(() => _classPrivateFieldGet2(_queryCache, this).findAll(filters).filter((query) => !query.isDisabled() && !query.isStatic()).map((query) => {
 			let promise = query.fetch(void 0, fetchOptions);
 			if (!fetchOptions.throwOnError) promise = promise.catch(noop);
 			return query.state.fetchStatus === "paused" ? Promise.resolve() : promise;
@@ -1566,7 +1612,7 @@ var QueryClient = class {
 	fetchQuery(options) {
 		const defaultedOptions = this.defaultQueryOptions(options);
 		if (defaultedOptions.retry === void 0) defaultedOptions.retry = false;
-		const query = this.#queryCache.build(this, defaultedOptions);
+		const query = _classPrivateFieldGet2(_queryCache, this).build(this, defaultedOptions);
 		return query.isStaleByTime(resolveStaleTime(defaultedOptions.staleTime, query)) ? query.fetch(defaultedOptions) : Promise.resolve(query.state.data);
 	}
 	prefetchQuery(options) {
@@ -1584,29 +1630,29 @@ var QueryClient = class {
 		return this.ensureQueryData(options);
 	}
 	resumePausedMutations() {
-		if (onlineManager.isOnline()) return this.#mutationCache.resumePausedMutations();
+		if (onlineManager.isOnline()) return _classPrivateFieldGet2(_mutationCache, this).resumePausedMutations();
 		return Promise.resolve();
 	}
 	getQueryCache() {
-		return this.#queryCache;
+		return _classPrivateFieldGet2(_queryCache, this);
 	}
 	getMutationCache() {
-		return this.#mutationCache;
+		return _classPrivateFieldGet2(_mutationCache, this);
 	}
 	getDefaultOptions() {
-		return this.#defaultOptions;
+		return _classPrivateFieldGet2(_defaultOptions, this);
 	}
 	setDefaultOptions(options) {
-		this.#defaultOptions = options;
+		_classPrivateFieldSet2(_defaultOptions, this, options);
 	}
 	setQueryDefaults(queryKey, options) {
-		this.#queryDefaults.set(hashKey(queryKey), {
+		_classPrivateFieldGet2(_queryDefaults, this).set(hashKey(queryKey), {
 			queryKey,
 			defaultOptions: options
 		});
 	}
 	getQueryDefaults(queryKey) {
-		const defaults = [...this.#queryDefaults.values()];
+		const defaults = [..._classPrivateFieldGet2(_queryDefaults, this).values()];
 		const result = {};
 		defaults.forEach((queryDefault) => {
 			if (partialMatchKey(queryKey, queryDefault.queryKey)) Object.assign(result, queryDefault.defaultOptions);
@@ -1614,13 +1660,13 @@ var QueryClient = class {
 		return result;
 	}
 	setMutationDefaults(mutationKey, options) {
-		this.#mutationDefaults.set(hashKey(mutationKey), {
+		_classPrivateFieldGet2(_mutationDefaults, this).set(hashKey(mutationKey), {
 			mutationKey,
 			defaultOptions: options
 		});
 	}
 	getMutationDefaults(mutationKey) {
-		const defaults = [...this.#mutationDefaults.values()];
+		const defaults = [..._classPrivateFieldGet2(_mutationDefaults, this).values()];
 		const result = {};
 		defaults.forEach((queryDefault) => {
 			if (partialMatchKey(mutationKey, queryDefault.mutationKey)) Object.assign(result, queryDefault.defaultOptions);
@@ -1630,7 +1676,7 @@ var QueryClient = class {
 	defaultQueryOptions(options) {
 		if (options._defaulted) return options;
 		const defaultedOptions = {
-			...this.#defaultOptions.queries,
+			..._classPrivateFieldGet2(_defaultOptions, this).queries,
 			...this.getQueryDefaults(options.queryKey),
 			...options,
 			_defaulted: true
@@ -1645,16 +1691,16 @@ var QueryClient = class {
 	defaultMutationOptions(options) {
 		if (options?._defaulted) return options;
 		return {
-			...this.#defaultOptions.mutations,
+			..._classPrivateFieldGet2(_defaultOptions, this).mutations,
 			...options?.mutationKey && this.getMutationDefaults(options.mutationKey),
 			...options,
 			_defaulted: true
 		};
 	}
 	clear() {
-		this.#queryCache.clear();
-		this.#mutationCache.clear();
+		_classPrivateFieldGet2(_queryCache, this).clear();
+		_classPrivateFieldGet2(_mutationCache, this).clear();
 	}
-};
+});
 //#endregion
-export { QueryClient as t };
+export { _classPrivateFieldInitSpec as a, _assertClassBrand as i, _classPrivateFieldGet2 as n, _classPrivateMethodInitSpec as o, _classPrivateFieldSet2 as r, QueryClient as t };

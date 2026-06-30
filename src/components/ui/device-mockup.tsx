@@ -20,8 +20,9 @@ export function DeviceMockup({ src, alt, variant = "desktop", className }: Devic
             <img
               src={src}
               alt={alt}
-              className="h-auto w-full object-cover object-top"
               loading="lazy"
+              decoding="async"
+              className="h-auto w-full object-cover object-top"
             />
           </div>
           {/* Home indicator */}
@@ -42,8 +43,9 @@ export function DeviceMockup({ src, alt, variant = "desktop", className }: Devic
           <img
             src={src}
             alt={alt}
-            className="h-auto w-full object-cover object-top"
             loading="lazy"
+            decoding="async"
+            className="h-auto w-full object-cover object-top"
           />
         </div>
       </div>

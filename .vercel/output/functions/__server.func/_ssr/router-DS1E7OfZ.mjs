@@ -1,12 +1,12 @@
 import { r as __toESM } from "../_runtime.mjs";
+import { t as QueryClient } from "../_libs/@tanstack/query-core.mjs";
 import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { N as useRouter, c as HeadContent, d as Outlet, f as lazyRouteComponent, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "../_slug-DHE1QRLG.mjs";
-import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-CY5j0-PU.js
+import { t as Route } from "../_slug-DDJpBLj9.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DS1E7OfZ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-CGXi27GP.css";
+var styles_default = "/assets/styles-DRfA-WjE.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -127,6 +127,11 @@ var Route$1 = createRootRouteWithContext()({
 		],
 		links: [
 			{
+				rel: "icon",
+				type: "image/png",
+				href: "/headshot.png"
+			},
+			{
 				rel: "preconnect",
 				href: "https://fonts.googleapis.com"
 			},
@@ -134,6 +139,11 @@ var Route$1 = createRootRouteWithContext()({
 				rel: "preconnect",
 				href: "https://fonts.gstatic.com",
 				crossOrigin: "anonymous"
+			},
+			{
+				rel: "preload",
+				href: "https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+				as: "style"
 			},
 			{
 				rel: "stylesheet",
@@ -163,7 +173,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter = () => import("./routes-Bl__ZX2D.mjs");
+var $$splitComponentImporter = () => import("./routes-hofyrU55.mjs");
 var rootRouteChildren = {
 	IndexRoute: createFileRoute("/")({
 		head: () => ({ meta: [
