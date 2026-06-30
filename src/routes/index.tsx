@@ -80,7 +80,7 @@ function Hero() {
       <Squiggle className="pointer-events-none absolute right-1/4 top-40 hidden h-8 w-32 text-secondary md:block" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
-        <div className="relative">
+        <div className="relative animate-[reveal-left_1.4s_0.2s_cubic-bezier(0.22,1,0.36,1)_both]">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider pop-shadow">
             <span className="h-2 w-2 rounded-full bg-quaternary" /> Available for freelance
           </span>
@@ -114,7 +114,7 @@ function Hero() {
         </div>
 
         {/* Visual blob */}
-        <div className="relative mx-auto w-full max-w-md">
+        <div className="relative mx-auto w-full max-w-md animate-[reveal-right_1.4s_0.5s_cubic-bezier(0.22,1,0.36,1)_both]">
           <div className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary" aria-hidden />
           <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="relative aspect-square rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] border-2 border-foreground bg-accent pop-shadow-lg">
@@ -444,7 +444,7 @@ function Footer() {
   return (
     <footer className="border-t-2 border-foreground bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm font-medium sm:flex-row sm:px-6">
-        <div>© {new Date().getFullYear()} MD Asif Shah Diner. Built with Shopify love.</div>
+        <div>&copy; {new Date().getFullYear()} MD Asif Shah Diner. Built with Shopify love.</div>
         <div className="flex items-center gap-3">
           <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Github className="h-4 w-4" strokeWidth={2.5} /></a>
           <a href="https://linkedin.com/in/arnav-asif-a74894259" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Linkedin className="h-4 w-4" strokeWidth={2.5} /></a>

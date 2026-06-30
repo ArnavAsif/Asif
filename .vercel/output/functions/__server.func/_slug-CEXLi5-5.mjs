@@ -1,7 +1,7 @@
 import { t as getProjectBySlug } from "./_ssr/projects-ohaOBEnb.mjs";
 import { f as lazyRouteComponent, p as createFileRoute } from "./_libs/@tanstack/react-router+[...].mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-DDJpBLj9.js
-var $$splitComponentImporter = () => import("./_slug-ks8Hfx_5.mjs");
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-CEXLi5-5.js
+var $$splitComponentImporter = () => import("./_slug-BBSBQECR.mjs");
 var Route = createFileRoute("/projects/$slug")({
 	head: ({ params }) => {
 		const project = getProjectBySlug(params.slug);

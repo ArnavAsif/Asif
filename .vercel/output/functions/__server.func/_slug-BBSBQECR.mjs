@@ -1,11 +1,13 @@
+import { r as __toESM } from "./_runtime.mjs";
 import { t as getProjectBySlug } from "./_ssr/projects-ohaOBEnb.mjs";
-import { n as require_jsx_runtime } from "./_libs/react+tanstack__react-query.mjs";
+import { n as require_jsx_runtime, r as require_react } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-DDJpBLj9.mjs";
-import { d as ExternalLink, f as Check, h as ArrowLeft, p as ArrowUpRight, u as Github } from "./_libs/lucide-react.mjs";
+import { t as Route } from "./_slug-CEXLi5-5.mjs";
+import { _ as ArrowLeft, c as Monitor, f as Github, h as ArrowUpRight, i as Smartphone, m as Check, p as ExternalLink } from "./_libs/lucide-react.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-ks8Hfx_5.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BBSBQECR.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
 	return twMerge(clsx(inputs));
@@ -54,6 +56,7 @@ function DeviceMockup({ src, alt, variant = "desktop", className }) {
 function ProjectDetails() {
 	const { slug } = Route.useParams();
 	const project = getProjectBySlug(slug);
+	const [viewMode, setViewMode] = (0, import_react.useState)("desktop");
 	if (!project) throw notFound();
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "min-h-screen overflow-x-hidden",
@@ -116,6 +119,25 @@ function ProjectDetails() {
 								children: project.description
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "mt-8",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+									className: "font-display text-lg font-extrabold",
+									children: "Key Features"
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+									className: "mt-3 space-y-2.5",
+									children: project.features.map((feature) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+										className: "flex items-center gap-2.5 text-sm font-medium",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "grid h-5 w-5 shrink-0 place-items-center rounded-full bg-quaternary",
+											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+												className: "h-3 w-3 text-foreground",
+												strokeWidth: 3
+											})
+										}), feature]
+									}, feature))
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "mt-8 flex flex-wrap gap-3",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 									href: project.url,
@@ -138,25 +160,6 @@ function ProjectDetails() {
 								})]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-8",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-									className: "font-display text-lg font-extrabold",
-									children: "Key Features"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-									className: "mt-3 space-y-2",
-									children: project.features.map((feature) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-										className: "flex items-center gap-2 text-sm font-medium",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "grid h-5 w-5 shrink-0 place-items-center rounded-full bg-quaternary",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-												className: "h-3 w-3 text-foreground",
-												strokeWidth: 3
-											})
-										}), feature]
-									}, feature))
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-muted px-3 py-1.5 text-xs font-bold text-foreground",
 								children: ["Demo password: ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
 									className: "rounded bg-background px-1.5 py-0.5 font-mono",
@@ -174,124 +177,43 @@ function ProjectDetails() {
 									className: "pointer-events-none absolute -bottom-6 -left-6 h-16 w-16 rotate-45 rounded-lg border-2 border-foreground bg-tertiary opacity-60",
 									"aria-hidden": true
 								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "mb-4 flex items-center gap-2",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										onClick: () => setViewMode("desktop"),
+										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${viewMode === "desktop" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Monitor, {
+											className: "h-3.5 w-3.5",
+											strokeWidth: 2.5
+										}), " Desktop"]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+										onClick: () => setViewMode("mobile"),
+										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${viewMode === "mobile" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Smartphone, {
+											className: "h-3.5 w-3.5",
+											strokeWidth: 2.5
+										}), " Mobile"]
+									})]
+								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "hidden lg:block",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
+									className: "animate-[reveal-scale_0.7s_cubic-bezier(0.22,1,0.36,1)_both]",
+									children: viewMode === "desktop" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
 										src: project.image,
 										alt: `${project.name} homepage - desktop view`,
 										variant: "desktop",
 										className: "w-full"
+									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "mx-auto max-w-[280px]",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
+											src: project.image,
+											alt: `${project.name} homepage - mobile view`,
+											variant: "mobile",
+											className: "w-full"
+										})
 									})
-								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "block lg:hidden",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
-										src: project.image,
-										alt: `${project.name} homepage - mobile view`,
-										variant: "mobile",
-										className: "w-full max-w-[280px]"
-									})
-								})
+								}, viewMode)
 							]
 						})]
-					})]
-				})
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-				className: "relative px-4 py-16 sm:px-6 sm:py-20",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mx-auto max-w-7xl",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mb-8 text-center",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "font-display text-2xl font-extrabold sm:text-3xl",
-							children: "Full Preview"
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-2 text-muted-foreground",
-							children: "See how the store looks on different devices"
-						})]
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "grid gap-8 lg:grid-cols-2 lg:gap-12",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-4 flex items-center gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "grid h-8 w-8 place-items-center rounded-full border-2 border-foreground bg-tertiary",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-									className: "h-4 w-4",
-									viewBox: "0 0 24 24",
-									fill: "none",
-									stroke: "currentColor",
-									strokeWidth: "2",
-									strokeLinecap: "round",
-									strokeLinejoin: "round",
-									children: [
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-											x: "2",
-											y: "3",
-											width: "20",
-											height: "14",
-											rx: "2",
-											ry: "2"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
-											x1: "8",
-											y1: "21",
-											x2: "16",
-											y2: "21"
-										}),
-										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
-											x1: "12",
-											y1: "17",
-											x2: "12",
-											y2: "21"
-										})
-									]
-								})
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-display font-extrabold",
-								children: "Desktop View"
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
-							src: project.image,
-							alt: `${project.name} desktop preview`,
-							variant: "desktop",
-							className: "w-full"
-						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mb-4 flex items-center gap-2",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "grid h-8 w-8 place-items-center rounded-full border-2 border-foreground bg-secondary",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
-									className: "h-4 w-4",
-									viewBox: "0 0 24 24",
-									fill: "none",
-									stroke: "currentColor",
-									strokeWidth: "2",
-									strokeLinecap: "round",
-									strokeLinejoin: "round",
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
-										x: "5",
-										y: "2",
-										width: "14",
-										height: "20",
-										rx: "2",
-										ry: "2"
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("line", {
-										x1: "12",
-										y1: "18",
-										x2: "12.01",
-										y2: "18"
-									})]
-								})
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "font-display font-extrabold",
-								children: "Mobile View"
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
-							src: project.image,
-							alt: `${project.name} mobile preview`,
-							variant: "mobile",
-							className: "w-full max-w-[280px] mx-auto"
-						})] })]
 					})]
 				})
 			}),

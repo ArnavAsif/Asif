@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Github, ExternalLink, Check } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Github, ExternalLink, Check, Monitor, Smartphone } from "lucide-react";
+import { useState } from "react";
 import { projects, getProjectBySlug } from "@/data/projects";
 import { DeviceMockup } from "@/components/ui/device-mockup";
 
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/projects/$slug")({
 function ProjectDetails() {
   const { slug } = Route.useParams();
   const project = getProjectBySlug(slug);
+  const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
 
   if (!project) {
     throw notFound();
@@ -63,7 +65,22 @@ function ProjectDetails() {
                 {project.description}
               </p>
 
-              {/* Action buttons */}
+              {/* Features */}
+              <div className="mt-8">
+                <h3 className="font-display text-lg font-extrabold">Key Features</h3>
+                <ul className="mt-3 space-y-2.5">
+                  {project.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2.5 text-sm font-medium">
+                      <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-quaternary">
+                        <Check className="h-3 w-3 text-foreground" strokeWidth={3} />
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Action buttons — after features */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={project.url}
@@ -84,104 +101,65 @@ function ProjectDetails() {
                 </a>
               </div>
 
-              {/* Features */}
-              <div className="mt-8">
-                <h3 className="font-display text-lg font-extrabold">Key Features</h3>
-                <ul className="mt-3 space-y-2">
-                  {project.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm font-medium">
-                      <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-quaternary">
-                        <Check className="h-3 w-3 text-foreground" strokeWidth={3} />
-                      </span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
               {/* Password note */}
               <div className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-muted px-3 py-1.5 text-xs font-bold text-foreground">
                 Demo password: <code className="rounded bg-background px-1.5 py-0.5 font-mono">{project.pw}</code>
               </div>
             </div>
 
-            {/* Device mockups */}
+            {/* Device mockups with toggle */}
             <div className="relative">
               {/* Decorative elements */}
               <div className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full bg-secondary opacity-60" aria-hidden />
               <div className="pointer-events-none absolute -bottom-6 -left-6 h-16 w-16 rotate-45 rounded-lg border-2 border-foreground bg-tertiary opacity-60" aria-hidden />
 
-              {/* Desktop mockup - hidden on mobile, shown on lg+ */}
-              <div className="hidden lg:block">
-                <DeviceMockup
-                  src={project.image}
-                  alt={`${project.name} homepage - desktop view`}
-                  variant="desktop"
-                  className="w-full"
-                />
-              </div>
-
-              {/* Mobile mockup - shown on mobile, hidden on lg+ */}
-              <div className="block lg:hidden">
-                <DeviceMockup
-                  src={project.image}
-                  alt={`${project.name} homepage - mobile view`}
-                  variant="mobile"
-                  className="w-full max-w-[280px]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Full-width preview section */}
-      <section className="relative px-4 py-16 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-8 text-center">
-            <h2 className="font-display text-2xl font-extrabold sm:text-3xl">Full Preview</h2>
-            <p className="mt-2 text-muted-foreground">See how the store looks on different devices</p>
-          </div>
-
-          {/* Responsive preview grid */}
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-            {/* Desktop view */}
-            <div>
+              {/* Toggle button */}
               <div className="mb-4 flex items-center gap-2">
-                <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-foreground bg-tertiary">
-                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                </span>
-                <span className="font-display font-extrabold">Desktop View</span>
+                <button
+                  onClick={() => setViewMode("desktop")}
+                  className={`inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${
+                    viewMode === "desktop"
+                      ? "bg-accent text-accent-foreground pop-shadow"
+                      : "bg-background hover:bg-tertiary"
+                  }`}
+                >
+                  <Monitor className="h-3.5 w-3.5" strokeWidth={2.5} /> Desktop
+                </button>
+                <button
+                  onClick={() => setViewMode("mobile")}
+                  className={`inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${
+                    viewMode === "mobile"
+                      ? "bg-accent text-accent-foreground pop-shadow"
+                      : "bg-background hover:bg-tertiary"
+                  }`}
+                >
+                  <Smartphone className="h-3.5 w-3.5" strokeWidth={2.5} /> Mobile
+                </button>
               </div>
-              <DeviceMockup
-                src={project.image}
-                alt={`${project.name} desktop preview`}
-                variant="desktop"
-                className="w-full"
-              />
-            </div>
 
-            {/* Mobile view */}
-            <div>
-              <div className="mb-4 flex items-center gap-2">
-                <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-foreground bg-secondary">
-                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                    <line x1="12" y1="18" x2="12.01" y2="18" />
-                  </svg>
-                </span>
-                <span className="font-display font-extrabold">Mobile View</span>
+              {/* Mockup view */}
+              <div
+                key={viewMode}
+                className="animate-[reveal-scale_0.7s_cubic-bezier(0.22,1,0.36,1)_both]"
+              >
+                {viewMode === "desktop" ? (
+                  <DeviceMockup
+                    src={project.image}
+                    alt={`${project.name} homepage - desktop view`}
+                    variant="desktop"
+                    className="w-full"
+                  />
+                ) : (
+                  <div className="mx-auto max-w-[280px]">
+                    <DeviceMockup
+                      src={project.image}
+                      alt={`${project.name} homepage - mobile view`}
+                      variant="mobile"
+                      className="w-full"
+                    />
+                  </div>
+                )}
               </div>
-              <DeviceMockup
-                src={project.image}
-                alt={`${project.name} mobile preview`}
-                variant="mobile"
-                className="w-full max-w-[280px] mx-auto"
-              />
             </div>
           </div>
         </div>
@@ -224,7 +202,7 @@ function ProjectDetails() {
       {/* Footer */}
       <footer className="border-t-2 border-foreground bg-background">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm font-medium sm:flex-row sm:px-6">
-          <div>© {new Date().getFullYear()} MD Asif Shah Diner. Built with Shopify love.</div>
+          <div>&copy; {new Date().getFullYear()} MD Asif Shah Diner. Built with Shopify love.</div>
           <div className="flex items-center gap-3">
             <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Github className="h-4 w-4" strokeWidth={2.5} /></a>
           </div>

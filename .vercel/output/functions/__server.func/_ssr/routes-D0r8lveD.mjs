@@ -1,8 +1,8 @@
 import { n as projects } from "./projects-ohaOBEnb.mjs";
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { _ as CodeXml, a as Phone, c as Mail, f as Check, g as Sparkles, i as Rocket, l as Linkedin, m as ArrowRight, n as Store, o as Palette, p as ArrowUpRight, r as Star, s as MapPin, t as Zap, u as Github } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-UwPp9_ZI.js
+import { a as Rocket, d as Linkedin, f as Github, g as ArrowRight, h as ArrowUpRight, l as MapPin, m as Check, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, v as Sparkles, y as CodeXml } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-D0r8lveD.js
 var import_jsx_runtime = require_jsx_runtime();
 var skills = [
 	{
@@ -158,7 +158,7 @@ function Hero() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative",
+					className: "relative animate-[reveal-left_1.4s_0.2s_cubic-bezier(0.22,1,0.36,1)_both]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider pop-shadow",
@@ -235,7 +235,7 @@ function Hero() {
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative mx-auto w-full max-w-md",
+					className: "relative mx-auto w-full max-w-md animate-[reveal-right_1.4s_0.5s_cubic-bezier(0.22,1,0.36,1)_both]",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary",
