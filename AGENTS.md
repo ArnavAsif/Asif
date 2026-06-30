@@ -14,16 +14,16 @@
 - **Framework**: TanStack Start (React 19, SSR)
 - **UI**: shadcn/ui (new-york style) + Tailwind CSS v4
 - **Router**: File-based via `src/routes/` — see `src/routes/README.md` for conventions
-- **Build**: Vite via `@lovable.dev/vite-tanstack-config` — do NOT add plugins manually
-- **Runtime**: Bun (has supply-chain guard: `bunfig.toml`)
+- **Build**: Vite + Nitro (Vercel preset)
+- **Deploy**: Vercel (output in `.vercel/output/`)
 
 ## Commands
 
 ```bash
-bun run dev        # Start dev server
-bun run build      # Production build
-bun run lint       # ESLint
-bun run format     # Prettier (write)
+npm run dev        # Start dev server
+npm run build      # Production build (outputs to .vercel/output/)
+npm run lint       # ESLint
+npm run format     # Prettier (write)
 ```
 
 No test suite is configured.
@@ -34,20 +34,26 @@ No test suite is configured.
 - **Route tree**: `src/routeTree.gen.ts` is auto-generated — never edit by hand
 - **Root layout**: `src/routes/__root.tsx` — preserve `<Outlet />` for child routes
 - **Server code**: Do NOT import `server-only`. Name files `*.server.ts` or use `@tanstack/react-start/server-only` (see ESLint rule)
-- **Vite config**: `@lovable.dev/vite-tanstack-config` bundles tanstackStart, React, Tailwind, tsConfigPaths, Nitro, and more — duplicating any of these breaks the build
 - **Formatting**: Prettier with `printWidth: 100`, double quotes, trailing commas, semicolons
 
 ## Adding components
 
 ```bash
-bunx shadcn@latest add <component-name>
+npx shadcn@latest add <component-name>
 ```
 
 Components land in `src/components/ui/`. Aliases configured in `components.json`.
 
+## Vercel deployment
+
+1. Push to GitHub
+2. Import project in Vercel dashboard
+3. Vercel auto-detects the build — no config needed (`.vercel/output/` is standard)
+4. Deployed with Fluid Compute (auto-scales based on traffic)
+
 ## Gotchas
 
-- `bun.lock` is the lockfile — do not use `package-lock.json` (present but stale)
+- `package-lock.json` is the lockfile (not `bun.lock`)
 - `@typescript-eslint/no-unused-vars` is OFF — unused vars are allowed
 - No `src/pages/`, no `app/layout.tsx` — that's Next.js convention, not TanStack Start
 - Dynamic routes use bare `$` (e.g., `$id.tsx`), not `:id` or `{id}`
