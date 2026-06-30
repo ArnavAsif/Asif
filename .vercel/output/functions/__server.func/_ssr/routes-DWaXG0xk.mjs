@@ -1,9 +1,38 @@
+import { r as __toESM } from "../_runtime.mjs";
 import { n as projects } from "./projects-ohaOBEnb.mjs";
-import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
+import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as Rocket, d as Linkedin, f as Github, g as ArrowRight, h as ArrowUpRight, l as MapPin, m as Check, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, v as Sparkles, y as CodeXml } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-D0r8lveD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DWaXG0xk.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+function useReveal() {
+	const ref = (0, import_react.useRef)(null);
+	(0, import_react.useEffect)(() => {
+		const el = ref.current;
+		if (!el) return;
+		const all = Array.from(el.querySelectorAll("[data-reveal]"));
+		if (!all.length) return;
+		const observer = new IntersectionObserver((entries) => {
+			for (const entry of entries) if (entry.isIntersecting) {
+				const delay = entry.target.dataset.revealDelay;
+				if (delay) entry.target.style.transitionDelay = `${delay}ms`;
+				entry.target.classList.add("revealed");
+				observer.unobserve(entry.target);
+			}
+		}, {
+			threshold: .1,
+			rootMargin: "0px 0px -30px 0px"
+		});
+		all.forEach((child) => {
+			const rect = child.getBoundingClientRect();
+			if (rect.top < window.innerHeight && rect.bottom > 0) child.classList.add("revealed");
+			else observer.observe(child);
+		});
+		return () => observer.disconnect();
+	}, []);
+	return ref;
+}
 var skills = [
 	{
 		label: "Shopify",
@@ -70,6 +99,7 @@ var marqueeWords = [
 ];
 function Index() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		ref: useReveal(),
 		className: "min-h-screen overflow-x-hidden",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Nav, {}),
@@ -128,7 +158,7 @@ function Nav() {
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 					href: "#contact",
-					className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]",
+					className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]",
 					children: ["Hire me", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "grid h-5 w-5 place-items-center rounded-full bg-background text-foreground",
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
@@ -158,7 +188,7 @@ function Hero() {
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative animate-[reveal-left_1.4s_0.2s_cubic-bezier(0.22,1,0.36,1)_both]",
+					"data-reveal": "left",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
 							className: "inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider pop-shadow",
@@ -202,7 +232,7 @@ function Hero() {
 							className: "mt-8 flex flex-wrap gap-4",
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 								href: "#projects",
-								className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base",
+								className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base",
 								children: ["See my work", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "grid h-6 w-6 place-items-center rounded-full bg-background text-foreground",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
@@ -219,23 +249,36 @@ function Hero() {
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 							className: "mt-10 grid grid-cols-3 gap-3 sm:max-w-md",
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-									n: "60+",
-									label: "Shopify stores"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-reveal": "up",
+									"data-reveal-delay": "0",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+										n: "60+",
+										label: "Shopify stores"
+									})
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-									n: "2.0",
-									label: "Theme expert"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-reveal": "up",
+									"data-reveal-delay": "100",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+										n: "2.0",
+										label: "Theme expert"
+									})
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-									n: "100%",
-									label: "Responsive"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									"data-reveal": "up",
+									"data-reveal-delay": "200",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
+										n: "100%",
+										label: "Responsive"
+									})
 								})
 							]
 						})
 					]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "relative mx-auto w-full max-w-md animate-[reveal-right_1.4s_0.5s_cubic-bezier(0.22,1,0.36,1)_both]",
+					"data-reveal": "right",
+					className: "relative mx-auto w-full max-w-md",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: "pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary",
@@ -314,7 +357,7 @@ function Marquee() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "border-y-2 border-foreground bg-accent text-accent-foreground",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl",
+			className: "flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl will-change-transform",
 			children: [...marqueeWords, ...marqueeWords].map((w, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "flex items-center gap-8",
 				children: w
@@ -328,10 +371,14 @@ function About() {
 		className: "relative px-4 py-20 sm:px-6 sm:py-24",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "About" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-				className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-				children: "A developer who treats every store like a product launch."
-			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-reveal": "left",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "About" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
+					children: "A developer who treats every store like a product launch."
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-reveal": "right",
 				className: "space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "I'm a Shopify developer with hands-on experience building and customizing Shopify 2.0 stores using Liquid, HTML, CSS, JavaScript, metafields, and theme customization." }),
@@ -370,6 +417,7 @@ function Skills() {
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto max-w-7xl",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-reveal": "up",
 				className: "max-w-2xl",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Toolbox" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 					className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
@@ -380,7 +428,9 @@ function Skills() {
 				children: skills.map((s, i) => {
 					const Icon = s.icon;
 					return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: `group relative rounded-xl border-2 border-foreground bg-card p-5 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${[
+						"data-reveal": "up",
+						"data-reveal-delay": String(i * 100),
+						className: `group relative rounded-xl border-2 border-foreground bg-card p-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${[
 							"pop-shadow-pink",
 							"pop-shadow-amber",
 							"pop-shadow-mint",
@@ -425,6 +475,7 @@ function Projects() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto max-w-7xl",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-reveal": "up",
 				className: "grid items-end gap-6 sm:grid-cols-[1fr_auto]",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "max-w-2xl",
@@ -471,7 +522,9 @@ function Projects() {
 						to: "/projects/$slug",
 						params: { slug: p.slug },
 						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-							className: `group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`,
+							"data-reveal": "up",
+							"data-reveal-delay": String(i % 3 * 100),
+							className: `group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`,
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: `relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`,
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
@@ -507,7 +560,7 @@ function Projects() {
 										className: "mt-auto flex flex-wrap gap-2 pt-2",
 										children: [
 											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-all group-hover:-translate-y-0.5",
+												className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
 												children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
 													className: "h-3 w-3",
 													strokeWidth: 2.5
@@ -546,99 +599,100 @@ function Experience() {
 			className: "mx-auto max-w-7xl",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid gap-12 lg:grid-cols-2",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Experience" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-reveal": "left",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Experience" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
 						children: "Building since 2024."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center justify-between gap-4",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-								className: "font-display text-xl font-extrabold",
-								children: "Freelance Shopify Developer"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "text-sm font-medium text-muted-foreground",
-								children: "2024 — Present"
-							})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary",
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Zap, {
-									className: "h-5 w-5",
-									strokeWidth: 2.5
-								})
-							})]
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-							className: "mt-4 space-y-2 text-sm text-muted-foreground sm:text-base",
-							children: [
-								"Developed and customized multiple Shopify stores from scratch",
-								"Built custom sections, product pages, and landing pages",
-								"Optimized site speed, UX, and integrated third-party apps"
-							].map((it) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
-								className: "flex gap-3",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-secondary",
-									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
-										className: "h-3 w-3 text-foreground",
-										strokeWidth: 3
-									})
-								}), it]
-							}, it))
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-reveal": "up",
+					className: "mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between gap-4",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "font-display text-xl font-extrabold",
+							children: "Freelance Shopify Developer"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "text-sm font-medium text-muted-foreground",
+							children: "2024 — Present"
+						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Zap, {
+								className: "h-5 w-5",
+								strokeWidth: 2.5
+							})
 						})]
-					})
-				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Education" }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						className: "mt-4 space-y-2 text-sm text-muted-foreground sm:text-base",
+						children: [
+							"Developed and customized multiple Shopify stores from scratch",
+							"Built custom sections, product pages, and landing pages",
+							"Optimized site speed, UX, and integrated third-party apps"
+						].map((it) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+							className: "flex gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "mt-1 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-secondary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Check, {
+									className: "h-3 w-3 text-foreground",
+									strokeWidth: 3
+								})
+							}), it]
+						}, it))
+					})]
+				})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-reveal": "right",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Education" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
 						children: "Curious by training."
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "mt-8 space-y-4",
-						children: [
-							{
-								title: "B.S.S. in Economics",
-								school: "National University",
-								year: "2019",
-								color: "bg-accent text-accent-foreground"
-							},
-							{
-								title: "HSC (Science)",
-								school: "Higher Secondary",
-								year: "",
-								color: "bg-secondary text-foreground"
-							},
-							{
-								title: "SSC (Science)",
-								school: "Secondary",
-								year: "",
-								color: "bg-tertiary text-foreground"
-							}
-						].map((e) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: `grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-foreground ${e.color} font-display text-lg font-extrabold`,
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Star, {
-									className: "h-5 w-5",
-									strokeWidth: 2.5
-								})
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-8 space-y-4",
+					children: [
+						{
+							title: "B.S.S. in Economics",
+							school: "National University",
+							year: "2019",
+							color: "bg-accent text-accent-foreground"
+						},
+						{
+							title: "HSC (Science)",
+							school: "Higher Secondary",
+							year: "",
+							color: "bg-secondary text-foreground"
+						},
+						{
+							title: "SSC (Science)",
+							school: "Secondary",
+							year: "",
+							color: "bg-tertiary text-foreground"
+						}
+					].map((e, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						"data-reveal": "right",
+						"data-reveal-delay": String(i * 100),
+						className: "flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: `grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-foreground ${e.color} font-display text-lg font-extrabold`,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Star, {
+								className: "h-5 w-5",
+								strokeWidth: 2.5
+							})
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "min-w-0",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "truncate font-display font-extrabold",
+								children: e.title
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "min-w-0",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "truncate font-display font-extrabold",
-									children: e.title
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-									className: "truncate text-sm text-muted-foreground",
-									children: [
-										e.school,
-										" ",
-										e.year && `· ${e.year}`
-									]
-								})]
+								className: "truncate text-sm text-muted-foreground",
+								children: [
+									e.school,
+									" ",
+									e.year && `· ${e.year}`
+								]
 							})]
-						}, e.title))
-					})
-				] })]
+						})]
+					}, e.title))
+				})] })]
 			})
 		})
 	});
@@ -650,6 +704,7 @@ function Contact() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "mx-auto max-w-5xl",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				"data-reveal": "scale",
 				className: "relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -678,29 +733,45 @@ function Contact() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "mt-8 grid gap-3 sm:grid-cols-2",
 								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
-										icon: Mail,
-										label: "Email",
-										value: "ifas092@gmail.com",
-										href: "mailto:ifas092@gmail.com"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										"data-reveal": "up",
+										"data-reveal-delay": "0",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
+											icon: Mail,
+											label: "Email",
+											value: "ifas092@gmail.com",
+											href: "mailto:ifas092@gmail.com"
+										})
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
-										icon: Phone,
-										label: "Phone",
-										value: "+880 1600-018734",
-										href: "tel:+8801600018734"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										"data-reveal": "up",
+										"data-reveal-delay": "100",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
+											icon: Phone,
+											label: "Phone",
+											value: "+880 1600-018734",
+											href: "tel:+8801600018734"
+										})
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
-										icon: Linkedin,
-										label: "LinkedIn",
-										value: "arnav-asif",
-										href: "https://linkedin.com/in/arnav-asif-a74894259"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										"data-reveal": "up",
+										"data-reveal-delay": "200",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
+											icon: Linkedin,
+											label: "LinkedIn",
+											value: "arnav-asif",
+											href: "https://linkedin.com/in/arnav-asif-a74894259"
+										})
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
-										icon: Github,
-										label: "GitHub",
-										value: "ArnavAsif",
-										href: "https://github.com/ArnavAsif"
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										"data-reveal": "up",
+										"data-reveal-delay": "300",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContactRow, {
+											icon: Github,
+											label: "GitHub",
+											value: "ArnavAsif",
+											href: "https://github.com/ArnavAsif"
+										})
 									})
 								]
 							}),
@@ -723,7 +794,7 @@ function ContactRow({ icon: Icon, label, value, href }) {
 		href,
 		target: href.startsWith("http") ? "_blank" : void 0,
 		rel: "noreferrer",
-		className: "group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]",
+		className: "group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 				className: "grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-foreground bg-tertiary",

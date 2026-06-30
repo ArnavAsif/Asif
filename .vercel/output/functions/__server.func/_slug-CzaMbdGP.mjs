@@ -2,11 +2,11 @@ import { r as __toESM } from "./_runtime.mjs";
 import { t as getProjectBySlug } from "./_ssr/projects-ohaOBEnb.mjs";
 import { n as require_jsx_runtime, r as require_react } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-CEXLi5-5.mjs";
+import { t as Route } from "./_slug-BEiVQ_Bn.mjs";
 import { _ as ArrowLeft, c as Monitor, f as Github, h as ArrowUpRight, i as Smartphone, m as Check, p as ExternalLink } from "./_libs/lucide-react.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BBSBQECR.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-CzaMbdGP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -143,7 +143,7 @@ function ProjectDetails() {
 									href: project.url,
 									target: "_blank",
 									rel: "noreferrer",
-									className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base",
+									className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base",
 									children: ["Visit live store", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ExternalLink, {
 										className: "h-4 w-4",
 										strokeWidth: 2.5
@@ -181,14 +181,14 @@ function ProjectDetails() {
 									className: "mb-4 flex items-center gap-2",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										onClick: () => setViewMode("desktop"),
-										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${viewMode === "desktop" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
+										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-[transform,box-shadow,background-color,color] duration-300 ${viewMode === "desktop" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Monitor, {
 											className: "h-3.5 w-3.5",
 											strokeWidth: 2.5
 										}), " Desktop"]
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 										onClick: () => setViewMode("mobile"),
-										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-all duration-300 ${viewMode === "mobile" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
+										className: `inline-flex items-center gap-2 rounded-full border-2 border-foreground px-4 py-2 text-xs font-bold transition-[transform,box-shadow,background-color,color] duration-300 ${viewMode === "mobile" ? "bg-accent text-accent-foreground pop-shadow" : "bg-background hover:bg-tertiary"}`,
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Smartphone, {
 											className: "h-3.5 w-3.5",
 											strokeWidth: 2.5
@@ -196,7 +196,7 @@ function ProjectDetails() {
 									})]
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-									className: "animate-[reveal-scale_0.7s_cubic-bezier(0.22,1,0.36,1)_both]",
+									className: "transition-all duration-500",
 									children: viewMode === "desktop" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DeviceMockup, {
 										src: project.image,
 										alt: `${project.name} homepage - desktop view`,
@@ -247,7 +247,7 @@ function ProjectDetails() {
 										className: "mt-8 flex flex-wrap justify-center gap-4",
 										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
 											href: "mailto:ifas092@gmail.com",
-											className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-5 py-3 text-sm font-bold text-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] sm:text-base",
+											className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-5 py-3 text-sm font-bold text-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] sm:text-base",
 											children: ["Start a conversation", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {
 												className: "h-4 w-4",
 												strokeWidth: 2.5

@@ -4,6 +4,7 @@ import {
   Code2, Palette, Rocket, Zap, Check, Star, Sparkles, Store,
 } from "lucide-react";
 import { projects } from "@/data/projects";
+import { useReveal } from "@/lib/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,8 +30,10 @@ const headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35
 const marqueeWords = ["Liquid", "✦", "Shopify 2.0", "●", "Metafields", "△", "Theme Dev", "◆", "Sections", "✿", "CRO", "▲"];
 
 function Index() {
+  const revealRef = useReveal();
+
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div ref={revealRef} className="min-h-screen overflow-x-hidden">
       <Nav />
       <Hero />
       <Marquee />
@@ -59,7 +62,7 @@ function Nav() {
           <a href="#about" className="hover:text-accent">About</a>
           <a href="#contact" className="hover:text-accent">Contact</a>
         </nav>
-        <a href="#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]">
+        <a href="#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]">
           Hire me
           <span className="grid h-5 w-5 place-items-center rounded-full bg-background text-foreground">
             <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
@@ -80,7 +83,7 @@ function Hero() {
       <Squiggle className="pointer-events-none absolute right-1/4 top-40 hidden h-8 w-32 text-secondary md:block" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
-        <div className="relative animate-[reveal-left_1.4s_0.2s_cubic-bezier(0.22,1,0.36,1)_both]">
+        <div data-reveal="left">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider pop-shadow">
             <span className="h-2 w-2 rounded-full bg-quaternary" /> Available for freelance
           </span>
@@ -95,7 +98,7 @@ function Hero() {
             Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>—a freelance Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base">
+            <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base">
               See my work
               <span className="grid h-6 w-6 place-items-center rounded-full bg-background text-foreground">
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
@@ -107,14 +110,14 @@ function Hero() {
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-3 sm:max-w-md">
-            <Stat n="60+" label="Shopify stores" />
-            <Stat n="2.0" label="Theme expert" />
-            <Stat n="100%" label="Responsive" />
+            <div data-reveal="up" data-reveal-delay="0"><Stat n="60+" label="Shopify stores" /></div>
+            <div data-reveal="up" data-reveal-delay="100"><Stat n="2.0" label="Theme expert" /></div>
+            <div data-reveal="up" data-reveal-delay="200"><Stat n="100%" label="Responsive" /></div>
           </div>
         </div>
 
         {/* Visual blob */}
-        <div className="relative mx-auto w-full max-w-md animate-[reveal-right_1.4s_0.5s_cubic-bezier(0.22,1,0.36,1)_both]">
+        <div data-reveal="right" className="relative mx-auto w-full max-w-md">
           <div className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary" aria-hidden />
           <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="relative aspect-square rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] border-2 border-foreground bg-accent pop-shadow-lg">
@@ -168,7 +171,7 @@ function Marquee() {
   const row = [...marqueeWords, ...marqueeWords];
   return (
     <div className="border-y-2 border-foreground bg-accent text-accent-foreground">
-      <div className="flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl">
+      <div className="flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl will-change-transform">
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-8">
             {w}
@@ -184,13 +187,13 @@ function About() {
   return (
     <section id="about" className="relative px-4 py-20 sm:px-6 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-        <div>
+        <div data-reveal="left">
           <Eyebrow>About</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
             A developer who treats every store like a product launch.
           </h2>
         </div>
-        <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <div data-reveal="right" className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
           <p>
             I'm a Shopify developer with hands-on experience building and customizing Shopify 2.0 stores using Liquid, HTML, CSS, JavaScript, metafields, and theme customization.
           </p>
@@ -223,7 +226,7 @@ function Skills() {
     <section id="skills" className="relative px-4 py-20 sm:px-6 sm:py-24">
       <div className="pointer-events-none absolute right-6 top-10 hidden h-20 w-20 rounded-full border-2 border-foreground bg-secondary md:block" aria-hidden />
       <div className="mx-auto max-w-7xl">
-        <div className="max-w-2xl">
+        <div data-reveal="up" className="max-w-2xl">
           <Eyebrow>Toolbox</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
             The kit I reach for.
@@ -234,7 +237,7 @@ function Skills() {
             const Icon = s.icon;
             const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint", "pop-shadow"];
             return (
-              <div key={s.label} className={`group relative rounded-xl border-2 border-foreground bg-card p-5 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${shadows[i]}`}>
+              <div key={s.label} data-reveal="up" data-reveal-delay={String(i * 100)} className={`group relative rounded-xl border-2 border-foreground bg-card p-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${shadows[i]}`}>
                 <div className={`absolute -top-5 left-5 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground ${s.color}`}>
                   <Icon className="h-5 w-5" strokeWidth={2.5} />
                 </div>
@@ -263,7 +266,7 @@ function Projects() {
   return (
     <section id="projects" className="relative px-4 py-20 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid items-end gap-6 sm:grid-cols-[1fr_auto]">
+        <div data-reveal="up" className="grid items-end gap-6 sm:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <Eyebrow>Selected work</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
@@ -281,7 +284,7 @@ function Projects() {
             const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint", "pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"];
             return (
               <Link key={p.name} to="/projects/$slug" params={{ slug: p.slug }}>
-                <article className={`group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`}>
+                <article data-reveal="up" data-reveal-delay={String((i % 3) * 100)} className={`group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`}>
                   <div className={`relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
                     <img
                       src={p.image}
@@ -301,7 +304,7 @@ function Projects() {
                     </div>
                     <p className="text-sm text-muted-foreground">{p.tag}</p>
                     <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-all group-hover:-translate-y-0.5">
+                      <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
                         View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
                       </span>
                       <a href={p.repo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary">
@@ -327,11 +330,13 @@ function Experience() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
-            <Eyebrow>Experience</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-              Building since 2024.
-            </h2>
-            <div className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber">
+            <div data-reveal="left">
+              <Eyebrow>Experience</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+                Building since 2024.
+              </h2>
+            </div>
+            <div data-reveal="up" className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <h3 className="font-display text-xl font-extrabold">Freelance Shopify Developer</h3>
@@ -359,17 +364,19 @@ function Experience() {
           </div>
 
           <div>
-            <Eyebrow>Education</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-              Curious by training.
-            </h2>
+            <div data-reveal="right">
+              <Eyebrow>Education</Eyebrow>
+              <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+                Curious by training.
+              </h2>
+            </div>
             <div className="mt-8 space-y-4">
               {[
                 { title: "B.S.S. in Economics", school: "National University", year: "2019", color: "bg-accent text-accent-foreground" },
                 { title: "HSC (Science)", school: "Higher Secondary", year: "", color: "bg-secondary text-foreground" },
                 { title: "SSC (Science)", school: "Secondary", year: "", color: "bg-tertiary text-foreground" },
-              ].map((e) => (
-                <div key={e.title} className="flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow">
+              ].map((e, i) => (
+                <div key={e.title} data-reveal="right" data-reveal-delay={String(i * 100)} className="flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow">
                   <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-foreground ${e.color} font-display text-lg font-extrabold`}>
                     <Star className="h-5 w-5" strokeWidth={2.5} />
                   </span>
@@ -392,7 +399,7 @@ function Contact() {
   return (
     <section id="contact" className="relative px-4 py-20 sm:px-6 sm:py-24">
       <div className="mx-auto max-w-5xl">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12">
+        <div data-reveal="scale" className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12">
           <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rotate-45 rounded-2xl border-2 border-foreground bg-quaternary" aria-hidden />
 
@@ -408,10 +415,10 @@ function Contact() {
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <ContactRow icon={Mail} label="Email" value="ifas092@gmail.com" href="mailto:ifas092@gmail.com" />
-              <ContactRow icon={Phone} label="Phone" value="+880 1600-018734" href="tel:+8801600018734" />
-              <ContactRow icon={Linkedin} label="LinkedIn" value="arnav-asif" href="https://linkedin.com/in/arnav-asif-a74894259" />
-              <ContactRow icon={Github} label="GitHub" value="ArnavAsif" href="https://github.com/ArnavAsif" />
+              <div data-reveal="up" data-reveal-delay="0"><ContactRow icon={Mail} label="Email" value="ifas092@gmail.com" href="mailto:ifas092@gmail.com" /></div>
+              <div data-reveal="up" data-reveal-delay="100"><ContactRow icon={Phone} label="Phone" value="+880 1600-018734" href="tel:+8801600018734" /></div>
+              <div data-reveal="up" data-reveal-delay="200"><ContactRow icon={Linkedin} label="LinkedIn" value="arnav-asif" href="https://linkedin.com/in/arnav-asif-a74894259" /></div>
+              <div data-reveal="up" data-reveal-delay="300"><ContactRow icon={Github} label="GitHub" value="ArnavAsif" href="https://github.com/ArnavAsif" /></div>
             </div>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground">
@@ -426,7 +433,7 @@ function Contact() {
 
 function ContactRow({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href: string }) {
   return (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]">
+    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]">
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-foreground bg-tertiary">
         <Icon className="h-4 w-4" strokeWidth={2.5} />
       </span>
