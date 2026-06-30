@@ -24,7 +24,7 @@ const skills = [
   { label: "E-commerce", items: ["CRO", "SEO", "Performance", "App Integration"], color: "bg-quaternary text-foreground", icon: Rocket },
 ];
 
-import headshotImg from "/headshot.png";
+const headshot = "/headshot.png";
 
 const marqueeWords = ["Liquid", "✦", "Shopify 2.0", "●", "Metafields", "△", "Theme Dev", "◆", "Sections", "✿", "CRO", "▲"];
 
@@ -119,7 +119,7 @@ function Hero() {
           <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="relative aspect-square rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] border-2 border-foreground bg-accent pop-shadow-lg">
             <img
-              src={headshotImg}
+              src={headshot}
               alt="MD Asif Shah Diner"
               width={512}
               height={512}
