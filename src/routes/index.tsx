@@ -24,7 +24,7 @@ const skills = [
   { label: "E-commerce", items: ["CRO", "SEO", "Performance", "App Integration"], color: "bg-quaternary text-foreground", icon: Rocket },
 ];
 
-const headshot = "/headshot.png";
+const headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
 
 const marqueeWords = ["Liquid", "✦", "Shopify 2.0", "●", "Metafields", "△", "Theme Dev", "◆", "Sections", "✿", "CRO", "▲"];
 
@@ -121,9 +121,7 @@ function Hero() {
             <img
               src={headshot}
               alt="MD Asif Shah Diner"
-              width={512}
-              height={512}
-              fetchPriority="high"
+              loading="eager"
               className="absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap">

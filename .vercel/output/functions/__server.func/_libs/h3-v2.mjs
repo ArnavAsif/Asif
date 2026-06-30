@@ -1,7 +1,5 @@
-import { a as NodeResponse, c as NullProtoObj, o as _defineProperty, s as FastURL } from "./h3.mjs";
-import { a as _classPrivateFieldInitSpec, n as _classPrivateFieldGet2, r as _classPrivateFieldSet2 } from "./@tanstack/query-core.mjs";
+import { a as NodeResponse, o as FastURL, s as NullProtoObj } from "./h3+rou3+srvx.mjs";
 //#region node_modules/h3-v2/dist/h3-Bz4OPZv_.mjs
-var _Class, _headers, _init2;
 function decodePathname(pathname) {
 	return decodeURI(pathname.includes("%25") ? pathname.replace(/%25/g, "%2525") : pathname);
 }
@@ -9,12 +7,13 @@ var kEventNS = "h3.internal.event.";
 var kEventRes = /* @__PURE__ */ Symbol.for(`${kEventNS}res`);
 var kEventResHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.headers`);
 var kEventResErrHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.err.headers`);
-var H3Event = (_Class = class {
+var H3Event = class {
+	app;
+	req;
+	url;
+	context;
+	static __is_event__ = true;
 	constructor(req, context, app) {
-		_defineProperty(this, "app", void 0);
-		_defineProperty(this, "req", void 0);
-		_defineProperty(this, "url", void 0);
-		_defineProperty(this, "context", void 0);
 		this.context = context || req.context || new NullProtoObj();
 		this.req = req;
 		this.app = app;
@@ -24,7 +23,7 @@ var H3Event = (_Class = class {
 		this.url = url;
 	}
 	get res() {
-		return this[kEventRes] || (this[kEventRes] = new H3EventResponse());
+		return this[kEventRes] ||= new H3EventResponse();
 	}
 	get runtime() {
 		return this.req.runtime;
@@ -50,17 +49,15 @@ var H3Event = (_Class = class {
 	get method() {
 		return this.req.method;
 	}
-}, _defineProperty(_Class, "__is_event__", true), _Class);
+};
 var H3EventResponse = class {
-	constructor() {
-		_defineProperty(this, "status", void 0);
-		_defineProperty(this, "statusText", void 0);
-	}
+	status;
+	statusText;
 	get headers() {
-		return this[kEventResHeaders] || (this[kEventResHeaders] = new Headers());
+		return this[kEventResHeaders] ||= new Headers();
 	}
 	get errHeaders() {
-		return this[kEventResErrHeaders] || (this[kEventResErrHeaders] = new Headers());
+		return this[kEventResErrHeaders] ||= new Headers();
 	}
 };
 var DISALLOWED_STATUS_CHARS = /[^\u0009\u0020-\u007E]/g;
@@ -77,6 +74,13 @@ var HTTPError = class HTTPError extends Error {
 	get name() {
 		return "HTTPError";
 	}
+	status;
+	statusText;
+	headers;
+	cause;
+	data;
+	body;
+	unhandled;
 	static isError(input) {
 		return input instanceof Error && input?.name === "HTTPError";
 	}
@@ -102,13 +106,6 @@ var HTTPError = class HTTPError extends Error {
 			statusText
 		].filter(Boolean).join(" ");
 		super(message, { cause: details });
-		_defineProperty(this, "status", void 0);
-		_defineProperty(this, "statusText", void 0);
-		_defineProperty(this, "headers", void 0);
-		_defineProperty(this, "cause", void 0);
-		_defineProperty(this, "data", void 0);
-		_defineProperty(this, "body", void 0);
-		_defineProperty(this, "unhandled", void 0);
 		this.cause = details;
 		this.status = status;
 		this.statusText = statusText || void 0;
@@ -155,24 +152,24 @@ function toResponse(val, event, config = {}) {
 	const { onResponse } = config;
 	return onResponse ? Promise.resolve(onResponse(response, event)).then(() => response) : response;
 }
-var HTTPResponse = (_headers = /* @__PURE__ */ new WeakMap(), _init2 = /* @__PURE__ */ new WeakMap(), class {
+var HTTPResponse = class {
+	#headers;
+	#init;
+	body;
 	constructor(body, init) {
-		_classPrivateFieldInitSpec(this, _headers, void 0);
-		_classPrivateFieldInitSpec(this, _init2, void 0);
-		_defineProperty(this, "body", void 0);
 		this.body = body;
-		_classPrivateFieldSet2(_init2, this, init);
+		this.#init = init;
 	}
 	get status() {
-		return _classPrivateFieldGet2(_init2, this)?.status || 200;
+		return this.#init?.status || 200;
 	}
 	get statusText() {
-		return _classPrivateFieldGet2(_init2, this)?.statusText || "OK";
+		return this.#init?.statusText || "OK";
 	}
 	get headers() {
-		return _classPrivateFieldGet2(_headers, this) || _classPrivateFieldSet2(_headers, this, new Headers(_classPrivateFieldGet2(_init2, this)?.headers));
+		return this.#headers ||= new Headers(this.#init?.headers);
 	}
-});
+};
 function prepareResponse(val, event, config, nested) {
 	if (val === kHandled) return new NodeResponse(null);
 	if (val === kNotFound) val = new HTTPError({
@@ -224,12 +221,9 @@ var frozen = (name) => (...args) => {
 	throw new Error(`Headers are frozen (${name} ${args.join(", ")})`);
 };
 var FrozenHeaders = class extends Headers {
-	constructor(..._args) {
-		super(..._args);
-		_defineProperty(this, "set", frozen("set"));
-		_defineProperty(this, "append", frozen("append"));
-		_defineProperty(this, "delete", frozen("delete"));
-	}
+	set = frozen("set");
+	append = frozen("append");
+	delete = frozen("delete");
 };
 var emptyHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-length": "0" });
 var jsonHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-type": "application/json;charset=UTF-8" });

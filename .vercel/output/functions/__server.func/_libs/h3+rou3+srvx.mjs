@@ -1,9 +1,4 @@
-import { a as _classPrivateFieldInitSpec, i as _assertClassBrand, n as _classPrivateFieldGet2, o as _classPrivateMethodInitSpec, r as _classPrivateFieldSet2 } from "./@tanstack/query-core.mjs";
-import "node:http";
 import { PassThrough, Readable } from "node:stream";
-import "node:stream/promises";
-import "node:https";
-import "node:http2";
 //#region node_modules/rou3/dist/index.mjs
 var NullProtoObj = /* @__PURE__ */ (() => {
 	const e = function() {};
@@ -40,85 +35,96 @@ function lazyInherit(target, source, sourceKey) {
 }
 var _needsNormRE = /(?:(?:^|\/)(?:\.|\.\.|%2e|%2e\.|\.%2e|%2e%2e)(?:\/|$))|[\\^#"<>{}`\x80-\uffff]/i;
 var FastURL = /* @__PURE__ */ (() => {
-	var _url, _href, _protocol, _host, _pathname, _search, _searchParams, _pos, _URL_brand;
-	let _Symbol$hasInstance;
 	const NativeURL = globalThis.URL;
-	const FastURL = (_url = /* @__PURE__ */ new WeakMap(), _href = /* @__PURE__ */ new WeakMap(), _protocol = /* @__PURE__ */ new WeakMap(), _host = /* @__PURE__ */ new WeakMap(), _pathname = /* @__PURE__ */ new WeakMap(), _search = /* @__PURE__ */ new WeakMap(), _searchParams = /* @__PURE__ */ new WeakMap(), _pos = /* @__PURE__ */ new WeakMap(), _URL_brand = /* @__PURE__ */ new WeakSet(), _Symbol$hasInstance = Symbol.hasInstance, class URL {
+	const FastURL = class URL {
+		#url;
+		#href;
+		#protocol;
+		#host;
+		#pathname;
+		#search;
+		#searchParams;
+		#pos;
 		constructor(url) {
-			_classPrivateMethodInitSpec(this, _URL_brand);
-			_classPrivateFieldInitSpec(this, _url, void 0);
-			_classPrivateFieldInitSpec(this, _href, void 0);
-			_classPrivateFieldInitSpec(this, _protocol, void 0);
-			_classPrivateFieldInitSpec(this, _host, void 0);
-			_classPrivateFieldInitSpec(this, _pathname, void 0);
-			_classPrivateFieldInitSpec(this, _search, void 0);
-			_classPrivateFieldInitSpec(this, _searchParams, void 0);
-			_classPrivateFieldInitSpec(this, _pos, void 0);
 			if (typeof url === "string") {
 				const isOriginForm = url[0] === "/";
-				if (isOriginForm && !url.includes("#")) _classPrivateFieldSet2(_href, this, url);
-				else _classPrivateFieldSet2(_url, this, new NativeURL(isOriginForm ? `http://localhost${url}` : url));
-			} else if (_needsNormRE.test(url.pathname) || url.search?.includes("#")) _classPrivateFieldSet2(_url, this, new NativeURL(`${url.protocol || "http:"}//${url.host || "localhost"}${url.pathname}${url.search || ""}`));
+				if (isOriginForm && !url.includes("#")) this.#href = url;
+				else this.#url = new NativeURL(isOriginForm ? `http://localhost${url}` : url);
+			} else if (_needsNormRE.test(url.pathname) || url.search?.includes("#")) this.#url = new NativeURL(`${url.protocol || "http:"}//${url.host || "localhost"}${url.pathname}${url.search || ""}`);
 			else {
-				_classPrivateFieldSet2(_protocol, this, url.protocol);
-				_classPrivateFieldSet2(_host, this, url.host);
-				_classPrivateFieldSet2(_pathname, this, url.pathname);
-				_classPrivateFieldSet2(_search, this, url.search);
+				this.#protocol = url.protocol;
+				this.#host = url.host;
+				this.#pathname = url.pathname;
+				this.#search = url.search;
 			}
 		}
-		static [_Symbol$hasInstance](val) {
+		static [Symbol.hasInstance](val) {
 			return val instanceof NativeURL;
 		}
 		get _url() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this);
-			_classPrivateFieldSet2(_url, this, new NativeURL(this.href));
-			_classPrivateFieldSet2(_href, this, void 0);
-			_classPrivateFieldSet2(_protocol, this, void 0);
-			_classPrivateFieldSet2(_host, this, void 0);
-			_classPrivateFieldSet2(_pathname, this, void 0);
-			_classPrivateFieldSet2(_search, this, void 0);
-			_classPrivateFieldSet2(_searchParams, this, void 0);
-			_classPrivateFieldSet2(_pos, this, void 0);
-			return _classPrivateFieldGet2(_url, this);
+			if (this.#url) return this.#url;
+			this.#url = new NativeURL(this.href);
+			this.#href = void 0;
+			this.#protocol = void 0;
+			this.#host = void 0;
+			this.#pathname = void 0;
+			this.#search = void 0;
+			this.#searchParams = void 0;
+			this.#pos = void 0;
+			return this.#url;
 		}
 		get href() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this).href;
-			if (!_classPrivateFieldGet2(_href, this)) _classPrivateFieldSet2(_href, this, `${_classPrivateFieldGet2(_protocol, this) || "http:"}//${_classPrivateFieldGet2(_host, this) || "localhost"}${_classPrivateFieldGet2(_pathname, this) || "/"}${_classPrivateFieldGet2(_search, this) || ""}`);
-			return _classPrivateFieldGet2(_href, this);
+			if (this.#url) return this.#url.href;
+			if (!this.#href) this.#href = `${this.#protocol || "http:"}//${this.#host || "localhost"}${this.#pathname || "/"}${this.#search || ""}`;
+			return this.#href;
+		}
+		#getPos() {
+			if (!this.#pos) {
+				const url = this.href;
+				const protoIndex = url.indexOf("://");
+				const pathnameIndex = protoIndex === -1 ? -1 : url.indexOf("/", protoIndex + 4);
+				const qIndex = pathnameIndex === -1 ? -1 : url.indexOf("?", pathnameIndex);
+				this.#pos = [
+					protoIndex,
+					pathnameIndex,
+					qIndex
+				];
+			}
+			return this.#pos;
 		}
 		get pathname() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this).pathname;
-			if (_classPrivateFieldGet2(_pathname, this) === void 0) {
-				const [, pathnameIndex, queryIndex] = _assertClassBrand(_URL_brand, this, _getPos).call(this);
+			if (this.#url) return this.#url.pathname;
+			if (this.#pathname === void 0) {
+				const [, pathnameIndex, queryIndex] = this.#getPos();
 				if (pathnameIndex === -1) return this._url.pathname;
-				_classPrivateFieldSet2(_pathname, this, this.href.slice(pathnameIndex, queryIndex === -1 ? void 0 : queryIndex));
+				this.#pathname = this.href.slice(pathnameIndex, queryIndex === -1 ? void 0 : queryIndex);
 			}
-			return _classPrivateFieldGet2(_pathname, this);
+			return this.#pathname;
 		}
 		get search() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this).search;
-			if (_classPrivateFieldGet2(_search, this) === void 0) {
-				const [, pathnameIndex, queryIndex] = _assertClassBrand(_URL_brand, this, _getPos).call(this);
+			if (this.#url) return this.#url.search;
+			if (this.#search === void 0) {
+				const [, pathnameIndex, queryIndex] = this.#getPos();
 				if (pathnameIndex === -1) return this._url.search;
 				const url = this.href;
-				_classPrivateFieldSet2(_search, this, queryIndex === -1 || queryIndex === url.length - 1 ? "" : url.slice(queryIndex));
+				this.#search = queryIndex === -1 || queryIndex === url.length - 1 ? "" : url.slice(queryIndex);
 			}
-			return _classPrivateFieldGet2(_search, this);
+			return this.#search;
 		}
 		get searchParams() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this).searchParams;
-			if (!_classPrivateFieldGet2(_searchParams, this)) _classPrivateFieldSet2(_searchParams, this, new URLSearchParams(this.search));
-			return _classPrivateFieldGet2(_searchParams, this);
+			if (this.#url) return this.#url.searchParams;
+			if (!this.#searchParams) this.#searchParams = new URLSearchParams(this.search);
+			return this.#searchParams;
 		}
 		get protocol() {
-			if (_classPrivateFieldGet2(_url, this)) return _classPrivateFieldGet2(_url, this).protocol;
-			if (_classPrivateFieldGet2(_protocol, this) === void 0) {
-				const [protocolIndex] = _assertClassBrand(_URL_brand, this, _getPos).call(this);
+			if (this.#url) return this.#url.protocol;
+			if (this.#protocol === void 0) {
+				const [protocolIndex] = this.#getPos();
 				if (protocolIndex === -1) return this._url.protocol;
 				const url = this.href;
-				_classPrivateFieldSet2(_protocol, this, url.slice(0, protocolIndex + 1));
+				this.#protocol = url.slice(0, protocolIndex + 1);
 			}
-			return _classPrivateFieldGet2(_protocol, this);
+			return this.#protocol;
 		}
 		toString() {
 			return this.href;
@@ -126,109 +132,49 @@ var FastURL = /* @__PURE__ */ (() => {
 		toJSON() {
 			return this.href;
 		}
-	});
-	function _getPos() {
-		if (!_classPrivateFieldGet2(_pos, this)) {
-			const url = this.href;
-			const protoIndex = url.indexOf("://");
-			const pathnameIndex = protoIndex === -1 ? -1 : url.indexOf("/", protoIndex + 4);
-			const qIndex = pathnameIndex === -1 ? -1 : url.indexOf("?", pathnameIndex);
-			_classPrivateFieldSet2(_pos, this, [
-				protoIndex,
-				pathnameIndex,
-				qIndex
-			]);
-		}
-		return _classPrivateFieldGet2(_pos, this);
-	}
+	};
 	lazyInherit(FastURL.prototype, NativeURL.prototype, "_url");
 	Object.setPrototypeOf(FastURL.prototype, NativeURL.prototype);
 	Object.setPrototypeOf(FastURL, NativeURL);
 	return FastURL;
 })();
-function callMiddleware$1(request, fetchHandler, middleware, index) {
-	if (index === middleware.length) return fetchHandler(request);
-	return middleware[index](request, () => callMiddleware$1(request, fetchHandler, middleware, index + 1));
-}
 //#endregion
-//#region \0@oxc-project+runtime@0.137.0/helpers/esm/typeof.js
-function _typeof(o) {
-	"@babel/helpers - typeof";
-	return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o) {
-		return typeof o;
-	} : function(o) {
-		return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-	}, _typeof(o);
-}
-//#endregion
-//#region \0@oxc-project+runtime@0.137.0/helpers/esm/toPrimitive.js
-function toPrimitive(t, r) {
-	if ("object" != _typeof(t) || !t) return t;
-	var e = t[Symbol.toPrimitive];
-	if (void 0 !== e) {
-		var i = e.call(t, r || "default");
-		if ("object" != _typeof(i)) return i;
-		throw new TypeError("@@toPrimitive must return a primitive value.");
-	}
-	return ("string" === r ? String : Number)(t);
-}
-//#endregion
-//#region \0@oxc-project+runtime@0.137.0/helpers/esm/toPropertyKey.js
-function toPropertyKey(t) {
-	var i = toPrimitive(t, "string");
-	return "symbol" == _typeof(i) ? i : i + "";
-}
-//#endregion
-//#region \0@oxc-project+runtime@0.137.0/helpers/esm/defineProperty.js
-function _defineProperty(e, r, t) {
-	return (r = toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
-		value: t,
-		enumerable: !0,
-		configurable: !0,
-		writable: !0
-	}) : e[r] = t, e;
-}
+//#region node_modules/srvx/dist/adapters/node.mjs
 var NodeResponse = /* @__PURE__ */ (() => {
-	let _Symbol$hasInstance4;
 	const NativeResponse = globalThis.Response;
 	const STATUS_CODES = globalThis.process?.getBuiltinModule?.("node:http")?.STATUS_CODES || {};
-	var _body = /* @__PURE__ */ new WeakMap();
-	var _init = /* @__PURE__ */ new WeakMap();
-	var _headers4 = /* @__PURE__ */ new WeakMap();
-	var _response = /* @__PURE__ */ new WeakMap();
-	_Symbol$hasInstance4 = Symbol.hasInstance;
 	class NodeResponse {
+		#body;
+		#init;
+		#headers;
+		#response;
 		constructor(body, init) {
-			_classPrivateFieldInitSpec(this, _body, void 0);
-			_classPrivateFieldInitSpec(this, _init, void 0);
-			_classPrivateFieldInitSpec(this, _headers4, void 0);
-			_classPrivateFieldInitSpec(this, _response, void 0);
-			_classPrivateFieldSet2(_body, this, body);
-			_classPrivateFieldSet2(_init, this, init);
+			this.#body = body;
+			this.#init = init;
 		}
-		static [_Symbol$hasInstance4](val) {
+		static [Symbol.hasInstance](val) {
 			return val instanceof NativeResponse;
 		}
 		get status() {
-			return _classPrivateFieldGet2(_response, this)?.status || _classPrivateFieldGet2(_init, this)?.status || 200;
+			return this.#response?.status || this.#init?.status || 200;
 		}
 		get statusText() {
-			return _classPrivateFieldGet2(_response, this)?.statusText || _classPrivateFieldGet2(_init, this)?.statusText || STATUS_CODES[this.status] || "";
+			return this.#response?.statusText || this.#init?.statusText || STATUS_CODES[this.status] || "";
 		}
 		get headers() {
-			if (_classPrivateFieldGet2(_response, this)) return _classPrivateFieldGet2(_response, this).headers;
-			if (_classPrivateFieldGet2(_headers4, this)) return _classPrivateFieldGet2(_headers4, this);
-			const initHeaders = _classPrivateFieldGet2(_init, this)?.headers;
-			return _classPrivateFieldSet2(_headers4, this, initHeaders instanceof Headers ? initHeaders : new Headers(initHeaders));
+			if (this.#response) return this.#response.headers;
+			if (this.#headers) return this.#headers;
+			const initHeaders = this.#init?.headers;
+			return this.#headers = initHeaders instanceof Headers ? initHeaders : new Headers(initHeaders);
 		}
 		get ok() {
-			if (_classPrivateFieldGet2(_response, this)) return _classPrivateFieldGet2(_response, this).ok;
+			if (this.#response) return this.#response.ok;
 			const status = this.status;
 			return status >= 200 && status < 300;
 		}
 		get _response() {
-			if (_classPrivateFieldGet2(_response, this)) return _classPrivateFieldGet2(_response, this);
-			let body = _classPrivateFieldGet2(_body, this);
+			if (this.#response) return this.#response;
+			let body = this.#body;
 			if (body && typeof body.pipe === "function" && !(body instanceof Readable)) {
 				const stream = new PassThrough();
 				body.pipe(stream);
@@ -236,14 +182,14 @@ var NodeResponse = /* @__PURE__ */ (() => {
 				if (abort) stream.once("close", () => abort());
 				body = stream;
 			}
-			_classPrivateFieldSet2(_response, this, new NativeResponse(body, _classPrivateFieldGet2(_headers4, this) ? {
-				..._classPrivateFieldGet2(_init, this),
-				headers: _classPrivateFieldGet2(_headers4, this)
-			} : _classPrivateFieldGet2(_init, this)));
-			_classPrivateFieldSet2(_init, this, void 0);
-			_classPrivateFieldSet2(_headers4, this, void 0);
-			_classPrivateFieldSet2(_body, this, void 0);
-			return _classPrivateFieldGet2(_response, this);
+			this.#response = new NativeResponse(body, this.#headers ? {
+				...this.#init,
+				headers: this.#headers
+			} : this.#init);
+			this.#init = void 0;
+			this.#headers = void 0;
+			this.#body = void 0;
+			return this.#response;
 		}
 		_toNodeResponse() {
 			const status = this.status;
@@ -251,30 +197,30 @@ var NodeResponse = /* @__PURE__ */ (() => {
 			let body;
 			let contentType;
 			let contentLength;
-			if (_classPrivateFieldGet2(_response, this)) body = _classPrivateFieldGet2(_response, this).body;
-			else if (_classPrivateFieldGet2(_body, this)) if (_classPrivateFieldGet2(_body, this) instanceof ReadableStream) body = _classPrivateFieldGet2(_body, this);
-			else if (typeof _classPrivateFieldGet2(_body, this) === "string") {
-				body = _classPrivateFieldGet2(_body, this);
+			if (this.#response) body = this.#response.body;
+			else if (this.#body) if (this.#body instanceof ReadableStream) body = this.#body;
+			else if (typeof this.#body === "string") {
+				body = this.#body;
 				contentType = "text/plain; charset=UTF-8";
-				contentLength = Buffer.byteLength(_classPrivateFieldGet2(_body, this));
-			} else if (_classPrivateFieldGet2(_body, this) instanceof ArrayBuffer) {
-				body = Buffer.from(_classPrivateFieldGet2(_body, this));
-				contentLength = _classPrivateFieldGet2(_body, this).byteLength;
-			} else if (_classPrivateFieldGet2(_body, this) instanceof Uint8Array) {
-				body = _classPrivateFieldGet2(_body, this);
-				contentLength = _classPrivateFieldGet2(_body, this).byteLength;
-			} else if (_classPrivateFieldGet2(_body, this) instanceof DataView) {
-				body = Buffer.from(_classPrivateFieldGet2(_body, this).buffer);
-				contentLength = _classPrivateFieldGet2(_body, this).byteLength;
-			} else if (_classPrivateFieldGet2(_body, this) instanceof Blob) {
-				body = _classPrivateFieldGet2(_body, this).stream();
-				contentType = _classPrivateFieldGet2(_body, this).type;
-				contentLength = _classPrivateFieldGet2(_body, this).size;
-			} else if (typeof _classPrivateFieldGet2(_body, this).pipe === "function") body = _classPrivateFieldGet2(_body, this);
+				contentLength = Buffer.byteLength(this.#body);
+			} else if (this.#body instanceof ArrayBuffer) {
+				body = Buffer.from(this.#body);
+				contentLength = this.#body.byteLength;
+			} else if (this.#body instanceof Uint8Array) {
+				body = this.#body;
+				contentLength = this.#body.byteLength;
+			} else if (this.#body instanceof DataView) {
+				body = Buffer.from(this.#body.buffer);
+				contentLength = this.#body.byteLength;
+			} else if (this.#body instanceof Blob) {
+				body = this.#body.stream();
+				contentType = this.#body.type;
+				contentLength = this.#body.size;
+			} else if (typeof this.#body.pipe === "function") body = this.#body;
 			else body = this._response.body;
 			const headers = [];
-			const initHeaders = _classPrivateFieldGet2(_init, this)?.headers;
-			const headerEntries = _classPrivateFieldGet2(_response, this)?.headers || _classPrivateFieldGet2(_headers4, this) || (initHeaders ? Array.isArray(initHeaders) ? initHeaders : initHeaders?.entries ? initHeaders.entries() : Object.entries(initHeaders).map(([k, v]) => [k.toLowerCase(), v]) : void 0);
+			const initHeaders = this.#init?.headers;
+			const headerEntries = this.#response?.headers || this.#headers || (initHeaders ? Array.isArray(initHeaders) ? initHeaders : initHeaders?.entries ? initHeaders.entries() : Object.entries(initHeaders).map(([k, v]) => [k.toLowerCase(), v]) : void 0);
 			let hasContentTypeHeader;
 			let hasContentLength;
 			if (headerEntries) for (const [key, value] of headerEntries) {
@@ -285,10 +231,10 @@ var NodeResponse = /* @__PURE__ */ (() => {
 			}
 			if (contentType && !hasContentTypeHeader) headers.push(["content-type", contentType]);
 			if (contentLength && !hasContentLength) headers.push(["content-length", String(contentLength)]);
-			_classPrivateFieldSet2(_init, this, void 0);
-			_classPrivateFieldSet2(_headers4, this, void 0);
-			_classPrivateFieldSet2(_response, this, void 0);
-			_classPrivateFieldSet2(_body, this, void 0);
+			this.#init = void 0;
+			this.#headers = void 0;
+			this.#response = void 0;
+			this.#body = void 0;
 			return {
 				status,
 				statusText,
@@ -304,7 +250,6 @@ var NodeResponse = /* @__PURE__ */ (() => {
 })();
 //#endregion
 //#region node_modules/h3/dist/h3.mjs
-var _Class, _headers, _init2, _Class2;
 function decodePathname(pathname) {
 	return decodeURI(pathname.includes("%25") ? pathname.replace(/%25/g, "%2525") : pathname);
 }
@@ -312,12 +257,13 @@ var kEventNS = "h3.internal.event.";
 var kEventRes = /* @__PURE__ */ Symbol.for(`${kEventNS}res`);
 var kEventResHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.headers`);
 var kEventResErrHeaders = /* @__PURE__ */ Symbol.for(`${kEventNS}res.err.headers`);
-var H3Event = (_Class = class {
+var H3Event = class {
+	app;
+	req;
+	url;
+	context;
+	static __is_event__ = true;
 	constructor(req, context, app) {
-		_defineProperty(this, "app", void 0);
-		_defineProperty(this, "req", void 0);
-		_defineProperty(this, "url", void 0);
-		_defineProperty(this, "context", void 0);
 		this.context = context || req.context || new NullProtoObj();
 		this.req = req;
 		this.app = app;
@@ -327,7 +273,7 @@ var H3Event = (_Class = class {
 		this.url = url;
 	}
 	get res() {
-		return this[kEventRes] || (this[kEventRes] = new H3EventResponse());
+		return this[kEventRes] ||= new H3EventResponse();
 	}
 	get runtime() {
 		return this.req.runtime;
@@ -353,17 +299,15 @@ var H3Event = (_Class = class {
 	get method() {
 		return this.req.method;
 	}
-}, _defineProperty(_Class, "__is_event__", true), _Class);
+};
 var H3EventResponse = class {
-	constructor() {
-		_defineProperty(this, "status", void 0);
-		_defineProperty(this, "statusText", void 0);
-	}
+	status;
+	statusText;
 	get headers() {
-		return this[kEventResHeaders] || (this[kEventResHeaders] = new Headers());
+		return this[kEventResHeaders] ||= new Headers();
 	}
 	get errHeaders() {
-		return this[kEventResErrHeaders] || (this[kEventResErrHeaders] = new Headers());
+		return this[kEventResErrHeaders] ||= new Headers();
 	}
 };
 var DISALLOWED_STATUS_CHARS = /[^\u0009\u0020-\u007E]/g;
@@ -380,6 +324,13 @@ var HTTPError = class HTTPError extends Error {
 	get name() {
 		return "HTTPError";
 	}
+	status;
+	statusText;
+	headers;
+	cause;
+	data;
+	body;
+	unhandled;
 	static isError(input) {
 		return input instanceof Error && input?.name === "HTTPError";
 	}
@@ -405,13 +356,6 @@ var HTTPError = class HTTPError extends Error {
 			statusText
 		].filter(Boolean).join(" ");
 		super(message, { cause: details });
-		_defineProperty(this, "status", void 0);
-		_defineProperty(this, "statusText", void 0);
-		_defineProperty(this, "headers", void 0);
-		_defineProperty(this, "cause", void 0);
-		_defineProperty(this, "data", void 0);
-		_defineProperty(this, "body", void 0);
-		_defineProperty(this, "unhandled", void 0);
 		this.cause = details;
 		this.status = status;
 		this.statusText = statusText || void 0;
@@ -458,24 +402,24 @@ function toResponse(val, event, config = {}) {
 	const { onResponse } = config;
 	return onResponse ? Promise.resolve(onResponse(response, event)).then(() => response) : response;
 }
-var HTTPResponse = (_headers = /* @__PURE__ */ new WeakMap(), _init2 = /* @__PURE__ */ new WeakMap(), class {
+var HTTPResponse = class {
+	#headers;
+	#init;
+	body;
 	constructor(body, init) {
-		_classPrivateFieldInitSpec(this, _headers, void 0);
-		_classPrivateFieldInitSpec(this, _init2, void 0);
-		_defineProperty(this, "body", void 0);
 		this.body = body;
-		_classPrivateFieldSet2(_init2, this, init);
+		this.#init = init;
 	}
 	get status() {
-		return _classPrivateFieldGet2(_init2, this)?.status || 200;
+		return this.#init?.status || 200;
 	}
 	get statusText() {
-		return _classPrivateFieldGet2(_init2, this)?.statusText || "OK";
+		return this.#init?.statusText || "OK";
 	}
 	get headers() {
-		return _classPrivateFieldGet2(_headers, this) || _classPrivateFieldSet2(_headers, this, new Headers(_classPrivateFieldGet2(_init2, this)?.headers));
+		return this.#headers ||= new Headers(this.#init?.headers);
 	}
-});
+};
 function prepareResponse(val, event, config, nested) {
 	if (val === kHandled) return new NodeResponse(null);
 	if (val === kNotFound) val = new HTTPError({
@@ -527,12 +471,9 @@ var frozen = (name) => (...args) => {
 	throw new Error(`Headers are frozen (${name} ${args.join(", ")})`);
 };
 var FrozenHeaders = class extends Headers {
-	constructor(..._args) {
-		super(..._args);
-		_defineProperty(this, "set", frozen("set"));
-		_defineProperty(this, "append", frozen("append"));
-		_defineProperty(this, "delete", frozen("delete"));
-	}
+	set = frozen("set");
+	append = frozen("append");
+	delete = frozen("delete");
 };
 var emptyHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-length": "0" });
 var jsonHeaders = /* @__PURE__ */ new FrozenHeaders({ "content-type": "application/json;charset=UTF-8" });
@@ -645,11 +586,11 @@ function defineLazyEventHandler(loader) {
 	let handler;
 	let promise;
 	return defineHandler(function lazyHandler(event) {
-		return handler ? handler(event) : (promise ?? (promise = Promise.resolve(loader()).then(function resolveLazyHandler(r) {
+		return handler ? handler(event) : (promise ??= Promise.resolve(loader()).then(function resolveLazyHandler(r) {
 			handler = toEventHandler(r) || toEventHandler(r.default);
 			if (typeof handler !== "function") throw new TypeError("Invalid lazy handler", { cause: { resolved: r } });
 			return handler;
-		}))).then((r) => r(event));
+		})).then((r) => r(event));
 	});
 }
 function toEventHandler(handler) {
@@ -660,11 +601,12 @@ function toEventHandler(handler) {
 	};
 }
 var NoHandler = () => kNotFound;
-var H3Core = (_Class2 = class {
+var H3Core = class {
+	static "~h3" = true;
+	config;
+	"~middleware";
+	"~routes" = [];
 	constructor(config = {}) {
-		_defineProperty(this, "config", void 0);
-		_defineProperty(this, "~middleware", void 0);
-		_defineProperty(this, "~routes", []);
 		this["~middleware"] = [];
 		this.config = config;
 		this.fetch = this.fetch.bind(this);
@@ -705,6 +647,6 @@ var H3Core = (_Class2 = class {
 		const globalMiddleware = this["~middleware"];
 		return routeMiddleware ? [...globalMiddleware, ...routeMiddleware] : globalMiddleware;
 	}
-}, _defineProperty(_Class2, "~h3", true), _Class2);
+};
 //#endregion
-export { NodeResponse as a, NullProtoObj as c, toRequest as i, HTTPError as n, _defineProperty as o, defineLazyEventHandler as r, FastURL as s, H3Core as t };
+export { NodeResponse as a, toRequest as i, HTTPError as n, FastURL as o, defineLazyEventHandler as r, NullProtoObj as s, H3Core as t };

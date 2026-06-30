@@ -2,7 +2,7 @@ import { n as projects } from "./projects-ohaOBEnb.mjs";
 import { n as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { _ as CodeXml, a as Phone, c as Mail, f as Check, g as Sparkles, i as Rocket, l as Linkedin, m as ArrowRight, n as Store, o as Palette, p as ArrowUpRight, r as Star, s as MapPin, t as Zap, u as Github } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DQIwVOBQ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-UwPp9_ZI.js
 var import_jsx_runtime = require_jsx_runtime();
 var skills = [
 	{
@@ -53,7 +53,7 @@ var skills = [
 		icon: Rocket
 	}
 ];
-var headshot = "/headshot.png";
+var headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
 var marqueeWords = [
 	"Liquid",
 	"✦",
@@ -250,9 +250,7 @@ function Hero() {
 							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 								src: headshot,
 								alt: "MD Asif Shah Diner",
-								width: 512,
-								height: 512,
-								fetchPriority: "high",
+								loading: "eager",
 								className: "absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap",

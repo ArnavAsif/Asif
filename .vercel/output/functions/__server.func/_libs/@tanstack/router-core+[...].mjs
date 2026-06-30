@@ -1494,7 +1494,7 @@ function la(e, r) {
 	let t = e.base.plugins;
 	if (t) for (let n = 0, a = t.length; n < a; n++) {
 		let s = t[n];
-		if (s.tag === r.c) return e.child ?? (e.child = new Lr(e)), s.serialize(r.s, e.child, { id: r.i });
+		if (s.tag === r.c) return e.child ??= new Lr(e), s.serialize(r.s, e.child, { id: r.i });
 	}
 	throw new X(r.c);
 }

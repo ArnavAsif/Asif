@@ -1,5 +1,5 @@
 globalThis.__nitro_main__ = import.meta.url;
-import { a as NodeResponse, n as HTTPError, r as defineLazyEventHandler, t as H3Core } from "./_libs/h3.mjs";
+import { a as NodeResponse, n as HTTPError, r as defineLazyEventHandler, t as H3Core } from "./_libs/h3+rou3+srvx.mjs";
 //#region #nitro-vite-setup
 function lazyService(loader) {
 	let promise, mod;
@@ -115,7 +115,7 @@ function createNitroApp() {
 		return error_handler_default(error, event);
 	} });
 	let appHandler = (req) => {
-		req.context || (req.context = {});
+		req.context ||= {};
 		req.context.nitro = req.context.nitro || { errors: [] };
 		return h3App.fetch(req);
 	};
@@ -212,18 +212,17 @@ function isrRouteRewrite(reqUrl, xNowRouteMatches) {
 //#region node_modules/nitro/dist/presets/vercel/runtime/vercel.web.mjs
 var nitroApp = useNitroApp();
 var vercel_web_default = { fetch(req, context) {
-	var _req;
 	const isrURL = isrRouteRewrite(req.url, req.headers.get("x-now-route-matches"));
 	if (isrURL) {
 		const { routeRules } = getRouteRules("", isrURL[0]);
 		if (routeRules?.isr) req = new Request(new URL(isrURL[0] + (isrURL[1] ? `?${isrURL[1]}` : ""), req.url).href, req);
 	}
-	(_req = req).runtime ?? (_req.runtime = { name: "vercel" });
+	req.runtime ??= { name: "vercel" };
 	req.runtime.vercel = { context };
 	let ip;
 	Object.defineProperty(req, "ip", { get() {
 		const h = req.headers.get("x-forwarded-for");
-		return ip ?? (ip = h?.split(",").shift()?.trim());
+		return ip ??= h?.split(",").shift()?.trim();
 	} });
 	req.waitUntil = context?.waitUntil;
 	return nitroApp.fetch(req);
