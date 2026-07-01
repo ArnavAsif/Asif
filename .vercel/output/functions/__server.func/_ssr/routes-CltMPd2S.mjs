@@ -2,8 +2,9 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as projects } from "./projects-CCdRUMI3.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-C4WQM_sN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CltMPd2S.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -128,7 +129,7 @@ function Nav() {
 						children: "A"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 						className: "hidden sm:inline",
-						children: "Asif Shah"
+						children: "Asif."
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
@@ -468,6 +469,102 @@ function Skills() {
 		})]
 	});
 }
+var shadows = [
+	"pop-shadow-pink",
+	"pop-shadow-amber",
+	"pop-shadow-mint"
+];
+function ProjectCard({ project, index }) {
+	const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } = useHoverScroll();
+	const shadowClass = shadows[index % shadows.length];
+	const imgStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : void 0;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+		to: "/projects/$slug",
+		params: { slug: project.slug },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+			className: `project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`,
+			...handlers,
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				ref: containerRef,
+				className: `relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`,
+				children: [project.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					ref: imageRef,
+					src: project.image,
+					alt: `${project.name} — ${project.tag}`,
+					loading: "lazy",
+					decoding: "async",
+					onLoad: handleImageLoad,
+					style: imgStyle,
+					className: "hover-preview-image absolute inset-0 hidden w-full object-cover object-top sm:block"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					src: project.imageMobile,
+					alt: `${project.name} — ${project.tag}`,
+					loading: "lazy",
+					decoding: "async",
+					style: imgStyle,
+					className: "hover-preview-image absolute inset-0 w-full object-cover object-top sm:hidden"
+				})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+					ref: imageRef,
+					src: project.image,
+					alt: `${project.name} — ${project.tag}`,
+					loading: "lazy",
+					decoding: "async",
+					onLoad: handleImageLoad,
+					style: imgStyle,
+					className: "hover-preview-image absolute inset-0 w-full object-cover object-top"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
+					children: project.shape
+				})]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex flex-1 flex-col gap-4 p-5",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "flex items-center justify-between gap-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+							className: "font-display text-xl font-extrabold",
+							children: project.name
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
+							children: "Shopify 2.0"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm text-muted-foreground",
+						children: project.tag
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-auto flex flex-wrap gap-2 pt-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
+								children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+									className: "h-3 w-3",
+									strokeWidth: 2.5
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+								href: project.repo,
+								target: "_blank",
+								rel: "noreferrer",
+								onClick: (e) => e.stopPropagation(),
+								className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
+									className: "h-3 w-3",
+									strokeWidth: 2.5
+								}), " Code"]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
+								children: ["pw: ", project.pw]
+							})
+						]
+					})
+				]
+			})]
+		})
+	});
+}
 var INITIAL_COUNT = 6;
 var LOAD_MORE_COUNT = 3;
 function Projects() {
@@ -500,11 +597,6 @@ function Projects() {
 			return () => clearTimeout(timer);
 		}
 	}, [newlyLoaded]);
-	const shadows = [
-		"pop-shadow-pink",
-		"pop-shadow-amber",
-		"pop-shadow-mint"
-	];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "projects",
 		className: "relative py-20 sm:py-24",
@@ -552,88 +644,9 @@ function Projects() {
 						return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 							className: isNew ? "animate-fade-in-up" : "",
 							style: isNew ? { animationDelay: `${i % LOAD_MORE_COUNT * 100}ms` } : void 0,
-							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								to: "/projects/$slug",
-								params: { slug: p.slug },
-								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-									className: `group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`,
-									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: `relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`,
-										children: [p.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-											src: p.image,
-											alt: `${p.name} — ${p.tag}`,
-											width: 400,
-											height: 288,
-											loading: "lazy",
-											decoding: "async",
-											className: "absolute inset-0 hidden h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%] sm:block"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-											src: p.imageMobile,
-											alt: `${p.name} — ${p.tag}`,
-											width: 400,
-											height: 288,
-											loading: "lazy",
-											decoding: "async",
-											className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%] sm:hidden"
-										})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-											src: p.image,
-											alt: `${p.name} — ${p.tag}`,
-											width: 400,
-											height: 288,
-											loading: "lazy",
-											decoding: "async",
-											className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%]"
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
-											children: p.shape
-										})]
-									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "flex flex-1 flex-col gap-4 p-5",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "flex items-center justify-between gap-2",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-													className: "font-display text-xl font-extrabold",
-													children: p.name
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-													className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
-													children: "Shopify 2.0"
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-												className: "text-sm text-muted-foreground",
-												children: p.tag
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: "mt-auto flex flex-wrap gap-2 pt-2",
-												children: [
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-														className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
-														children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-															className: "h-3 w-3",
-															strokeWidth: 2.5
-														})]
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-														href: p.repo,
-														target: "_blank",
-														rel: "noreferrer",
-														onClick: (e) => e.stopPropagation(),
-														className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
-														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
-															className: "h-3 w-3",
-															strokeWidth: 2.5
-														}), " Code"]
-													}),
-													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-														className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
-														children: ["pw: ", p.pw]
-													})
-												]
-											})
-										]
-									})]
-								})
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectCard, {
+								project: p,
+								index: i
 							})
 						}, p.name);
 					}), loading && Array.from({ length: LOAD_MORE_COUNT }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
