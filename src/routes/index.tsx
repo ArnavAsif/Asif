@@ -33,7 +33,7 @@ function Index() {
   const revealRef = useReveal();
 
   return (
-    <div ref={revealRef} className="min-h-screen overflow-x-hidden">
+    <div ref={revealRef} className="min-h-screen">
       <Nav />
       <Hero />
       <Marquee />
@@ -57,10 +57,10 @@ function Nav() {
           <span className="hidden sm:inline">Asif Shah</span>
         </a>
         <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
-          <a href="#projects" className="hover:text-accent">Projects</a>
-          <a href="#skills" className="hover:text-accent">Skills</a>
-          <a href="#about" className="hover:text-accent">About</a>
-          <a href="#contact" className="hover:text-accent">Contact</a>
+          <a href="#projects" className="transition-colors duration-300 hover:text-accent">Projects</a>
+          <a href="#skills" className="transition-colors duration-300 hover:text-accent">Skills</a>
+          <a href="#about" className="transition-colors duration-300 hover:text-accent">About</a>
+          <a href="#contact" className="transition-colors duration-300 hover:text-accent">Contact</a>
         </nav>
         <a href="#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]">
           Hire me
@@ -95,7 +95,7 @@ function Hero() {
             stores that <span className="text-accent">convert</span>.
           </h1>
           <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>—a freelance Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts.
+            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>, a Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base">
@@ -333,14 +333,14 @@ function Experience() {
             <div data-reveal="left">
               <Eyebrow>Experience</Eyebrow>
               <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-                Building since 2024.
+                Building since 2025.
               </h2>
             </div>
             <div data-reveal="up" className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-xl font-extrabold">Freelance Shopify Developer</h3>
-                  <p className="text-sm font-medium text-muted-foreground">2024 — Present</p>
+                  <h3 className="font-display text-xl font-extrabold">Shopify Developer</h3>
+                  <p className="text-sm font-medium text-muted-foreground">2025 — Present</p>
                 </div>
                 <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary">
                   <Zap className="h-5 w-5" strokeWidth={2.5} />

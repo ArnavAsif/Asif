@@ -134,6 +134,11 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -145,6 +150,11 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+  }
+
+  /* Offset anchor scrolling so sections clear the sticky navbar */
+  [id] {
+    scroll-margin-top: 5rem;
   }
 }
 
