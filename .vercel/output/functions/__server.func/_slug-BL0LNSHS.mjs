@@ -2,11 +2,11 @@ import { r as __toESM } from "./_runtime.mjs";
 import { n as projects, t as getProjectBySlug } from "./_ssr/projects-CCdRUMI3.mjs";
 import { n as require_jsx_runtime, r as require_react } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-BtWx6Oo5.mjs";
+import { t as Route } from "./_slug-sFNuUFt6.mjs";
 import { _ as ArrowRight, c as Monitor, f as Github, g as ArrowUpRight, h as Check, i as Smartphone, p as ExternalLink, v as ArrowLeft } from "./_libs/lucide-react.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-Dd2kUwRz.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BL0LNSHS.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -243,7 +243,7 @@ function ProjectDetails() {
 												height: 176,
 												loading: "lazy",
 												decoding: "async",
-												className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+												className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%]"
 											}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 												className: "flex h-full items-center justify-center text-4xl font-black text-muted-foreground/30",
 												children: p.shape
@@ -387,7 +387,7 @@ function ProjectDetails() {
 									height: 176,
 									loading: "lazy",
 									decoding: "async",
-									className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+									className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%]"
 								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									className: "flex h-full items-center justify-center text-4xl font-black text-muted-foreground/30",
 									children: p.shape

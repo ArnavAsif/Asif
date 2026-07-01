@@ -7,6 +7,8 @@ import {
 import { useState, useCallback, useEffect, useRef } from "react";
 import { projects } from "@/data/projects";
 import { useReveal } from "@/lib/use-reveal";
+import { useHoverScroll } from "@/lib/use-hover-scroll";
+import type { Project } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -263,6 +265,96 @@ function Skills() {
   );
 }
 
+/* --------------------------- PROJECT CARD -------------------------- */
+const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"] as const;
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } = useHoverScroll();
+  const shadowClass = shadows[index % shadows.length];
+
+  // Dynamic image height based on actual screenshot aspect ratio
+  const imgStyle = imageAspect
+    ? { aspectRatio: `1 / ${imageAspect}` }
+    : undefined;
+
+  return (
+    <Link to="/projects/$slug" params={{ slug: project.slug }}>
+      <article
+        className={`project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`}
+        {...handlers}
+      >
+        <div
+          ref={containerRef}
+          className={`relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`}
+        >
+          {project.imageMobile ? (
+            <>
+              <img
+                ref={imageRef}
+                src={project.image}
+                alt={`${project.name} — ${project.tag}`}
+                loading="lazy"
+                decoding="async"
+                onLoad={handleImageLoad}
+                style={imgStyle}
+                className="hover-preview-image absolute inset-0 hidden w-full object-cover object-top sm:block"
+              />
+              <img
+                src={project.imageMobile}
+                alt={`${project.name} — ${project.tag}`}
+                loading="lazy"
+                decoding="async"
+                style={imgStyle}
+                className="hover-preview-image absolute inset-0 w-full object-cover object-top sm:hidden"
+              />
+            </>
+          ) : (
+            <img
+              ref={imageRef}
+              src={project.image}
+              alt={`${project.name} — ${project.tag}`}
+              loading="lazy"
+              decoding="async"
+              onLoad={handleImageLoad}
+              style={imgStyle}
+              className="hover-preview-image absolute inset-0 w-full object-cover object-top"
+            />
+          )}
+          <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">
+            {project.shape}
+          </span>
+        </div>
+        <div className="flex flex-1 flex-col gap-4 p-5">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="font-display text-xl font-extrabold">{project.name}</h3>
+            <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+              Shopify 2.0
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground">{project.tag}</p>
+          <div className="mt-auto flex flex-wrap gap-2 pt-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
+              View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+            </span>
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary"
+            >
+              <Github className="h-3 w-3" strokeWidth={2.5} /> Code
+            </a>
+            <span className="ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
+              pw: {project.pw}
+            </span>
+          </div>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
 /* ----------------------------- PROJECTS --------------------------- */
 const INITIAL_COUNT = 6;
 const LOAD_MORE_COUNT = 3;
@@ -301,8 +393,6 @@ function Projects() {
     }
   }, [newlyLoaded]);
 
-  const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"];
-
   return (
     <section id="projects" className="relative py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -324,61 +414,7 @@ function Projects() {
             const isNew = newlyLoaded.has(i);
             return (
               <div key={p.name} className={isNew ? "animate-fade-in-up" : ""} style={isNew ? { animationDelay: `${(i % LOAD_MORE_COUNT) * 100}ms` } : undefined}>
-                <Link to="/projects/$slug" params={{ slug: p.slug }}>
-                  <article className={`group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`}>
-                    <div className={`relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
-                      {p.imageMobile ? (
-                        <>
-                          <img
-                            src={p.image}
-                            alt={`${p.name} — ${p.tag}`}
-                            width={400}
-                            height={192}
-                            loading="lazy"
-                            decoding="async"
-                            className="absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:block"
-                          />
-                          <img
-                            src={p.imageMobile}
-                            alt={`${p.name} — ${p.tag}`}
-                            width={400}
-                            height={192}
-                            loading="lazy"
-                            decoding="async"
-                            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:hidden"
-                          />
-                        </>
-                      ) : (
-                        <img
-                          src={p.image}
-                          alt={`${p.name} — ${p.tag}`}
-                          width={400}
-                          height={192}
-                          loading="lazy"
-                          decoding="async"
-                          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        />
-                      )}
-                      <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">{p.shape}</span>
-                    </div>
-                    <div className="flex flex-1 flex-col gap-4 p-5">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-display text-xl font-extrabold">{p.name}</h3>
-                        <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">Shopify 2.0</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{p.tag}</p>
-                      <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                        <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
-                          View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
-                        </span>
-                        <a href={p.repo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary">
-                          <Github className="h-3 w-3" strokeWidth={2.5} /> Code
-                        </a>
-                        <span className="ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground">pw: {p.pw}</span>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
+                <ProjectCard project={p} index={i} />
               </div>
             );
           })}

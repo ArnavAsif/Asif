@@ -3,7 +3,7 @@ import { n as projects } from "./projects-CCdRUMI3.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DE2RXwHL.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-C4WQM_sN.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -563,26 +563,26 @@ function Projects() {
 											src: p.image,
 											alt: `${p.name} — ${p.tag}`,
 											width: 400,
-											height: 192,
+											height: 288,
 											loading: "lazy",
 											decoding: "async",
-											className: "absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:block"
+											className: "absolute inset-0 hidden h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%] sm:block"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 											src: p.imageMobile,
 											alt: `${p.name} — ${p.tag}`,
 											width: 400,
-											height: 192,
+											height: 288,
 											loading: "lazy",
 											decoding: "async",
-											className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:hidden"
+											className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%] sm:hidden"
 										})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 											src: p.image,
 											alt: `${p.name} — ${p.tag}`,
 											width: 400,
-											height: 192,
+											height: 288,
 											loading: "lazy",
 											decoding: "async",
-											className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+											className: "absolute inset-0 h-[150%] w-full object-cover object-top transition-transform duration-700 ease-out group-hover:-translate-y-[33%]"
 										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 											className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
 											children: p.shape

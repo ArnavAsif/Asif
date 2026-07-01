@@ -217,6 +217,38 @@
   animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+/* ---- Premium Hover Preview ---- */
+.project-card-hover {
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+.project-card-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 12px 12px 0 0 var(--foreground);
+}
+.project-card-hover .hover-preview-image {
+  transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.project-card-hover:hover .hover-preview-image {
+  filter: brightness(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card-hover {
+    transition: box-shadow 0.3s ease;
+  }
+  .project-card-hover:hover {
+    transform: none;
+  }
+  .project-card-hover .hover-preview-image {
+    transition: none;
+  }
+}
+
 /* ---- Scroll Reveal Animations ---- */
 /* Elements start at their natural position (visible by default).
    data-reveal sets initial hidden state. JS adds .revealed to animate in. */

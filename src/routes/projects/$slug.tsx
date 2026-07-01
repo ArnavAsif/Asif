@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Github, ExternalLink, Check, Monit
 import { useState } from "react";
 import { projects, getProjectBySlug } from "@/data/projects";
 import { DeviceMockup } from "@/components/ui/device-mockup";
+import { useHoverScroll } from "@/lib/use-hover-scroll";
+import type { Project } from "@/data/projects";
 
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
@@ -16,6 +18,74 @@ export const Route = createFileRoute("/projects/$slug")({
   },
   component: ProjectDetails,
 });
+
+const shadowColors = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"] as const;
+
+function MoreProjectCard({ project, index }: { project: Project; index: number }) {
+  const { containerRef, imageRef, imageAspect, handleImageLoad, handlers } = useHoverScroll();
+
+  const imgStyle = imageAspect
+    ? { aspectRatio: `1 / ${imageAspect}` }
+    : undefined;
+
+  return (
+    <Link
+      to="/projects/$slug"
+      params={{ slug: project.slug }}
+      className={`project-card-hover group flex flex-col overflow-hidden rounded-2xl border-[3px] border-foreground bg-card ${shadowColors[index % 3]}`}
+      {...handlers}
+    >
+      <div
+        ref={containerRef}
+        className={`relative h-44 overflow-hidden border-b-2 border-foreground ${project.accent}`}
+      >
+        {project.image ? (
+          <img
+            ref={imageRef}
+            src={project.image}
+            alt={`${project.name} — ${project.tag}`}
+            loading="lazy"
+            decoding="async"
+            onLoad={handleImageLoad}
+            style={imgStyle}
+            className="hover-preview-image absolute inset-0 w-full object-cover object-top"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-4xl font-black text-muted-foreground/30">
+            {project.shape}
+          </div>
+        )}
+        <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background text-lg font-black">
+          {project.shape}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <div className="flex items-center justify-between gap-2">
+          <h4 className="font-display text-base font-extrabold">{project.name}</h4>
+          <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+            Shopify 2.0
+          </span>
+        </div>
+        <p className="text-xs text-muted-foreground">{project.tag}</p>
+        <div className="mt-auto flex flex-wrap items-center gap-2 pt-1">
+          <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-accent px-2.5 py-1 text-[10px] font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
+            View details <ArrowRight className="h-2.5 w-2.5" strokeWidth={2.5} />
+          </span>
+          {project.repo && (
+            <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-background px-2.5 py-1 text-[10px] font-bold transition-colors hover:bg-tertiary">
+              <Github className="h-2.5 w-2.5" strokeWidth={2.5} /> Code
+            </span>
+          )}
+          {project.pw && (
+            <span className="ml-auto self-center text-[9px] font-bold uppercase tracking-wide text-muted-foreground">
+              pw: {project.pw}
+            </span>
+          )}
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 function ProjectDetails() {
   const { slug } = Route.useParams();
@@ -157,51 +227,7 @@ function ProjectDetails() {
                       .filter((p) => p.slug !== project.slug)
                       .slice(0, 3)
                       .map((p, i) => (
-                        <Link
-                          key={p.slug}
-                          to="/projects/$slug"
-                          params={{ slug: p.slug }}
-                          className={`group flex flex-col overflow-hidden rounded-2xl border-[3px] border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"][i % 3]}`}
-                        >
-                          <div className={`relative h-44 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
-                            {p.image ? (
-                              <img
-                                src={p.image}
-                                alt={`${p.name} — ${p.tag}`}
-                                width={400}
-                                height={176}
-                                loading="lazy"
-                                decoding="async"
-                                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                              />
-                            ) : (
-                              <div className="flex h-full items-center justify-center text-4xl font-black text-muted-foreground/30">
-                                {p.shape}
-                              </div>
-                            )}
-                            <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background text-lg font-black">{p.shape}</span>
-                          </div>
-                          <div className="flex flex-1 flex-col gap-3 p-4">
-                            <div className="flex items-center justify-between gap-2">
-                              <h4 className="font-display text-base font-extrabold">{p.name}</h4>
-                              <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">Shopify 2.0</span>
-                            </div>
-                            <p className="text-xs text-muted-foreground">{p.tag}</p>
-                            <div className="mt-auto flex flex-wrap items-center gap-2 pt-1">
-                              <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-accent px-2.5 py-1 text-[10px] font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
-                                View details <ArrowRight className="h-2.5 w-2.5" strokeWidth={2.5} />
-                              </span>
-                              {p.repo && (
-                                <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-background px-2.5 py-1 text-[10px] font-bold transition-colors hover:bg-tertiary">
-                                  <Github className="h-2.5 w-2.5" strokeWidth={2.5} /> Code
-                                </span>
-                              )}
-                              {p.pw && (
-                                <span className="ml-auto self-center text-[9px] font-bold uppercase tracking-wide text-muted-foreground">pw: {p.pw}</span>
-                              )}
-                            </div>
-                          </div>
-                        </Link>
+                        <MoreProjectCard key={p.slug} project={p} index={i} />
                       ))}
                   </div>
                 </div>
@@ -291,51 +317,7 @@ function ProjectDetails() {
                 .filter((p) => p.slug !== project.slug)
                 .slice(0, 3)
                 .map((p, i) => (
-                  <Link
-                    key={p.slug}
-                    to="/projects/$slug"
-                    params={{ slug: p.slug }}
-                    className={`group flex flex-col overflow-hidden rounded-2xl border-[3px] border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"][i % 3]}`}
-                  >
-                    <div className={`relative h-44 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
-                      {p.image ? (
-                        <img
-                          src={p.image}
-                          alt={`${p.name} — ${p.tag}`}
-                          width={400}
-                          height={176}
-                          loading="lazy"
-                          decoding="async"
-                          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center text-4xl font-black text-muted-foreground/30">
-                          {p.shape}
-                        </div>
-                      )}
-                      <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background text-lg font-black">{p.shape}</span>
-                    </div>
-                    <div className="flex flex-1 flex-col gap-3 p-4">
-                      <div className="flex items-center justify-between gap-2">
-                        <h4 className="font-display text-base font-extrabold">{p.name}</h4>
-                        <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">Shopify 2.0</span>
-                      </div>
-                      <p className="text-xs text-muted-foreground">{p.tag}</p>
-                      <div className="mt-auto flex flex-wrap items-center gap-2 pt-1">
-                        <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-accent px-2.5 py-1 text-[10px] font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
-                          View details <ArrowRight className="h-2.5 w-2.5" strokeWidth={2.5} />
-                        </span>
-                        {p.repo && (
-                          <span className="inline-flex items-center gap-1 rounded-full border-2 border-foreground bg-background px-2.5 py-1 text-[10px] font-bold transition-colors hover:bg-tertiary">
-                            <Github className="h-2.5 w-2.5" strokeWidth={2.5} /> Code
-                          </span>
-                        )}
-                        {p.pw && (
-                          <span className="ml-auto self-center text-[9px] font-bold uppercase tracking-wide text-muted-foreground">pw: {p.pw}</span>
-                        )}
-                      </div>
-                    </div>
-                  </Link>
+                  <MoreProjectCard key={p.slug} project={p} index={i} />
                 ))}
             </div>
           </div>
