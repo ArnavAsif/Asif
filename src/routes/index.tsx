@@ -58,7 +58,7 @@ function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#top" className="flex items-center gap-2 font-display text-lg font-extrabold sm:text-xl">
           <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-accent text-accent-foreground pop-shadow">A</span>
-          <span className="hidden sm:inline">Asif Shah</span>
+          <span className="hidden sm:inline">Asif.</span>
         </a>
         <nav className="hidden items-center gap-6 text-base font-extrabold md:flex">
           <a href="#projects" className="transition-colors duration-300 hover:text-accent">Projects</a>
