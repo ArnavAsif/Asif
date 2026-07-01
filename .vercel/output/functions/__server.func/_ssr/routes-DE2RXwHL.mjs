@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { n as projects } from "./projects-ohaOBEnb.mjs";
+import { n as projects } from "./projects-CCdRUMI3.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as Rocket, d as Linkedin, f as Github, g as ArrowRight, h as ArrowUpRight, l as MapPin, m as Check, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, v as Sparkles, y as CodeXml } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DWaXG0xk.js
+import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DE2RXwHL.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -100,7 +100,7 @@ var marqueeWords = [
 function Index() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		ref: useReveal(),
-		className: "min-h-screen overflow-x-hidden",
+		className: "min-h-screen",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Nav, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Hero, {}),
@@ -132,26 +132,26 @@ function Nav() {
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-					className: "hidden items-center gap-6 text-sm font-semibold md:flex",
+					className: "hidden items-center gap-6 text-base font-extrabold md:flex",
 					children: [
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 							href: "#projects",
-							className: "hover:text-accent",
+							className: "transition-colors duration-300 hover:text-accent",
 							children: "Projects"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 							href: "#skills",
-							className: "hover:text-accent",
+							className: "transition-colors duration-300 hover:text-accent",
 							children: "Skills"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 							href: "#about",
-							className: "hover:text-accent",
+							className: "transition-colors duration-300 hover:text-accent",
 							children: "About"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
 							href: "#contact",
-							className: "hover:text-accent",
+							className: "transition-colors duration-300 hover:text-accent",
 							children: "Contact"
 						})
 					]
@@ -174,7 +174,7 @@ function Nav() {
 function Hero() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "top",
-		className: "relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pt-20 lg:pt-28",
+		className: "relative overflow-hidden pb-16 pt-12 sm:pt-20 lg:pt-28",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "pointer-events-none absolute -left-24 top-24 hidden h-72 w-72 rounded-full bg-tertiary md:block",
@@ -186,7 +186,7 @@ function Hero() {
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Squiggle, { className: "pointer-events-none absolute right-1/4 top-40 hidden h-8 w-32 text-secondary md:block" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2",
+				className: "relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					"data-reveal": "left",
 					children: [
@@ -225,7 +225,7 @@ function Hero() {
 									className: "text-foreground",
 									children: "MD Asif Shah Diner"
 								}),
-								"—a freelance Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts."
+								", a Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts."
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -368,9 +368,9 @@ function Marquee() {
 function About() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "about",
-		className: "relative px-4 py-20 sm:px-6 sm:py-24",
+		className: "relative py-20 sm:py-24",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start",
+			className: "mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-start",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-reveal": "left",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "About" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
@@ -410,12 +410,12 @@ function Eyebrow({ children }) {
 function Skills() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
 		id: "skills",
-		className: "relative px-4 py-20 sm:px-6 sm:py-24",
+		className: "relative py-20 sm:py-24",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "pointer-events-none absolute right-6 top-10 hidden h-20 w-20 rounded-full border-2 border-foreground bg-secondary md:block",
 			"aria-hidden": true
 		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto max-w-7xl",
+			className: "mx-auto max-w-7xl px-4 sm:px-6",
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-reveal": "up",
 				className: "max-w-2xl",
@@ -468,142 +468,230 @@ function Skills() {
 		})]
 	});
 }
+var INITIAL_COUNT = 6;
+var LOAD_MORE_COUNT = 3;
 function Projects() {
+	const hasEnoughProjects = projects.length > INITIAL_COUNT;
+	const [visibleCount, setVisibleCount] = (0, import_react.useState)(hasEnoughProjects ? INITIAL_COUNT : projects.length);
+	const [loading, setLoading] = (0, import_react.useState)(false);
+	const [newlyLoaded, setNewlyLoaded] = (0, import_react.useState)(/* @__PURE__ */ new Set());
+	(0, import_react.useRef)(null);
+	const hasMore = visibleCount < projects.length;
+	const loadMore = (0, import_react.useCallback)(() => {
+		if (!hasMore || loading) return;
+		setLoading(true);
+		setTimeout(() => {
+			const prevCount = visibleCount;
+			const nextCount = Math.min(prevCount + LOAD_MORE_COUNT, projects.length);
+			const indices = /* @__PURE__ */ new Set();
+			for (let i = prevCount; i < nextCount; i++) indices.add(i);
+			setVisibleCount(nextCount);
+			setNewlyLoaded(indices);
+			setLoading(false);
+		}, 600);
+	}, [
+		hasMore,
+		loading,
+		visibleCount
+	]);
+	(0, import_react.useEffect)(() => {
+		if (newlyLoaded.size > 0) {
+			const timer = setTimeout(() => setNewlyLoaded(/* @__PURE__ */ new Set()), 500);
+			return () => clearTimeout(timer);
+		}
+	}, [newlyLoaded]);
+	const shadows = [
+		"pop-shadow-pink",
+		"pop-shadow-amber",
+		"pop-shadow-mint"
+	];
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "projects",
-		className: "relative px-4 py-20 sm:px-6 sm:py-24",
+		className: "relative py-20 sm:py-24",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mx-auto max-w-7xl",
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				"data-reveal": "up",
-				className: "grid items-end gap-6 sm:grid-cols-[1fr_auto]",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "max-w-2xl",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Selected work" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-							className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-							children: "Stores I've shipped."
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
-							className: "mt-3 text-muted-foreground",
-							children: [
-								"Each store is custom-built on Shopify 2.0. Demo passwords are ",
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
-									className: "rounded bg-muted px-1.5 py-0.5 font-mono text-sm",
-									children: "1"
-								}),
-								"."
-							]
-						})
-					]
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-					href: "https://github.com/ArnavAsif",
-					target: "_blank",
-					rel: "noreferrer",
-					className: "hidden items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary sm:inline-flex",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
-						className: "h-4 w-4",
-						strokeWidth: 2.5
-					}), " All repos"]
-				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3",
-				children: projects.map((p, i) => {
-					const shadows = [
-						"pop-shadow-pink",
-						"pop-shadow-amber",
-						"pop-shadow-mint",
-						"pop-shadow-pink",
-						"pop-shadow-amber",
-						"pop-shadow-mint"
-					];
-					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-						to: "/projects/$slug",
-						params: { slug: p.slug },
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-							"data-reveal": "up",
-							"data-reveal-delay": String(i % 3 * 100),
-							className: `group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`,
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: `relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`,
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-									src: p.image,
-									alt: `${p.name} — ${p.tag}`,
-									width: 400,
-									height: 192,
-									loading: "lazy",
-									decoding: "async",
-									className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
-									children: p.shape
-								})]
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mx-auto max-w-7xl px-4 sm:px-6",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					"data-reveal": "up",
+					className: "grid items-end gap-6 sm:grid-cols-[1fr_auto]",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "max-w-2xl",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Selected work" }),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+								className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
+								children: "Stores I've shipped."
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+								className: "mt-3 text-muted-foreground",
+								children: [
+									"Each store is custom-built on Shopify 2.0. Demo passwords are ",
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
+										className: "rounded bg-muted px-1.5 py-0.5 font-mono text-sm",
+										children: "1"
+									}),
+									"."
+								]
+							})
+						]
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: "https://github.com/ArnavAsif",
+						target: "_blank",
+						rel: "noreferrer",
+						className: "hidden items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary sm:inline-flex",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
+							className: "h-4 w-4",
+							strokeWidth: 2.5
+						}), " All repos"]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3",
+					children: [projects.slice(0, visibleCount).map((p, i) => {
+						const isNew = newlyLoaded.has(i);
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: isNew ? "animate-fade-in-up" : "",
+							style: isNew ? { animationDelay: `${i % LOAD_MORE_COUNT * 100}ms` } : void 0,
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+								to: "/projects/$slug",
+								params: { slug: p.slug },
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+									className: `group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`,
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: `relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`,
+										children: [p.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: p.image,
+											alt: `${p.name} — ${p.tag}`,
+											width: 400,
+											height: 192,
+											loading: "lazy",
+											decoding: "async",
+											className: "absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:block"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: p.imageMobile,
+											alt: `${p.name} — ${p.tag}`,
+											width: 400,
+											height: 192,
+											loading: "lazy",
+											decoding: "async",
+											className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:hidden"
+										})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+											src: p.image,
+											alt: `${p.name} — ${p.tag}`,
+											width: 400,
+											height: 192,
+											loading: "lazy",
+											decoding: "async",
+											className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+											className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
+											children: p.shape
+										})]
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+										className: "flex flex-1 flex-col gap-4 p-5",
+										children: [
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flex items-center justify-between gap-2",
+												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+													className: "font-display text-xl font-extrabold",
+													children: p.name
+												}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+													className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
+													children: "Shopify 2.0"
+												})]
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+												className: "text-sm text-muted-foreground",
+												children: p.tag
+											}),
+											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "mt-auto flex flex-wrap gap-2 pt-2",
+												children: [
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+														className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
+														children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+															className: "h-3 w-3",
+															strokeWidth: 2.5
+														})]
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+														href: p.repo,
+														target: "_blank",
+														rel: "noreferrer",
+														onClick: (e) => e.stopPropagation(),
+														className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
+														children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
+															className: "h-3 w-3",
+															strokeWidth: 2.5
+														}), " Code"]
+													}),
+													/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+														className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
+														children: ["pw: ", p.pw]
+													})
+												]
+											})
+										]
+									})]
+								})
+							})
+						}, p.name);
+					}), loading && Array.from({ length: LOAD_MORE_COUNT }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "animate-fade-in-up",
+						style: { animationDelay: `${i * 80}ms` },
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "relative h-48 border-b-2 border-foreground animate-shimmer" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "flex flex-1 flex-col gap-4 p-5",
 								children: [
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 										className: "flex items-center justify-between gap-2",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-											className: "font-display text-xl font-extrabold",
-											children: p.name
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
-											children: "Shopify 2.0"
-										})]
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-6 w-32 rounded-lg animate-shimmer" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-5 w-20 rounded-full animate-shimmer" })]
 									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "text-sm text-muted-foreground",
-										children: p.tag
-									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-4 w-48 rounded animate-shimmer" }),
 									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-										className: "mt-auto flex flex-wrap gap-2 pt-2",
-										children: [
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
-												children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-													className: "h-3 w-3",
-													strokeWidth: 2.5
-												})]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-												href: p.repo,
-												target: "_blank",
-												rel: "noreferrer",
-												onClick: (e) => e.stopPropagation(),
-												className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
-													className: "h-3 w-3",
-													strokeWidth: 2.5
-												}), " Code"]
-											}),
-											/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-												className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
-												children: ["pw: ", p.pw]
-											})
-										]
+										className: "mt-auto flex gap-2 pt-2",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-8 w-28 rounded-full animate-shimmer" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "h-8 w-16 rounded-full animate-shimmer" })]
 									})
 								]
 							})]
 						})
-					}, p.name);
+					}, `skeleton-${i}`))]
+				}),
+				hasEnoughProjects && hasMore && !loading && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-10 flex justify-center",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						onClick: loadMore,
+						className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-6 py-3 text-sm font-bold transition-[transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-tertiary hover:shadow-[4px_4px_0_0_var(--foreground)] active:translate-x-0 active:translate-y-0 active:shadow-none",
+						children: ["View more", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChevronDown, {
+							className: "h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5",
+							strokeWidth: 2.5
+						})]
+					})
+				}),
+				hasEnoughProjects && !hasMore && visibleCount > INITIAL_COUNT && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-10 flex justify-center",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "text-sm font-medium text-muted-foreground",
+						children: "More projects are coming soon!"
+					})
 				})
-			})]
+			]
 		})
 	});
 }
 function Experience() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
-		className: "relative px-4 py-20 sm:px-6 sm:py-24",
+		className: "relative py-20 sm:py-24",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mx-auto max-w-7xl",
+			className: "mx-auto max-w-7xl px-4 sm:px-6",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "grid gap-12 lg:grid-cols-2",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					"data-reveal": "left",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Experience" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 						className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-						children: "Building since 2024."
+						children: "Building since 2025."
 					})]
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					"data-reveal": "up",
@@ -612,10 +700,10 @@ function Experience() {
 						className: "flex items-center justify-between gap-4",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 							className: "font-display text-xl font-extrabold",
-							children: "Freelance Shopify Developer"
+							children: "Shopify Developer"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-sm font-medium text-muted-foreground",
-							children: "2024 — Present"
+							children: "2025 — Present"
 						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary",
 							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Zap, {
@@ -700,9 +788,9 @@ function Experience() {
 function Contact() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
 		id: "contact",
-		className: "relative px-4 py-20 sm:px-6 sm:py-24",
+		className: "relative py-20 sm:py-24",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "mx-auto max-w-5xl",
+			className: "mx-auto max-w-5xl px-4 sm:px-6",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-reveal": "scale",
 				className: "relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12",

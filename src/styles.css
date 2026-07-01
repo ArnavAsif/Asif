@@ -191,6 +191,24 @@
   animation: marquee 45s linear infinite;
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@utility animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, var(--muted) 25%, var(--card) 50%, var(--muted) 75%);
+  background-size: 200% 100%;
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@utility animate-fade-in-up {
+  animation: fade-in-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @keyframes pop-in {
   0% { transform: scale(0.6); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }

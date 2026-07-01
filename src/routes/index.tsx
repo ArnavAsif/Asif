@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Phone, MapPin,
   Code2, Palette, Rocket, Zap, Check, Star, Sparkles, Store,
+  ChevronDown,
 } from "lucide-react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { projects } from "@/data/projects";
 import { useReveal } from "@/lib/use-reveal";
 
@@ -56,7 +58,7 @@ function Nav() {
           <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-accent text-accent-foreground pop-shadow">A</span>
           <span className="hidden sm:inline">Asif Shah</span>
         </a>
-        <nav className="hidden items-center gap-6 text-sm font-semibold md:flex">
+        <nav className="hidden items-center gap-6 text-base font-extrabold md:flex">
           <a href="#projects" className="transition-colors duration-300 hover:text-accent">Projects</a>
           <a href="#skills" className="transition-colors duration-300 hover:text-accent">Skills</a>
           <a href="#about" className="transition-colors duration-300 hover:text-accent">About</a>
@@ -76,13 +78,13 @@ function Nav() {
 /* ------------------------------- HERO ------------------------------ */
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden px-4 pb-16 pt-12 sm:px-6 sm:pt-20 lg:pt-28">
+    <section id="top" className="relative overflow-hidden pb-16 pt-12 sm:pt-20 lg:pt-28">
       {/* Decorations */}
       <div className="pointer-events-none absolute -left-24 top-24 hidden h-72 w-72 rounded-full bg-tertiary md:block" aria-hidden />
       <div className="pointer-events-none absolute right-10 top-8 hidden h-16 w-16 rotate-12 rounded-md border-2 border-foreground bg-quaternary md:block" aria-hidden />
       <Squiggle className="pointer-events-none absolute right-1/4 top-40 hidden h-8 w-32 text-secondary md:block" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
         <div data-reveal="left">
           <span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider pop-shadow">
             <span className="h-2 w-2 rounded-full bg-quaternary" /> Available for freelance
@@ -185,8 +187,8 @@ function Marquee() {
 /* ------------------------------ ABOUT ----------------------------- */
 function About() {
   return (
-    <section id="about" className="relative px-4 py-20 sm:px-6 sm:py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+    <section id="about" className="relative py-20 sm:py-24">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-start">
         <div data-reveal="left">
           <Eyebrow>About</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
@@ -223,9 +225,9 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 /* ------------------------------ SKILLS ---------------------------- */
 function Skills() {
   return (
-    <section id="skills" className="relative px-4 py-20 sm:px-6 sm:py-24">
+    <section id="skills" className="relative py-20 sm:py-24">
       <div className="pointer-events-none absolute right-6 top-10 hidden h-20 w-20 rounded-full border-2 border-foreground bg-secondary md:block" aria-hidden />
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div data-reveal="up" className="max-w-2xl">
           <Eyebrow>Toolbox</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
@@ -262,10 +264,48 @@ function Skills() {
 }
 
 /* ----------------------------- PROJECTS --------------------------- */
+const INITIAL_COUNT = 6;
+const LOAD_MORE_COUNT = 3;
+
 function Projects() {
+  const hasEnoughProjects = projects.length > INITIAL_COUNT;
+  const [visibleCount, setVisibleCount] = useState(
+    hasEnoughProjects ? INITIAL_COUNT : projects.length,
+  );
+  const [loading, setLoading] = useState(false);
+  const [newlyLoaded, setNewlyLoaded] = useState<Set<number>>(new Set());
+  const skeletonRef = useRef<HTMLDivElement>(null);
+
+  const hasMore = visibleCount < projects.length;
+
+  const loadMore = useCallback(() => {
+    if (!hasMore || loading) return;
+    setLoading(true);
+
+    setTimeout(() => {
+      const prevCount = visibleCount;
+      const nextCount = Math.min(prevCount + LOAD_MORE_COUNT, projects.length);
+      const indices = new Set<number>();
+      for (let i = prevCount; i < nextCount; i++) indices.add(i);
+
+      setVisibleCount(nextCount);
+      setNewlyLoaded(indices);
+      setLoading(false);
+    }, 600);
+  }, [hasMore, loading, visibleCount]);
+
+  useEffect(() => {
+    if (newlyLoaded.size > 0) {
+      const timer = setTimeout(() => setNewlyLoaded(new Set()), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [newlyLoaded]);
+
+  const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"];
+
   return (
-    <section id="projects" className="relative px-4 py-20 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-7xl">
+    <section id="projects" className="relative py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div data-reveal="up" className="grid items-end gap-6 sm:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <Eyebrow>Selected work</Eyebrow>
@@ -280,44 +320,106 @@ function Projects() {
         </div>
 
         <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p, i) => {
-            const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint", "pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"];
+          {projects.slice(0, visibleCount).map((p, i) => {
+            const isNew = newlyLoaded.has(i);
             return (
-              <Link key={p.name} to="/projects/$slug" params={{ slug: p.slug }}>
-                <article data-reveal="up" data-reveal-delay={String((i % 3) * 100)} className={`group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`}>
-                  <div className={`relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
-                    <img
-                      src={p.image}
-                      alt={`${p.name} — ${p.tag}`}
-                      width={400}
-                      height={192}
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">{p.shape}</span>
-                  </div>
-                  <div className="flex flex-1 flex-col gap-4 p-5">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-display text-xl font-extrabold">{p.name}</h3>
-                      <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">Shopify 2.0</span>
+              <div key={p.name} className={isNew ? "animate-fade-in-up" : ""} style={isNew ? { animationDelay: `${(i % LOAD_MORE_COUNT) * 100}ms` } : undefined}>
+                <Link to="/projects/$slug" params={{ slug: p.slug }}>
+                  <article className={`group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:rotate-[-0.5deg] ${shadows[i % shadows.length]}`}>
+                    <div className={`relative h-48 border-b-2 border-foreground ${p.accent} overflow-hidden`}>
+                      {p.imageMobile ? (
+                        <>
+                          <img
+                            src={p.image}
+                            alt={`${p.name} — ${p.tag}`}
+                            width={400}
+                            height={192}
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:block"
+                          />
+                          <img
+                            src={p.imageMobile}
+                            alt={`${p.name} — ${p.tag}`}
+                            width={400}
+                            height={192}
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:hidden"
+                          />
+                        </>
+                      ) : (
+                        <img
+                          src={p.image}
+                          alt={`${p.name} — ${p.tag}`}
+                          width={400}
+                          height={192}
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                      <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">{p.shape}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">{p.tag}</p>
-                    <div className="mt-auto flex flex-wrap gap-2 pt-2">
-                      <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
-                        View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
-                      </span>
-                      <a href={p.repo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary">
-                        <Github className="h-3 w-3" strokeWidth={2.5} /> Code
-                      </a>
-                      <span className="ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground">pw: {p.pw}</span>
+                    <div className="flex flex-1 flex-col gap-4 p-5">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="font-display text-xl font-extrabold">{p.name}</h3>
+                        <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">Shopify 2.0</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{p.tag}</p>
+                      <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5">
+                          View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+                        </span>
+                        <a href={p.repo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary">
+                          <Github className="h-3 w-3" strokeWidth={2.5} /> Code
+                        </a>
+                        <span className="ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground">pw: {p.pw}</span>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              </Link>
+                  </article>
+                </Link>
+              </div>
             );
           })}
+
+          {loading && Array.from({ length: LOAD_MORE_COUNT }).map((_, i) => (
+            <div key={`skeleton-${i}`} className="animate-fade-in-up" style={{ animationDelay: `${i * 80}ms` }}>
+              <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card">
+                <div className="relative h-48 border-b-2 border-foreground animate-shimmer" />
+                <div className="flex flex-1 flex-col gap-4 p-5">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="h-6 w-32 rounded-lg animate-shimmer" />
+                    <div className="h-5 w-20 rounded-full animate-shimmer" />
+                  </div>
+                  <div className="h-4 w-48 rounded animate-shimmer" />
+                  <div className="mt-auto flex gap-2 pt-2">
+                    <div className="h-8 w-28 rounded-full animate-shimmer" />
+                    <div className="h-8 w-16 rounded-full animate-shimmer" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {hasEnoughProjects && hasMore && !loading && (
+          <div className="mt-10 flex justify-center">
+            <button
+              onClick={loadMore}
+              className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-6 py-3 text-sm font-bold transition-[transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-tertiary hover:shadow-[4px_4px_0_0_var(--foreground)] active:translate-x-0 active:translate-y-0 active:shadow-none"
+            >
+              View more
+              <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" strokeWidth={2.5} />
+            </button>
+          </div>
+        )}
+
+        {hasEnoughProjects && !hasMore && visibleCount > INITIAL_COUNT && (
+          <div className="mt-10 flex justify-center">
+            <p className="text-sm font-medium text-muted-foreground">More projects are coming soon!</p>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -326,8 +428,8 @@ function Projects() {
 /* ---------------------------- EXPERIENCE -------------------------- */
 function Experience() {
   return (
-    <section className="relative px-4 py-20 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <div data-reveal="left">
@@ -397,8 +499,8 @@ function Experience() {
 /* ----------------------------- CONTACT ---------------------------- */
 function Contact() {
   return (
-    <section id="contact" className="relative px-4 py-20 sm:px-6 sm:py-24">
-      <div className="mx-auto max-w-5xl">
+    <section id="contact" className="relative py-20 sm:py-24">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div data-reveal="scale" className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12">
           <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary" aria-hidden />
           <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rotate-45 rounded-2xl border-2 border-foreground bg-quaternary" aria-hidden />

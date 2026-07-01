@@ -210,6 +210,16 @@ var Check = createLucideIcon("check", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ChevronDown = createLucideIcon("chevron-down", [["path", {
+	d: "m6 9 6 6 6-6",
+	key: "qrunsl"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var ExternalLink = createLucideIcon("external-link", [
 	["path", {
 		d: "M15 3h6v6",
@@ -457,4 +467,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { ArrowLeft as _, Rocket as a, Monitor as c, Linkedin as d, Github as f, ArrowRight as g, ArrowUpRight as h, Smartphone as i, MapPin as l, Check as m, Store as n, Phone as o, ExternalLink as p, Star as r, Palette as s, Zap as t, Mail as u, Sparkles as v, CodeXml as y };
+export { ArrowRight as _, Rocket as a, CodeXml as b, Monitor as c, Linkedin as d, Github as f, ArrowUpRight as g, Check as h, Smartphone as i, MapPin as l, ChevronDown as m, Store as n, Phone as o, ExternalLink as p, Star as r, Palette as s, Zap as t, Mail as u, ArrowLeft as v, Sparkles as y };
