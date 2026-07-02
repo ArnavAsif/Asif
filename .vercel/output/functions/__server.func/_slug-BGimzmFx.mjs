@@ -1,13 +1,13 @@
 import { r as __toESM } from "./_runtime.mjs";
-import { n as projects, t as getProjectBySlug } from "./_ssr/projects-CCdRUMI3.mjs";
+import { n as projects, t as getProjectBySlug } from "./_ssr/projects-6ZGukruv.mjs";
 import { n as require_jsx_runtime, r as require_react } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-BmTQwt8S.mjs";
+import { t as Route } from "./_slug-BMaXcVH8.mjs";
 import { t as useHoverScroll } from "./_ssr/use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, c as Monitor, f as Github, g as ArrowUpRight, h as Check, i as Smartphone, p as ExternalLink, v as ArrowLeft } from "./_libs/lucide-react.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BtpE8dQk.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-BGimzmFx.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {

@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/projects-CCdRUMI3.js
+//#region node_modules/.nitro/vite/services/ssr/assets/projects-6ZGukruv.js
 var projects = [
 	{
 		slug: "otap",
@@ -178,17 +178,143 @@ var projects = [
 		]
 	},
 	{
-		slug: "soho",
-		name: "Soho",
-		tag: "Coming Soon",
-		description: "A premium project currently in development. Stay tuned for updates.",
-		url: "",
-		repo: "",
+		slug: "neonarcade",
+		name: "NeonArcade",
+		tag: "Gaming Gear Store",
+		description: "A dark neon-red Shopify store built for the next generation of gamers. Features a cinematic hero, shop-by-category grid, interactive PC builder configurator, gear showcase, brand directory, customer testimonials, and a full-width CTA — all wrapped in a bold red-and-black gaming aesthetic.",
+		url: "https://neonarcade-2.myshopify.com/",
+		repo: "https://github.com/ArnavAsif/gamestore",
+		pw: "",
+		accent: "bg-quaternary",
+		shape: "⬟",
+		image: "https://i.ibb.co.com/gLJDc61x/hero-desktop.png",
+		imageMobile: "https://i.ibb.co.com/Q3yVdwGm/hero-mobile.png",
+		features: [
+			"Shop by category grid",
+			"Interactive PC builder configurator",
+			"Gear showcase section",
+			"Brand directory",
+			"Customer testimonials carousel",
+			"Stats bar (50 brands · 10K+ products · 500K+ customers)",
+			"Newsletter signup",
+			"Mobile-first responsive design",
+			"SEO optimized"
+		],
+		tech: [
+			"Shopify 2.0",
+			"Liquid",
+			"CSS",
+			"JavaScript"
+		]
+	},
+	{
+		slug: "gamoratecha",
+		name: "GamoraTecha",
+		tag: "Next-Gen Gaming Store",
+		description: "A purple and cyan cyberpunk Shopify store for next-gen gaming gear. Features a dynamic hero, 6-category collection grid, trending products tab feed, console showcase sections for PS5 and Xbox Series X with spec highlights, a trust section, and a why-us comparison — designed for serious gamers.",
+		url: "https://gamoratecha.myshopify.com/",
+		repo: "https://github.com/ArnavAsif/gamoratecha",
+		pw: "",
+		accent: "bg-secondary",
+		shape: "⬡",
+		image: "https://i.ibb.co.com/pr0Q8yXH/hero-desktop.png",
+		imageMobile: "https://i.ibb.co.com/W4zj395F/hero-mobile.png",
+		features: [
+			"6-category collection grid",
+			"Trending products tabbed feed",
+			"PS5 & Xbox Series X console showcase",
+			"Console spec highlights",
+			"Trust & social proof section",
+			"10,000+ customer stats",
+			"Newsletter signup",
+			"Mobile-first responsive design",
+			"SEO optimized"
+		],
+		tech: [
+			"Shopify 2.0",
+			"Liquid",
+			"CSS",
+			"JavaScript"
+		]
+	},
+	{
+		slug: "armory-x",
+		name: "ARMORY X",
+		tag: "Tactical Gaming Gear Store",
+		description: "A high-impact Shopify store for tactical gaming and fire armor gear. Built with a dark military aesthetic, it features a bold hero banner, product category grid, featured gear sections, and a streamlined checkout flow — designed for gamers and collectors who demand performance and style.",
+		url: "https://armsarea-2.myshopify.com/",
+		repo: "https://github.com/ArnavAsif/Fire-Armor",
 		pw: "",
 		accent: "bg-tertiary",
-		shape: "■",
-		image: "",
-		features: [],
+		shape: "⬢",
+		image: "https://i.ibb.co.com/4Rb0MJZb/hero-desktop.png",
+		imageMobile: "https://i.ibb.co.com/twn2LhYQ/hero-mobile.png",
+		features: [
+			"Tactical hero banner",
+			"Product category grid",
+			"Featured gear sections",
+			"Streamlined checkout flow",
+			"Mobile-first responsive design",
+			"SEO optimized"
+		],
+		tech: [
+			"Shopify 2.0",
+			"Liquid",
+			"CSS",
+			"JavaScript"
+		]
+	},
+	{
+		slug: "work-offshore",
+		name: "Work Offshore",
+		tag: "Norwegian Offshore Career Platform",
+		description: "A professional career platform for landing jobs in the Norwegian offshore oil industry. Features a dramatic sunset rig hero, a 4-step career path guide, three tiered career packages with pricing, a before/after advantage comparison, verified customer testimonials, a premium resource library, and an FAQ section — built to convert aspiring offshore workers.",
+		url: "https://www.workoffshore.org/",
+		repo: "https://github.com/ArnavAsif/Work-Offshore",
+		pw: "",
+		accent: "bg-accent",
+		shape: "⬤",
+		image: "https://i.ibb.co.com/RpzbNhJM/hero-desktop.png",
+		imageMobile: "https://i.ibb.co.com/v4kjQRCM/hero-mobile.png",
+		features: [
+			"4-step career path guide",
+			"3 tiered career packages with pricing",
+			"Advantage comparison table",
+			"Verified customer testimonials",
+			"Premium resource library",
+			"FAQ accordion",
+			"Newsletter signup",
+			"Mobile-first responsive design",
+			"SEO optimized"
+		],
+		tech: [
+			"HTML",
+			"CSS",
+			"JavaScript"
+		]
+	},
+	{
+		slug: "heelheroes",
+		name: "Heel Heroes",
+		tag: "Luxury Foot Care Brand",
+		description: "A premium Shopify store for a salon-born luxury foot care brand. Built with a warm terracotta and cream aesthetic, it features a 4-pillar product highlight, a brand story section, an ingredient radial diagram, featured product spotlight, customer testimonials carousel, a wholesale program for salon professionals, and a subscription reorder section.",
+		url: "https://heelheroes.com/",
+		repo: "https://github.com/ArnavAsif/heel-heros",
+		pw: "",
+		accent: "bg-secondary",
+		shape: "❋",
+		image: "https://i.ibb.co.com/S4LnpN0h/hero-desktop.png",
+		features: [
+			"4-pillar product highlight section",
+			"Brand story section",
+			"Ingredient radial diagram",
+			"Featured product spotlight",
+			"Customer testimonials carousel",
+			"Wholesale program for salon professionals",
+			"Subscription reorder section",
+			"Mobile-first responsive design",
+			"SEO optimized"
+		],
 		tech: [
 			"Shopify 2.0",
 			"Liquid",

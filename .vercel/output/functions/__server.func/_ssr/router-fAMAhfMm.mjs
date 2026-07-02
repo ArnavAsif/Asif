@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { N as useRouter, c as HeadContent, d as Outlet, f as lazyRouteComponent, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "../_slug-BmTQwt8S.mjs";
+import { t as Route } from "../_slug-BMaXcVH8.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-Bu4VWErn.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-fAMAhfMm.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-CL2IQ2-S.css";
@@ -168,22 +168,22 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter = () => import("./routes-CltMPd2S.mjs");
+var $$splitComponentImporter = () => import("./routes-BV9lJT3t.mjs");
 var rootRouteChildren = {
 	IndexRoute: createFileRoute("/")({
 		head: () => ({ meta: [
-			{ title: "MD Asif Shah Diner — Shopify Developer Portfolio" },
+			{ title: "MD Asif Shah Diner — MERN Stack & Shopify Developer" },
 			{
 				name: "description",
-				content: "Freelance Shopify developer based in Dhaka. Custom Shopify 2.0 themes, Liquid sections, and conversion-focused storefronts that ship fast."
+				content: "MERN stack developer and Shopify expert based in Dhaka. Custom Shopify 2.0 themes, React websites, and conversion-focused storefronts."
 			},
 			{
 				property: "og:title",
-				content: "MD Asif Shah Diner — Shopify Developer"
+				content: "MD Asif Shah Diner — MERN Stack & Shopify Developer"
 			},
 			{
 				property: "og:description",
-				content: "Custom Shopify 2.0 themes and conversion-focused storefronts."
+				content: "MERN stack + Shopify 2.0 themes and conversion-focused storefronts."
 			}
 		] }),
 		component: lazyRouteComponent($$splitComponentImporter, "component")

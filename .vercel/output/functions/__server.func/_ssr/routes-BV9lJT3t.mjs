@@ -1,10 +1,10 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { n as projects } from "./projects-CCdRUMI3.mjs";
+import { n as projects } from "./projects-6ZGukruv.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CltMPd2S.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BV9lJT3t.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -49,54 +49,62 @@ var skills = [
 		icon: Store
 	},
 	{
-		label: "Front-End",
+		label: "MERN Stack",
 		items: [
-			"HTML5",
-			"CSS3",
-			"JavaScript ES6+",
-			"Responsive Design"
+			"MongoDB",
+			"Express.js",
+			"React.js",
+			"Node.js"
 		],
 		color: "bg-secondary text-foreground",
 		icon: CodeXml
 	},
 	{
-		label: "Tools",
+		label: "Framework",
 		items: [
-			"Git",
-			"GitHub",
-			"VS Code",
-			"Figma",
-			"Chrome DevTools"
+			"Next.js",
+			"React 19",
+			"TanStack Router",
+			"TypeScript"
 		],
 		color: "bg-tertiary text-foreground",
-		icon: Palette
+		icon: Rocket
 	},
 	{
-		label: "E-commerce",
+		label: "Tools",
 		items: [
-			"CRO",
-			"SEO",
-			"Performance",
-			"App Integration"
+			"Git & GitHub",
+			"VS Code",
+			"Figma",
+			"REST APIs",
+			"Chrome DevTools"
 		],
 		color: "bg-quaternary text-foreground",
-		icon: Rocket
+		icon: Palette
 	}
 ];
 var headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
 var marqueeWords = [
-	"Liquid",
+	"React",
 	"✦",
-	"Shopify 2.0",
+	"Next.js",
 	"●",
-	"Metafields",
+	"MongoDB",
 	"△",
-	"Theme Dev",
+	"Node.js",
 	"◆",
-	"Sections",
+	"Shopify 2.0",
 	"✿",
-	"CRO",
-	"▲"
+	"Express.js",
+	"▲",
+	"Liquid",
+	"⬟",
+	"TypeScript",
+	"⬡",
+	"REST APIs",
+	"⬢",
+	"MERN",
+	"⬤"
 ];
 function Index() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -203,9 +211,22 @@ function Hero() {
 									className: "relative inline-block",
 									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "relative z-10",
-										children: "Shopify"
+										children: "MERN stack"
 									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 										className: "absolute inset-x-0 bottom-1 -z-0 h-4 bg-tertiary sm:h-5",
+										"aria-hidden": true
+									})]
+								}),
+								" ",
+								"&",
+								" ",
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "relative inline-block",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "relative z-10",
+										children: "Shopify"
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "absolute inset-x-0 bottom-1 -z-0 h-4 bg-secondary sm:h-5",
 										"aria-hidden": true
 									})]
 								}),
@@ -226,7 +247,7 @@ function Hero() {
 									className: "text-foreground",
 									children: "MD Asif Shah Diner"
 								}),
-								", a Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts."
+								", a developer in Dhaka building with the MERN stack, Next.js, and custom Shopify 2.0 themes."
 							]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -255,15 +276,15 @@ function Hero() {
 									"data-reveal-delay": "0",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
 										n: "60+",
-										label: "Shopify stores"
+										label: "Websites shipped"
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 									"data-reveal": "up",
 									"data-reveal-delay": "100",
 									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Stat, {
-										n: "2.0",
-										label: "Theme expert"
+										n: "MERN",
+										label: "Stack expert"
 									})
 								}),
 								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
@@ -301,20 +322,20 @@ function Hero() {
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sparkles, {
 									className: "h-3 w-3",
 									strokeWidth: 2.5
-								}), " Shopify Dev"]
+								}), " MERN + Shopify"]
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FloatingTag, {
 							className: "-left-6 top-10 -rotate-6 bg-quaternary",
-							children: "Liquid"
+							children: "React"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FloatingTag, {
 							className: "-right-2 top-1/2 rotate-6 bg-tertiary",
-							children: "2.0"
+							children: "Next.js"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(FloatingTag, {
 							className: "bottom-2 left-10 -rotate-3 bg-background",
-							children: "Metafields"
+							children: "MongoDB"
 						})
 					]
 				})]
@@ -376,14 +397,14 @@ function About() {
 				"data-reveal": "left",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "About" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 					className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-					children: "A developer who treats every store like a product launch."
+					children: "A developer who treats every website like a product launch."
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-reveal": "right",
 				className: "space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg",
 				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "I'm a Shopify developer with hands-on experience building and customizing Shopify 2.0 stores using Liquid, HTML, CSS, JavaScript, metafields, and theme customization." }),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "I care about responsive layouts, conversion details, and reusable sections so brands can keep editing long after I ship. When something feels slow, I make it fast. When something feels rough, I sand it down." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "I'm a developer with hands-on experience across the MERN stack (MongoDB, Express.js, React, Node.js), Next.js, and Shopify 2.0 theme development. From building React websites and Node.js backends to crafting conversion-focused Shopify storefronts — I cover the full spectrum." }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "I care about responsive layouts, clean code, and shipping things that work. Whether it's a custom Liquid section, a Node.js API, or a React website — when something feels slow, I make it fast. When something feels rough, I sand it down." }),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "flex flex-wrap gap-2 pt-2",
 						children: [
@@ -422,7 +443,7 @@ function Skills() {
 				className: "max-w-2xl",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Toolbox" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 					className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-					children: "The kit I reach for."
+					children: "The stacks I work with."
 				})]
 			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 				className: "mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4",
@@ -526,7 +547,7 @@ function ProjectCard({ project, index }) {
 							children: project.name
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 							className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
-							children: "Shopify 2.0"
+							children: project.tech.includes("Shopify 2.0") ? "Shopify 2.0" : project.tech[0]
 						})]
 					}),
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -565,7 +586,7 @@ function ProjectCard({ project, index }) {
 		})
 	});
 }
-var INITIAL_COUNT = 6;
+var INITIAL_COUNT = 9;
 var LOAD_MORE_COUNT = 3;
 function Projects() {
 	const hasEnoughProjects = projects.length > INITIAL_COUNT;
@@ -612,12 +633,12 @@ function Projects() {
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Eyebrow, { children: "Selected work" }),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl",
-								children: "Stores I've shipped."
+								children: "Websites I've built."
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 								className: "mt-3 text-muted-foreground",
 								children: [
-									"Each store is custom-built on Shopify 2.0. Demo passwords are ",
+									"Shopify stores and MERN stack websites. Demo passwords are ",
 									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("code", {
 										className: "rounded bg-muted px-1.5 py-0.5 font-mono text-sm",
 										children: "1"
@@ -713,7 +734,7 @@ function Experience() {
 						className: "flex items-center justify-between gap-4",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
 							className: "font-display text-xl font-extrabold",
-							children: "Shopify Developer"
+							children: "MERN Stack & Shopify Developer"
 						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "text-sm font-medium text-muted-foreground",
 							children: "2025 — Present"
@@ -727,8 +748,9 @@ function Experience() {
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 						className: "mt-4 space-y-2 text-sm text-muted-foreground sm:text-base",
 						children: [
-							"Developed and customized multiple Shopify stores from scratch",
-							"Built custom sections, product pages, and landing pages",
+							"Built MERN stack websites with React, Node.js, Express, and MongoDB",
+							"Developed and customized multiple Shopify 2.0 stores from scratch",
+							"Built custom sections, product pages, landing pages, and REST APIs",
 							"Optimized site speed, UX, and integrated third-party apps"
 						].map((it) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 							className: "flex gap-3",
@@ -825,11 +847,11 @@ function Contact() {
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
 								className: "mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-7xl",
-								children: "Got a store to ship?"
+								children: "Got a project in mind?"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 								className: "mt-3 max-w-xl text-base sm:text-lg",
-								children: "I'm taking on new Shopify projects. Send a brief, a screenshot, or just say hi."
+								children: "I'm taking on new MERN stack and Shopify projects. Send a brief, a screenshot, or just say hi."
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "mt-8 grid gap-3 sm:grid-cols-2",
@@ -929,7 +951,7 @@ function Footer() {
 			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 				"© ",
 				(/* @__PURE__ */ new Date()).getFullYear(),
-				" MD Asif Shah Diner. Built with Shopify love."
+				" MD Asif Shah Diner. MERN stack & Shopify developer."
 			] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				className: "flex items-center gap-3",
 				children: [
