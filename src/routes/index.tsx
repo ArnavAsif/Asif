@@ -13,10 +13,10 @@ import type { Project } from "@/data/projects";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MD Asif Shah Diner — Shopify Developer Portfolio" },
-      { name: "description", content: "Freelance Shopify developer based in Dhaka. Custom Shopify 2.0 themes, Liquid sections, and conversion-focused storefronts that ship fast." },
-      { property: "og:title", content: "MD Asif Shah Diner — Shopify Developer" },
-      { property: "og:description", content: "Custom Shopify 2.0 themes and conversion-focused storefronts." },
+      { title: "MD Asif Shah Diner — MERN Stack & Shopify Developer" },
+      { name: "description", content: "MERN stack developer and Shopify expert based in Dhaka. Custom Shopify 2.0 themes, React websites, and conversion-focused storefronts." },
+      { property: "og:title", content: "MD Asif Shah Diner — MERN Stack & Shopify Developer" },
+      { property: "og:description", content: "MERN stack + Shopify 2.0 themes and conversion-focused storefronts." },
     ],
   }),
   component: Index,
@@ -24,14 +24,14 @@ export const Route = createFileRoute("/")({
 
 const skills = [
   { label: "Shopify", items: ["Liquid", "Shopify 2.0", "Theme Dev", "Metafields", "Metaobjects", "Shopify CLI"], color: "bg-accent text-accent-foreground", icon: Store },
-  { label: "Front-End", items: ["HTML5", "CSS3", "JavaScript ES6+", "Responsive Design"], color: "bg-secondary text-foreground", icon: Code2 },
-  { label: "Tools", items: ["Git", "GitHub", "VS Code", "Figma", "Chrome DevTools"], color: "bg-tertiary text-foreground", icon: Palette },
-  { label: "E-commerce", items: ["CRO", "SEO", "Performance", "App Integration"], color: "bg-quaternary text-foreground", icon: Rocket },
+  { label: "MERN Stack", items: ["MongoDB", "Express.js", "React.js", "Node.js"], color: "bg-secondary text-foreground", icon: Code2 },
+  { label: "Framework", items: ["Next.js", "React 19", "TanStack Router", "TypeScript"], color: "bg-tertiary text-foreground", icon: Rocket },
+  { label: "Tools", items: ["Git & GitHub", "VS Code", "Figma", "REST APIs", "Chrome DevTools"], color: "bg-quaternary text-foreground", icon: Palette },
 ];
 
 const headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
 
-const marqueeWords = ["Liquid", "✦", "Shopify 2.0", "●", "Metafields", "△", "Theme Dev", "◆", "Sections", "✿", "CRO", "▲"];
+const marqueeWords = ["React", "✦", "Next.js", "●", "MongoDB", "△", "Node.js", "◆", "Shopify 2.0", "✿", "Express.js", "▲", "Liquid", "⬟", "TypeScript", "⬡", "REST APIs", "⬢", "MERN", "⬤"];
 
 function Index() {
   const revealRef = useReveal();
@@ -93,13 +93,18 @@ function Hero() {
           </span>
           <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.95] sm:text-7xl lg:text-7xl">
             I build <span className="relative inline-block">
-              <span className="relative z-10">Shopify</span>
+              <span className="relative z-10">MERN stack</span>
               <span className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-tertiary sm:h-5" aria-hidden />
+            </span>{" "}
+                  &{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">Shopify</span>
+              <span className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-secondary sm:h-5" aria-hidden />
             </span>{" "}
             stores that <span className="text-accent">convert</span>.
           </h1>
           <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>, a Shopify developer in Dhaka building custom 2.0 themes, Liquid sections, and pixel-honest storefronts.
+            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>, a developer in Dhaka building with the MERN stack, Next.js, and custom Shopify 2.0 themes.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base">
@@ -114,8 +119,8 @@ function Hero() {
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-3 sm:max-w-md">
-            <div data-reveal="up" data-reveal-delay="0"><Stat n="60+" label="Shopify stores" /></div>
-            <div data-reveal="up" data-reveal-delay="100"><Stat n="2.0" label="Theme expert" /></div>
+            <div data-reveal="up" data-reveal-delay="0"><Stat n="60+" label="Websites shipped" /></div>
+            <div data-reveal="up" data-reveal-delay="100"><Stat n="MERN" label="Stack expert" /></div>
             <div data-reveal="up" data-reveal-delay="200"><Stat n="100%" label="Responsive" /></div>
           </div>
         </div>
@@ -132,13 +137,13 @@ function Hero() {
               className="absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap">
-              <Sparkles className="h-3 w-3" strokeWidth={2.5} /> Shopify Dev
+              <Sparkles className="h-3 w-3" strokeWidth={2.5} /> MERN + Shopify
             </div>
           </div>
           {/* Floating tags */}
-          <FloatingTag className="-left-6 top-10 -rotate-6 bg-quaternary">Liquid</FloatingTag>
-          <FloatingTag className="-right-2 top-1/2 rotate-6 bg-tertiary">2.0</FloatingTag>
-          <FloatingTag className="bottom-2 left-10 -rotate-3 bg-background">Metafields</FloatingTag>
+          <FloatingTag className="-left-6 top-10 -rotate-6 bg-quaternary">React</FloatingTag>
+          <FloatingTag className="-right-2 top-1/2 rotate-6 bg-tertiary">Next.js</FloatingTag>
+          <FloatingTag className="bottom-2 left-10 -rotate-3 bg-background">MongoDB</FloatingTag>
         </div>
       </div>
     </section>
@@ -194,15 +199,15 @@ function About() {
         <div data-reveal="left">
           <Eyebrow>About</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            A developer who treats every store like a product launch.
+            A developer who treats every website like a product launch.
           </h2>
         </div>
         <div data-reveal="right" className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
           <p>
-            I'm a Shopify developer with hands-on experience building and customizing Shopify 2.0 stores using Liquid, HTML, CSS, JavaScript, metafields, and theme customization.
+            I'm a developer with hands-on experience across the MERN stack (MongoDB, Express.js, React, Node.js), Next.js, and Shopify 2.0 theme development. From building React websites and Node.js backends to crafting conversion-focused Shopify storefronts — I cover the full spectrum.
           </p>
           <p>
-            I care about responsive layouts, conversion details, and reusable sections so brands can keep editing long after I ship. When something feels slow, I make it fast. When something feels rough, I sand it down.
+            I care about responsive layouts, clean code, and shipping things that work. Whether it's a custom Liquid section, a Node.js API, or a React website — when something feels slow, I make it fast. When something feels rough, I sand it down.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
             {["Problem solving", "Communication", "Teamwork", "Time management", "Attention to detail"].map((s) => (
@@ -233,7 +238,7 @@ function Skills() {
         <div data-reveal="up" className="max-w-2xl">
           <Eyebrow>Toolbox</Eyebrow>
           <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-            The kit I reach for.
+            The stacks I work with.
           </h2>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -328,7 +333,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <div className="flex items-center justify-between gap-2">
             <h3 className="font-display text-xl font-extrabold">{project.name}</h3>
             <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
-              Shopify 2.0
+              {project.tech.includes("Shopify 2.0") ? "Shopify 2.0" : project.tech[0]}
             </span>
           </div>
           <p className="text-sm text-muted-foreground">{project.tag}</p>
@@ -356,7 +361,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 /* ----------------------------- PROJECTS --------------------------- */
-const INITIAL_COUNT = 6;
+const INITIAL_COUNT = 9;
 const LOAD_MORE_COUNT = 3;
 
 function Projects() {
@@ -400,9 +405,9 @@ function Projects() {
           <div className="max-w-2xl">
             <Eyebrow>Selected work</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
-              Stores I've shipped.
+              Websites I've built.
             </h2>
-            <p className="mt-3 text-muted-foreground">Each store is custom-built on Shopify 2.0. Demo passwords are <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">1</code>.</p>
+            <p className="mt-3 text-muted-foreground">Shopify stores and MERN stack websites. Demo passwords are <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">1</code>.</p>
           </div>
           <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" className="hidden items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary sm:inline-flex">
             <Github className="h-4 w-4" strokeWidth={2.5} /> All repos
@@ -477,7 +482,7 @@ function Experience() {
             <div data-reveal="up" className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-xl font-extrabold">Shopify Developer</h3>
+                  <h3 className="font-display text-xl font-extrabold">MERN Stack & Shopify Developer</h3>
                   <p className="text-sm font-medium text-muted-foreground">2025 — Present</p>
                 </div>
                 <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary">
@@ -486,8 +491,9 @@ function Experience() {
               </div>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground sm:text-base">
                 {[
-                  "Developed and customized multiple Shopify stores from scratch",
-                  "Built custom sections, product pages, and landing pages",
+                  "Built MERN stack websites with React, Node.js, Express, and MongoDB",
+                  "Developed and customized multiple Shopify 2.0 stores from scratch",
+                  "Built custom sections, product pages, landing pages, and REST APIs",
                   "Optimized site speed, UX, and integrated third-party apps",
                 ].map((it) => (
                   <li key={it} className="flex gap-3">
@@ -546,10 +552,10 @@ function Contact() {
               Let's build
             </span>
             <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-7xl">
-              Got a store to ship?
+              Got a project in mind?
             </h2>
             <p className="mt-3 max-w-xl text-base sm:text-lg">
-              I'm taking on new Shopify projects. Send a brief, a screenshot, or just say hi.
+              I'm taking on new MERN stack and Shopify projects. Send a brief, a screenshot, or just say hi.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -589,7 +595,7 @@ function Footer() {
   return (
     <footer className="border-t-2 border-foreground bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm font-medium sm:flex-row sm:px-6">
-        <div>&copy; {new Date().getFullYear()} MD Asif Shah Diner. Built with Shopify love.</div>
+        <div>&copy; {new Date().getFullYear()} MD Asif Shah Diner. MERN stack & Shopify developer.</div>
         <div className="flex items-center gap-3">
           <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Github className="h-4 w-4" strokeWidth={2.5} /></a>
           <a href="https://linkedin.com/in/arnav-asif-a74894259" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Linkedin className="h-4 w-4" strokeWidth={2.5} /></a>
