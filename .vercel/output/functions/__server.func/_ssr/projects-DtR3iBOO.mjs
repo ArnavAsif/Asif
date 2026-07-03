@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/projects-52EYkznm.js
+//#region node_modules/.nitro/vite/services/ssr/assets/projects-DtR3iBOO.js
 var projects = [
 	{
 		slug: "otap",
@@ -10,8 +10,8 @@ var projects = [
 		pw: "1",
 		accent: "bg-accent",
 		shape: "△",
-		image: "/assets/project-images/otap-hero-desktop.png",
-		imageMobile: "/assets/project-images/otap-hero-mobile.png",
+		image: "/assets/project-images/otap-hero-desktop.webp",
+		imageMobile: "/assets/project-images/otap-hero-mobile.webp",
 		features: [
 			"8 fully built pages",
 			"16-product catalog with filtering",
@@ -40,7 +40,7 @@ var projects = [
 		pw: "1",
 		accent: "bg-secondary",
 		shape: "●",
-		image: "/assets/project-images/bro&co-hero-desktop.png",
+		image: "/assets/project-images/bro&co-hero-desktop.webp",
 		features: [
 			"French-language UI",
 			"Pet product shop",
@@ -68,8 +68,8 @@ var projects = [
 		pw: "1",
 		accent: "bg-tertiary",
 		shape: "✦",
-		image: "/assets/project-images/manga-mint-hero-desktop.png",
-		imageMobile: "/assets/project-images/manga-mint-hero-mobile.png",
+		image: "/assets/project-images/manga-mint-hero-desktop.webp",
+		imageMobile: "/assets/project-images/manga-mint-hero-mobile.webp",
 		features: [
 			"6-category collection grid",
 			"Trending manga series carousel",
@@ -98,8 +98,8 @@ var projects = [
 		pw: "1",
 		accent: "bg-quaternary",
 		shape: "◆",
-		image: "/assets/project-images/cybernexus-hero-desktop.png",
-		imageMobile: "/assets/project-images/cybernexus-hero-mobile.png",
+		image: "/assets/project-images/cybernexus-hero-desktop.webp",
+		imageMobile: "/assets/project-images/cybernexus-hero-mobile.webp",
 		features: [
 			"Cinematic hero with anime character art",
 			"Live server status dashboard",
@@ -128,8 +128,8 @@ var projects = [
 		pw: "1",
 		accent: "bg-secondary",
 		shape: "✿",
-		image: "/assets/project-images/vantique-hero-desktop.png",
-		imageMobile: "/assets/project-images/vantique-mobile.png",
+		image: "/assets/project-images/vantique-hero-desktop.webp",
+		imageMobile: "/assets/project-images/vantique-mobile.webp",
 		features: [
 			"Dynamic hero campaign banner",
 			"Featured collection product grid",
@@ -157,8 +157,8 @@ var projects = [
 		pw: "1",
 		accent: "bg-accent",
 		shape: "▲",
-		image: "/assets/project-images/fast-clean-hero-desktop.png",
-		imageMobile: "/assets/project-images/fast-clean-hero-mobile.png",
+		image: "/assets/project-images/fast-clean-hero-desktop.webp",
+		imageMobile: "/assets/project-images/fast-clean-hero-mobile.webp",
 		features: [
 			"Before & after comparison slider",
 			"4-step process guide",
@@ -187,8 +187,8 @@ var projects = [
 		pw: "",
 		accent: "bg-quaternary",
 		shape: "⬟",
-		image: "/assets/project-images/neon-arc-hero-desktop.png",
-		imageMobile: "/assets/project-images/neon-arc-hero-mobile.png",
+		image: "/assets/project-images/neon-arc-hero-desktop.webp",
+		imageMobile: "/assets/project-images/neon-arc-hero-mobile.webp",
 		features: [
 			"Shop by category grid",
 			"Interactive PC builder configurator",
@@ -217,8 +217,8 @@ var projects = [
 		pw: "",
 		accent: "bg-secondary",
 		shape: "⬡",
-		image: "/assets/project-images/gamoratecha-hero-desktop.png",
-		imageMobile: "/assets/project-images/gamoratecha-hero-mobile.png",
+		image: "/assets/project-images/gamoratecha-hero-desktop.webp",
+		imageMobile: "/assets/project-images/gamoratecha-hero-mobile.webp",
 		features: [
 			"6-category collection grid",
 			"Trending products tabbed feed",
@@ -247,8 +247,8 @@ var projects = [
 		pw: "",
 		accent: "bg-tertiary",
 		shape: "⬢",
-		image: "/assets/project-images/armoryx-hero-desktop.png",
-		imageMobile: "/assets/project-images/armoryx-hero-mobile.png",
+		image: "/assets/project-images/armoryx-hero-desktop.webp",
+		imageMobile: "/assets/project-images/armoryx-hero-mobile.webp",
 		features: [
 			"Tactical hero banner",
 			"Product category grid",
@@ -274,8 +274,8 @@ var projects = [
 		pw: "",
 		accent: "bg-accent",
 		shape: "⬤",
-		image: "/assets/project-images/work-offshore-hero-desktop.png",
-		imageMobile: "/assets/project-images/work-offshore-hero-mobile.png",
+		image: "/assets/project-images/work-offshore-hero-desktop.webp",
+		imageMobile: "/assets/project-images/work-offshore-hero-mobile.webp",
 		features: [
 			"4-step career path guide",
 			"3 tiered career packages with pricing",
@@ -303,7 +303,7 @@ var projects = [
 		pw: "",
 		accent: "bg-secondary",
 		shape: "❋",
-		image: "/assets/project-images/heels-heros-hero-desktop.png",
+		image: "/assets/project-images/heels-heros-hero-desktop.webp",
 		features: [
 			"4-pillar product highlight section",
 			"Brand story section",

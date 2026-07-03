@@ -1,10 +1,10 @@
 import { r as __toESM } from "../_runtime.mjs";
-import { n as projects } from "./projects-52EYkznm.mjs";
+import { n as projects } from "./projects-DtR3iBOO.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-DbqoPuHV.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-dR6ZinKD.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -83,7 +83,7 @@ var skills = [
 		icon: Palette
 	}
 ];
-var headshot = "/assets/project-images/portfolio.png";
+var headshot = "/assets/project-images/portfolio.webp";
 var marqueeWords = [
 	"React",
 	"✦",
