@@ -179,7 +179,7 @@ function Squiggle({ className }: { className?: string }) {
 function Marquee() {
   const row = [...marqueeWords, ...marqueeWords];
   return (
-    <div className="border-y-2 border-foreground bg-accent text-accent-foreground">
+    <div className="overflow-hidden border-y-2 border-foreground bg-accent text-accent-foreground">
       <div className="flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl will-change-transform">
         {row.map((w, i) => (
           <span key={i} className="flex items-center gap-8">
