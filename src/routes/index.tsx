@@ -29,7 +29,7 @@ const skills = [
   { label: "Tools", items: ["Git & GitHub", "VS Code", "Figma", "REST APIs", "Chrome DevTools"], color: "bg-quaternary text-foreground", icon: Palette },
 ];
 
-const headshot = "https://i.ibb.co.com/LXr0YqGS/Chat-GPT-Image-Jun-30-2026-04-35-36-PM.png";
+const headshot = "/assets/project-images/portfolio.png";
 
 const marqueeWords = ["React", "✦", "Next.js", "●", "MongoDB", "△", "Node.js", "◆", "Shopify 2.0", "✿", "Express.js", "▲", "Liquid", "⬟", "TypeScript", "⬡", "REST APIs", "⬢", "MERN", "⬤"];
 
