@@ -4,7 +4,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-dR6ZinKD.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-CSXVALez.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -377,7 +377,7 @@ function Squiggle({ className }) {
 }
 function Marquee() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-		className: "border-y-2 border-foreground bg-accent text-accent-foreground",
+		className: "overflow-hidden border-y-2 border-foreground bg-accent text-accent-foreground",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "flex animate-marquee gap-8 whitespace-nowrap py-4 font-display text-2xl font-extrabold sm:text-3xl will-change-transform",
 			children: [...marqueeWords, ...marqueeWords].map((w, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
