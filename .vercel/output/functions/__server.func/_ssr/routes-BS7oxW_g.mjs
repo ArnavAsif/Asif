@@ -4,7 +4,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-B0w1Apz_.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BS7oxW_g.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -263,9 +263,10 @@ function Hero() {
 									})
 								})]
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", {
-								href: "#contact",
+								href: "Asif_Cv.pdf",
+								download: true,
 								className: "inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-transparent px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-tertiary sm:text-base",
-								children: "Let's talk"
+								children: "Download CV"
 							})]
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

@@ -113,8 +113,8 @@ function Hero() {
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
               </span>
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-transparent px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-tertiary sm:text-base">
-              Let's talk
+            <a href="Asif_Cv.pdf" download className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-transparent px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-tertiary sm:text-base">
+              Download CV
             </a>
           </div>
 
