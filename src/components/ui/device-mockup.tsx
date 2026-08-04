@@ -3,11 +3,39 @@ import { cn } from "@/lib/utils";
 interface DeviceMockupProps {
   src: string;
   alt: string;
+  video?: string;
   variant?: "desktop" | "mobile";
   className?: string;
 }
 
-export function DeviceMockup({ src, alt, variant = "desktop", className }: DeviceMockupProps) {
+export function DeviceMockup({
+  src,
+  alt,
+  video,
+  variant = "desktop",
+  className,
+}: DeviceMockupProps) {
+  const media = video ? (
+    <video
+      src={video}
+      aria-label={alt}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className="h-auto w-full object-cover object-top"
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className="h-auto w-full object-cover object-top"
+    />
+  );
+
   if (variant === "mobile") {
     return (
       <div className={cn("relative mx-auto", className)}>
@@ -16,15 +44,7 @@ export function DeviceMockup({ src, alt, variant = "desktop", className }: Devic
           {/* Notch */}
           <div className="absolute -top-[6px] left-1/2 z-10 h-[28px] w-[120px] -translate-x-1/2 rounded-b-2xl bg-foreground" />
           {/* Screen */}
-          <div className="relative overflow-hidden rounded-[2rem] bg-background">
-            <img
-              src={src}
-              alt={alt}
-              loading="lazy"
-              decoding="async"
-              className="h-auto w-full object-cover object-top"
-            />
-          </div>
+          <div className="relative overflow-hidden rounded-[2rem] bg-background">{media}</div>
           {/* Home indicator */}
           <div className="absolute bottom-3 left-1/2 h-1 w-1/3 -translate-x-1/2 rounded-full bg-muted" />
         </div>
@@ -39,15 +59,7 @@ export function DeviceMockup({ src, alt, variant = "desktop", className }: Devic
         {/* Camera dot */}
         <div className="absolute top-3 left-1/2 h-2 w-2 -translate-x-1/2 rounded-full bg-muted" />
         {/* Screen */}
-        <div className="relative overflow-hidden rounded-t-xl bg-background pt-3">
-          <img
-            src={src}
-            alt={alt}
-            loading="lazy"
-            decoding="async"
-            className="h-auto w-full object-cover object-top"
-          />
-        </div>
+        <div className="relative overflow-hidden rounded-t-xl bg-background pt-3">{media}</div>
       </div>
       {/* Laptop base */}
       <div className="relative h-4 rounded-b-2xl border-[6px] border-t-2 border-foreground bg-foreground">

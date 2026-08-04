@@ -1,7 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ArrowRight, ArrowUpRight, Github, Linkedin, Mail, Phone, MapPin,
-  Code2, Palette, Rocket, Zap, Check, Star, Sparkles, Store,
+  ArrowRight,
+  ArrowUpRight,
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Code2,
+  Palette,
+  Rocket,
+  Zap,
+  Check,
+  Star,
+  Sparkles,
+  Store,
   ChevronDown,
 } from "lucide-react";
 import { useState, useCallback, useEffect, useRef } from "react";
@@ -14,24 +27,72 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "MD Asif Shah Diner — MERN Stack & Shopify Developer" },
-      { name: "description", content: "MERN stack developer and Shopify expert based in Dhaka. Custom Shopify 2.0 themes, React websites, and conversion-focused storefronts." },
+      {
+        name: "description",
+        content:
+          "MERN stack developer and Shopify expert based in Dhaka. Custom Shopify 2.0 themes, React websites, and conversion-focused storefronts.",
+      },
       { property: "og:title", content: "MD Asif Shah Diner — MERN Stack & Shopify Developer" },
-      { property: "og:description", content: "MERN stack + Shopify 2.0 themes and conversion-focused storefronts." },
+      {
+        property: "og:description",
+        content: "MERN stack + Shopify 2.0 themes and conversion-focused storefronts.",
+      },
     ],
   }),
   component: Index,
 });
 
 const skills = [
-  { label: "Shopify", items: ["Liquid", "Shopify 2.0", "Theme Dev", "Metafields", "Metaobjects", "Shopify CLI"], color: "bg-accent text-accent-foreground", icon: Store },
-  { label: "MERN Stack", items: ["MongoDB", "Express.js", "React.js", "Node.js"], color: "bg-secondary text-foreground", icon: Code2 },
-  { label: "Framework", items: ["Next.js", "React 19", "TanStack Router", "TypeScript"], color: "bg-tertiary text-foreground", icon: Rocket },
-  { label: "Tools", items: ["Git & GitHub", "VS Code", "Figma", "REST APIs", "Chrome DevTools"], color: "bg-quaternary text-foreground", icon: Palette },
+  {
+    label: "Shopify",
+    items: ["Liquid", "Shopify 2.0", "Theme Dev", "Metafields", "Metaobjects", "Shopify CLI"],
+    color: "bg-accent text-accent-foreground",
+    icon: Store,
+  },
+  {
+    label: "MERN Stack",
+    items: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    color: "bg-secondary text-foreground",
+    icon: Code2,
+  },
+  {
+    label: "Framework",
+    items: ["Next.js", "React 19", "TanStack Router", "TypeScript"],
+    color: "bg-tertiary text-foreground",
+    icon: Rocket,
+  },
+  {
+    label: "Tools",
+    items: ["Git & GitHub", "VS Code", "Figma", "REST APIs", "Chrome DevTools"],
+    color: "bg-quaternary text-foreground",
+    icon: Palette,
+  },
 ];
 
 const headshot = "/assets/project-images/portfolio.webp";
 
-const marqueeWords = ["React", "✦", "Next.js", "●", "MongoDB", "△", "Node.js", "◆", "Shopify 2.0", "✿", "Express.js", "▲", "Liquid", "⬟", "TypeScript", "⬡", "REST APIs", "⬢", "MERN", "⬤"];
+const marqueeWords = [
+  "React",
+  "✦",
+  "Next.js",
+  "●",
+  "MongoDB",
+  "△",
+  "Node.js",
+  "◆",
+  "Shopify 2.0",
+  "✿",
+  "Express.js",
+  "▲",
+  "Liquid",
+  "⬟",
+  "TypeScript",
+  "⬡",
+  "REST APIs",
+  "⬢",
+  "MERN",
+  "⬤",
+];
 
 function Index() {
   const revealRef = useReveal();
@@ -56,17 +117,33 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#top" className="flex items-center gap-2 font-display text-lg font-extrabold sm:text-xl">
-          <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-accent text-accent-foreground pop-shadow">A</span>
+        <a
+          href="#top"
+          className="flex items-center gap-2 font-display text-lg font-extrabold sm:text-xl"
+        >
+          <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-accent text-accent-foreground pop-shadow">
+            A
+          </span>
           <span className="hidden sm:inline">Asif.</span>
         </a>
         <nav className="hidden items-center gap-6 text-base font-extrabold md:flex">
-          <a href="#projects" className="transition-colors duration-300 hover:text-accent">Projects</a>
-          <a href="#skills" className="transition-colors duration-300 hover:text-accent">Skills</a>
-          <a href="#about" className="transition-colors duration-300 hover:text-accent">About</a>
-          <a href="#contact" className="transition-colors duration-300 hover:text-accent">Contact</a>
+          <a href="#projects" className="transition-colors duration-300 hover:text-accent">
+            Projects
+          </a>
+          <a href="#skills" className="transition-colors duration-300 hover:text-accent">
+            Skills
+          </a>
+          <a href="#about" className="transition-colors duration-300 hover:text-accent">
+            About
+          </a>
+          <a href="#contact" className="transition-colors duration-300 hover:text-accent">
+            Contact
+          </a>
         </nav>
-        <a href="#contact" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]">
+        <a
+          href="#contact"
+          className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]"
+        >
           Hire me
           <span className="grid h-5 w-5 place-items-center rounded-full bg-background text-foreground">
             <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
@@ -82,8 +159,14 @@ function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pb-16 pt-12 sm:pt-20 lg:pt-28">
       {/* Decorations */}
-      <div className="pointer-events-none absolute -left-24 top-24 hidden h-72 w-72 rounded-full bg-tertiary md:block" aria-hidden />
-      <div className="pointer-events-none absolute right-10 top-8 hidden h-16 w-16 rotate-12 rounded-md border-2 border-foreground bg-quaternary md:block" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-24 top-24 hidden h-72 w-72 rounded-full bg-tertiary md:block"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute right-10 top-8 hidden h-16 w-16 rotate-12 rounded-md border-2 border-foreground bg-quaternary md:block"
+        aria-hidden
+      />
       <Squiggle className="pointer-events-none absolute right-1/4 top-40 hidden h-8 w-32 text-secondary md:block" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
@@ -92,43 +175,70 @@ function Hero() {
             <span className="h-2 w-2 rounded-full bg-quaternary" /> Available for freelance
           </span>
           <h1 className="mt-5 font-display text-5xl font-extrabold leading-[0.95] sm:text-7xl lg:text-7xl">
-            I build <span className="relative inline-block">
+            I build{" "}
+            <span className="relative inline-block">
               <span className="relative z-10">MERN stack</span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-tertiary sm:h-5" aria-hidden />
+              <span
+                className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-tertiary sm:h-5"
+                aria-hidden
+              />
             </span>{" "}
-                  &{" "}
+            &{" "}
             <span className="relative inline-block">
               <span className="relative z-10">Shopify</span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-secondary sm:h-5" aria-hidden />
+              <span
+                className="absolute inset-x-0 bottom-1 -z-0 h-4 bg-secondary sm:h-5"
+                aria-hidden
+              />
             </span>{" "}
             stores that <span className="text-accent">convert</span>.
           </h1>
           <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
-            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>, a developer in Dhaka building with the MERN stack, Next.js, and custom Shopify 2.0 themes.
+            Hey, I'm <strong className="text-foreground">MD Asif Shah Diner</strong>, a developer in
+            Dhaka building with the MERN stack, Next.js, and custom Shopify 2.0 themes.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#projects" className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base">
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-5 py-3 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)] sm:text-base"
+            >
               See my work
               <span className="grid h-6 w-6 place-items-center rounded-full bg-background text-foreground">
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
               </span>
             </a>
-            <a href="Asif_Cv.pdf" download className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-transparent px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-tertiary sm:text-base">
+            <a
+              href="Asif_Cv.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-transparent px-5 py-3 text-sm font-bold transition-colors duration-300 hover:bg-tertiary sm:text-base"
+            >
               Download CV
             </a>
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-3 sm:max-w-md">
-            <div data-reveal="up" data-reveal-delay="0"><Stat n="60+" label="Websites shipped" /></div>
-            <div data-reveal="up" data-reveal-delay="100"><Stat n="MERN" label="Stack expert" /></div>
-            <div data-reveal="up" data-reveal-delay="200"><Stat n="100%" label="Responsive" /></div>
+            <div data-reveal="up" data-reveal-delay="0">
+              <Stat n="60+" label="Websites shipped" />
+            </div>
+            <div data-reveal="up" data-reveal-delay="100">
+              <Stat n="MERN" label="Stack expert" />
+            </div>
+            <div data-reveal="up" data-reveal-delay="200">
+              <Stat n="100%" label="Responsive" />
+            </div>
           </div>
         </div>
 
         {/* Visual blob */}
         <div data-reveal="right" className="relative mx-auto w-full max-w-md">
-          <div className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary" aria-hidden />
+          <div
+            className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-secondary"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-6 -left-6 h-20 w-20 rotate-45 rounded-lg border-2 border-foreground bg-tertiary"
+            aria-hidden
+          />
           <div className="relative aspect-square rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] border-2 border-foreground bg-accent pop-shadow-lg">
             <img
               src={headshot}
@@ -159,9 +269,17 @@ function Stat({ n, label }: { n: string; label: string }) {
   );
 }
 
-function FloatingTag({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function FloatingTag({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <span className={`absolute rounded-full border-2 border-foreground px-3 py-1 text-xs font-bold pop-shadow ${className}`}>
+    <span
+      className={`absolute rounded-full border-2 border-foreground px-3 py-1 text-xs font-bold pop-shadow ${className}`}
+    >
       {children}
     </span>
   );
@@ -170,7 +288,12 @@ function FloatingTag({ children, className = "" }: { children: React.ReactNode; 
 function Squiggle({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 120 20" fill="none" aria-hidden>
-      <path d="M2 10 Q 17 0 32 10 T 62 10 T 92 10 T 118 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <path
+        d="M2 10 Q 17 0 32 10 T 62 10 T 92 10 T 118 10"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -202,16 +325,35 @@ function About() {
             A developer who treats every website like a product launch.
           </h2>
         </div>
-        <div data-reveal="right" className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <div
+          data-reveal="right"
+          className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
           <p>
-            I'm a developer with hands-on experience across the MERN stack (MongoDB, Express.js, React, Node.js), Next.js, and Shopify 2.0 theme development. From building React websites and Node.js backends to crafting conversion-focused Shopify storefronts — I cover the full spectrum.
+            I'm a developer with hands-on experience across the MERN stack (MongoDB, Express.js,
+            React, Node.js), Next.js, and Shopify 2.0 theme development. From building React
+            websites and Node.js backends to crafting conversion-focused Shopify storefronts — I
+            cover the full spectrum.
           </p>
           <p>
-            I care about responsive layouts, clean code, and shipping things that work. Whether it's a custom Liquid section, a Node.js API, or a React website — when something feels slow, I make it fast. When something feels rough, I sand it down.
+            I care about responsive layouts, clean code, and shipping things that work. Whether it's
+            a custom Liquid section, a Node.js API, or a React website — when something feels slow,
+            I make it fast. When something feels rough, I sand it down.
           </p>
           <div className="flex flex-wrap gap-2 pt-2">
-            {["Problem solving", "Communication", "Teamwork", "Time management", "Attention to detail"].map((s) => (
-              <span key={s} className="rounded-full border-2 border-foreground bg-background px-3 py-1 text-sm font-semibold text-foreground">{s}</span>
+            {[
+              "Problem solving",
+              "Communication",
+              "Teamwork",
+              "Time management",
+              "Attention to detail",
+            ].map((s) => (
+              <span
+                key={s}
+                className="rounded-full border-2 border-foreground bg-background px-3 py-1 text-sm font-semibold text-foreground"
+              >
+                {s}
+              </span>
             ))}
           </div>
         </div>
@@ -233,7 +375,10 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 function Skills() {
   return (
     <section id="skills" className="relative py-20 sm:py-24">
-      <div className="pointer-events-none absolute right-6 top-10 hidden h-20 w-20 rounded-full border-2 border-foreground bg-secondary md:block" aria-hidden />
+      <div
+        className="pointer-events-none absolute right-6 top-10 hidden h-20 w-20 rounded-full border-2 border-foreground bg-secondary md:block"
+        aria-hidden
+      />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div data-reveal="up" className="max-w-2xl">
           <Eyebrow>Toolbox</Eyebrow>
@@ -244,10 +389,22 @@ function Skills() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((s, i) => {
             const Icon = s.icon;
-            const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint", "pop-shadow"];
+            const shadows = [
+              "pop-shadow-pink",
+              "pop-shadow-amber",
+              "pop-shadow-mint",
+              "pop-shadow",
+            ];
             return (
-              <div key={s.label} data-reveal="up" data-reveal-delay={String(i * 100)} className={`group relative rounded-xl border-2 border-foreground bg-card p-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${shadows[i]}`}>
-                <div className={`absolute -top-5 left-5 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground ${s.color}`}>
+              <div
+                key={s.label}
+                data-reveal="up"
+                data-reveal-delay={String(i * 100)}
+                className={`group relative rounded-xl border-2 border-foreground bg-card p-5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-rotate-1 hover:scale-[1.02] ${shadows[i]}`}
+              >
+                <div
+                  className={`absolute -top-5 left-5 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground ${s.color}`}
+                >
                   <Icon className="h-5 w-5" strokeWidth={2.5} />
                 </div>
                 <h3 className="mt-4 font-display text-xl font-extrabold">{s.label}</h3>
@@ -274,13 +431,12 @@ function Skills() {
 const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"] as const;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } = useHoverScroll();
+  const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } =
+    useHoverScroll();
   const shadowClass = shadows[index % shadows.length];
 
   // Dynamic image height based on actual screenshot aspect ratio
-  const imgStyle = imageAspect
-    ? { aspectRatio: `1 / ${imageAspect}` }
-    : undefined;
+  const imgStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : undefined;
 
   return (
     <Link to="/projects/$slug" params={{ slug: project.slug }}>
@@ -292,7 +448,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           ref={containerRef}
           className={`relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`}
         >
-          {project.imageMobile ? (
+          {project.video ? (
+            <video
+              src={project.video}
+              aria-label={`${project.name} — ${project.tag}`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            />
+          ) : project.imageMobile ? (
             <>
               <img
                 ref={imageRef}
@@ -407,9 +574,17 @@ function Projects() {
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
               Websites I've built.
             </h2>
-            <p className="mt-3 text-muted-foreground">Shopify stores and MERN stack websites. Demo passwords are <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">1</code>.</p>
+            <p className="mt-3 text-muted-foreground">
+              Shopify stores and MERN stack websites. Demo passwords are{" "}
+              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">1</code>.
+            </p>
           </div>
-          <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" className="hidden items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary sm:inline-flex">
+          <a
+            href="https://github.com/ArnavAsif"
+            target="_blank"
+            rel="noreferrer"
+            className="hidden items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary sm:inline-flex"
+          >
             <Github className="h-4 w-4" strokeWidth={2.5} /> All repos
           </a>
         </div>
@@ -418,30 +593,39 @@ function Projects() {
           {projects.slice(0, visibleCount).map((p, i) => {
             const isNew = newlyLoaded.has(i);
             return (
-              <div key={p.name} className={isNew ? "animate-fade-in-up" : ""} style={isNew ? { animationDelay: `${(i % LOAD_MORE_COUNT) * 100}ms` } : undefined}>
+              <div
+                key={p.name}
+                className={isNew ? "animate-fade-in-up" : ""}
+                style={isNew ? { animationDelay: `${(i % LOAD_MORE_COUNT) * 100}ms` } : undefined}
+              >
                 <ProjectCard project={p} index={i} />
               </div>
             );
           })}
 
-          {loading && Array.from({ length: LOAD_MORE_COUNT }).map((_, i) => (
-            <div key={`skeleton-${i}`} className="animate-fade-in-up" style={{ animationDelay: `${i * 80}ms` }}>
-              <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card">
-                <div className="relative h-48 border-b-2 border-foreground animate-shimmer" />
-                <div className="flex flex-1 flex-col gap-4 p-5">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="h-6 w-32 rounded-lg animate-shimmer" />
-                    <div className="h-5 w-20 rounded-full animate-shimmer" />
-                  </div>
-                  <div className="h-4 w-48 rounded animate-shimmer" />
-                  <div className="mt-auto flex gap-2 pt-2">
-                    <div className="h-8 w-28 rounded-full animate-shimmer" />
-                    <div className="h-8 w-16 rounded-full animate-shimmer" />
+          {loading &&
+            Array.from({ length: LOAD_MORE_COUNT }).map((_, i) => (
+              <div
+                key={`skeleton-${i}`}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card">
+                  <div className="relative h-48 border-b-2 border-foreground animate-shimmer" />
+                  <div className="flex flex-1 flex-col gap-4 p-5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="h-6 w-32 rounded-lg animate-shimmer" />
+                      <div className="h-5 w-20 rounded-full animate-shimmer" />
+                    </div>
+                    <div className="h-4 w-48 rounded animate-shimmer" />
+                    <div className="mt-auto flex gap-2 pt-2">
+                      <div className="h-8 w-28 rounded-full animate-shimmer" />
+                      <div className="h-8 w-16 rounded-full animate-shimmer" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
         {hasEnoughProjects && hasMore && !loading && (
@@ -451,14 +635,19 @@ function Projects() {
               className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-6 py-3 text-sm font-bold transition-[transform,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-tertiary hover:shadow-[4px_4px_0_0_var(--foreground)] active:translate-x-0 active:translate-y-0 active:shadow-none"
             >
               View more
-              <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" strokeWidth={2.5} />
+              <ChevronDown
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                strokeWidth={2.5}
+              />
             </button>
           </div>
         )}
 
         {hasEnoughProjects && !hasMore && visibleCount > INITIAL_COUNT && (
           <div className="mt-10 flex justify-center">
-            <p className="text-sm font-medium text-muted-foreground">More projects are coming soon!</p>
+            <p className="text-sm font-medium text-muted-foreground">
+              More projects are coming soon!
+            </p>
           </div>
         )}
       </div>
@@ -479,10 +668,15 @@ function Experience() {
                 Building since 2025.
               </h2>
             </div>
-            <div data-reveal="up" className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber">
+            <div
+              data-reveal="up"
+              className="mt-8 rounded-2xl border-2 border-foreground bg-card p-6 pop-shadow-amber"
+            >
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="font-display text-xl font-extrabold">MERN Stack & Shopify Developer</h3>
+                  <h3 className="font-display text-xl font-extrabold">
+                    MERN Stack & Shopify Developer
+                  </h3>
                   <p className="text-sm font-medium text-muted-foreground">2025 — Present</p>
                 </div>
                 <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-quaternary">
@@ -516,17 +710,41 @@ function Experience() {
             </div>
             <div className="mt-8 space-y-4">
               {[
-                { title: "B.S.S. in Economics", school: "National University", year: "2019", color: "bg-accent text-accent-foreground" },
-                { title: "HSC (Science)", school: "Higher Secondary", year: "", color: "bg-secondary text-foreground" },
-                { title: "SSC (Science)", school: "Secondary", year: "", color: "bg-tertiary text-foreground" },
+                {
+                  title: "B.S.S. in Economics",
+                  school: "National University",
+                  year: "2019",
+                  color: "bg-accent text-accent-foreground",
+                },
+                {
+                  title: "HSC (Science)",
+                  school: "Higher Secondary",
+                  year: "",
+                  color: "bg-secondary text-foreground",
+                },
+                {
+                  title: "SSC (Science)",
+                  school: "Secondary",
+                  year: "",
+                  color: "bg-tertiary text-foreground",
+                },
               ].map((e, i) => (
-                <div key={e.title} data-reveal="right" data-reveal-delay={String(i * 100)} className="flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow">
-                  <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-foreground ${e.color} font-display text-lg font-extrabold`}>
+                <div
+                  key={e.title}
+                  data-reveal="right"
+                  data-reveal-delay={String(i * 100)}
+                  className="flex items-center gap-4 rounded-xl border-2 border-foreground bg-card p-4 pop-shadow"
+                >
+                  <span
+                    className={`grid h-12 w-12 shrink-0 place-items-center rounded-full border-2 border-foreground ${e.color} font-display text-lg font-extrabold`}
+                  >
                     <Star className="h-5 w-5" strokeWidth={2.5} />
                   </span>
                   <div className="min-w-0">
                     <div className="truncate font-display font-extrabold">{e.title}</div>
-                    <div className="truncate text-sm text-muted-foreground">{e.school} {e.year && `· ${e.year}`}</div>
+                    <div className="truncate text-sm text-muted-foreground">
+                      {e.school} {e.year && `· ${e.year}`}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -543,9 +761,18 @@ function Contact() {
   return (
     <section id="contact" className="relative py-20 sm:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <div data-reveal="scale" className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12">
-          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rotate-45 rounded-2xl border-2 border-foreground bg-quaternary" aria-hidden />
+        <div
+          data-reveal="scale"
+          className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12"
+        >
+          <div
+            className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -bottom-10 -left-10 h-32 w-32 rotate-45 rounded-2xl border-2 border-foreground bg-quaternary"
+            aria-hidden
+          />
 
           <div className="relative">
             <span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider text-foreground">
@@ -555,14 +782,43 @@ function Contact() {
               Got a project in mind?
             </h2>
             <p className="mt-3 max-w-xl text-base sm:text-lg">
-              I'm taking on new MERN stack and Shopify projects. Send a brief, a screenshot, or just say hi.
+              I'm taking on new MERN stack and Shopify projects. Send a brief, a screenshot, or just
+              say hi.
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <div data-reveal="up" data-reveal-delay="0"><ContactRow icon={Mail} label="Email" value="ifas092@gmail.com" href="mailto:ifas092@gmail.com" /></div>
-              <div data-reveal="up" data-reveal-delay="100"><ContactRow icon={Phone} label="Phone" value="+880 1600-018734" href="tel:+8801600018734" /></div>
-              <div data-reveal="up" data-reveal-delay="200"><ContactRow icon={Linkedin} label="LinkedIn" value="arnav-asif" href="https://linkedin.com/in/arnav-asif-a74894259" /></div>
-              <div data-reveal="up" data-reveal-delay="300"><ContactRow icon={Github} label="GitHub" value="ArnavAsif" href="https://github.com/ArnavAsif" /></div>
+              <div data-reveal="up" data-reveal-delay="0">
+                <ContactRow
+                  icon={Mail}
+                  label="Email"
+                  value="ifas092@gmail.com"
+                  href="mailto:ifas092@gmail.com"
+                />
+              </div>
+              <div data-reveal="up" data-reveal-delay="100">
+                <ContactRow
+                  icon={Phone}
+                  label="Phone"
+                  value="+880 1600-018734"
+                  href="tel:+8801600018734"
+                />
+              </div>
+              <div data-reveal="up" data-reveal-delay="200">
+                <ContactRow
+                  icon={Linkedin}
+                  label="LinkedIn"
+                  value="arnav-asif"
+                  href="https://linkedin.com/in/arnav-asif-a74894259"
+                />
+              </div>
+              <div data-reveal="up" data-reveal-delay="300">
+                <ContactRow
+                  icon={Github}
+                  label="GitHub"
+                  value="ArnavAsif"
+                  href="https://github.com/ArnavAsif"
+                />
+              </div>
             </div>
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground">
@@ -575,17 +831,37 @@ function Contact() {
   );
 }
 
-function ContactRow({ icon: Icon, label, value, href }: { icon: typeof Mail; label: string; value: string; href: string }) {
+function ContactRow({
+  icon: Icon,
+  label,
+  value,
+  href,
+}: {
+  icon: typeof Mail;
+  label: string;
+  value: string;
+  href: string;
+}) {
   return (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]">
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noreferrer"
+      className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl border-2 border-foreground bg-background p-3 text-foreground transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_var(--foreground)]"
+    >
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-foreground bg-tertiary">
         <Icon className="h-4 w-4" strokeWidth={2.5} />
       </span>
       <span className="min-w-0">
-        <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</span>
+        <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+          {label}
+        </span>
         <span className="block truncate font-semibold">{value}</span>
       </span>
-      <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2.5} />
+      <ArrowUpRight
+        className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        strokeWidth={2.5}
+      />
     </a>
   );
 }
@@ -595,11 +871,35 @@ function Footer() {
   return (
     <footer className="border-t-2 border-foreground bg-background">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-6 text-sm font-medium sm:flex-row sm:px-6">
-        <div>&copy; {new Date().getFullYear()} MD Asif Shah Diner. MERN stack & Shopify developer.</div>
+        <div>
+          &copy; {new Date().getFullYear()} MD Asif Shah Diner. MERN stack & Shopify developer.
+        </div>
         <div className="flex items-center gap-3">
-          <a href="https://github.com/ArnavAsif" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Github className="h-4 w-4" strokeWidth={2.5} /></a>
-          <a href="https://linkedin.com/in/arnav-asif-a74894259" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Linkedin className="h-4 w-4" strokeWidth={2.5} /></a>
-          <a href="mailto:ifas092@gmail.com" aria-label="Email" className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"><Mail className="h-4 w-4" strokeWidth={2.5} /></a>
+          <a
+            href="https://github.com/ArnavAsif"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"
+          >
+            <Github className="h-4 w-4" strokeWidth={2.5} />
+          </a>
+          <a
+            href="https://linkedin.com/in/arnav-asif-a74894259"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"
+          >
+            <Linkedin className="h-4 w-4" strokeWidth={2.5} />
+          </a>
+          <a
+            href="mailto:ifas092@gmail.com"
+            aria-label="Email"
+            className="grid h-9 w-9 place-items-center rounded-full border-2 border-foreground bg-background transition-colors hover:bg-tertiary"
+          >
+            <Mail className="h-4 w-4" strokeWidth={2.5} />
+          </a>
         </div>
       </div>
     </footer>
