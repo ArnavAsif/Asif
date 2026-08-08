@@ -71,7 +71,31 @@ export const projects: Project[] = [
     tech: ["Shopify 2.0", "Liquid", "Three.js", "WebGL", "GSAP", "JavaScript", "CSS3"],
     image: ""
   },
-
+  {
+    slug: "heyva-health",
+    name: "Heyva",
+    tag: "Kid Supplements",
+    description:
+      "Heyva is a daily liquid kids' brain & mood supplement — calm, inositol, zinc, saffron, lion's mane mushroom, and more. Professionally formulated, pediatrician-reviewed, 	and made for parents who want a simple daily routine that actually works.",
+    url: "https://heyvahealth.com/",
+    repo: "https://github.com/ArnavAsif/Heyva",
+    pw: "",
+    accent: "bg-secondary",
+    shape: "❋",
+    image: "/assets/project-images/heyva-desktop.png",
+    imageMobile: "/assets/project-images/heyva-mobile.png",
+    features: [
+      "French-language UI",
+      "Kids product shop",
+      "Interactive product showcase",
+      "Wavy section dividers",
+      "Instagram feed gallery",
+      "Newsletter signup",
+      "Wholesale salon program",
+      "Mobile-first responsive design",
+    ],
+    tech: ["Shopify 2.0", "Liquid", "CSS", "JavaScript"],
+  },
   {
     slug: "bro-and-compagnie",
     name: "Bro & Compagnie",
