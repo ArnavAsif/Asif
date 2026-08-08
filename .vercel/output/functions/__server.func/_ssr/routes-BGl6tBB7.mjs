@@ -2,9 +2,9 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as projects } from "./projects-CBNklGFW.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as useHoverScroll } from "./use-hover-scroll-BoDsNX_K.mjs";
+import { t as useHoverScroll } from "./use-hover-scroll-DEEOIn60.mjs";
 import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-LcGzw-Es.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BGl6tBB7.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -318,6 +318,8 @@ function Hero() {
 								src: headshot,
 								alt: "MD Asif Shah Diner",
 								loading: "eager",
+								fetchPriority: "high",
+								decoding: "async",
 								className: "absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
 							}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 								className: "absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap",
@@ -498,7 +500,7 @@ var shadows = [
 	"pop-shadow-mint"
 ];
 function ProjectCard({ project, index }) {
-	const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } = useHoverScroll();
+	const { containerRef, imageRef, imageAspect, handleImageLoad, handlers } = useHoverScroll();
 	const shadowClass = shadows[index % shadows.length];
 	const imgStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : void 0;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
@@ -519,23 +521,30 @@ function ProjectCard({ project, index }) {
 					playsInline: true,
 					preload: "metadata",
 					className: "absolute inset-0 h-full w-full object-cover object-top"
-				}) : project.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					ref: imageRef,
-					src: project.image,
-					alt: `${project.name} — ${project.tag}`,
-					loading: "lazy",
-					decoding: "async",
-					onLoad: handleImageLoad,
-					style: imgStyle,
-					className: "hover-preview-image absolute inset-0 hidden w-full object-cover object-top sm:block"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					src: project.imageMobile,
-					alt: `${project.name} — ${project.tag}`,
-					loading: "lazy",
-					decoding: "async",
-					style: imgStyle,
-					className: "hover-preview-image absolute inset-0 w-full object-cover object-top sm:hidden"
-				})] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+				}) : project.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+						media: "(max-width: 639px)",
+						srcSet: project.imageMobile
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						ref: imageRef,
+						src: project.image,
+						alt: `${project.name} — ${project.tag}`,
+						loading: "lazy",
+						decoding: "async",
+						onLoad: handleImageLoad,
+						style: imgStyle,
+						className: "hover-preview-image absolute inset-0 w-full object-cover object-top"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+						"data-src": project.imageMobile,
+						alt: `${project.name} — ${project.tag}`,
+						loading: "lazy",
+						decoding: "async",
+						style: imgStyle,
+						className: "hidden"
+					})
+				] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 					ref: imageRef,
 					src: project.image,
 					alt: `${project.name} — ${project.tag}`,
@@ -604,12 +613,12 @@ function Projects() {
 	const [visibleCount, setVisibleCount] = (0, import_react.useState)(hasEnoughProjects ? INITIAL_COUNT : projects.length);
 	const [loading, setLoading] = (0, import_react.useState)(false);
 	const [newlyLoaded, setNewlyLoaded] = (0, import_react.useState)(/* @__PURE__ */ new Set());
-	(0, import_react.useRef)(null);
+	const loadTimerRef = (0, import_react.useRef)(null);
 	const hasMore = visibleCount < projects.length;
 	const loadMore = (0, import_react.useCallback)(() => {
 		if (!hasMore || loading) return;
 		setLoading(true);
-		setTimeout(() => {
+		loadTimerRef.current = setTimeout(() => {
 			const prevCount = visibleCount;
 			const nextCount = Math.min(prevCount + LOAD_MORE_COUNT, projects.length);
 			const indices = /* @__PURE__ */ new Set();
@@ -623,6 +632,11 @@ function Projects() {
 		loading,
 		visibleCount
 	]);
+	(0, import_react.useEffect)(() => {
+		return () => {
+			if (loadTimerRef.current) clearTimeout(loadTimerRef.current);
+		};
+	}, []);
 	(0, import_react.useEffect)(() => {
 		if (newlyLoaded.size > 0) {
 			const timer = setTimeout(() => setNewlyLoaded(/* @__PURE__ */ new Set()), 500);

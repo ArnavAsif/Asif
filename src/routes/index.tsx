@@ -244,6 +244,8 @@ function Hero() {
               src={headshot}
               alt="MD Asif Shah Diner"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="absolute inset-0 h-full w-full rounded-[50%_50%_30%_70%_/_60%_40%_60%_40%] object-cover"
             />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold text-foreground pop-shadow whitespace-nowrap">
@@ -431,8 +433,7 @@ function Skills() {
 const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"] as const;
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const { containerRef, imageRef, isHovered, imageAspect, handleImageLoad, handlers } =
-    useHoverScroll();
+  const { containerRef, imageRef, imageAspect, handleImageLoad, handlers } = useHoverScroll();
   const shadowClass = shadows[index % shadows.length];
 
   // Dynamic image height based on actual screenshot aspect ratio
@@ -460,7 +461,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               className="absolute inset-0 h-full w-full object-cover object-top"
             />
           ) : project.imageMobile ? (
-            <>
+            <picture>
+              <source media="(max-width: 639px)" srcSet={project.imageMobile} />
               <img
                 ref={imageRef}
                 src={project.image}
@@ -469,17 +471,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 decoding="async"
                 onLoad={handleImageLoad}
                 style={imgStyle}
-                className="hover-preview-image absolute inset-0 hidden w-full object-cover object-top sm:block"
+                className="hover-preview-image absolute inset-0 w-full object-cover object-top"
               />
               <img
-                src={project.imageMobile}
+                data-src={project.imageMobile}
                 alt={`${project.name} — ${project.tag}`}
                 loading="lazy"
                 decoding="async"
                 style={imgStyle}
-                className="hover-preview-image absolute inset-0 w-full object-cover object-top sm:hidden"
+                className="hidden"
               />
-            </>
+            </picture>
           ) : (
             <img
               ref={imageRef}
@@ -538,7 +540,7 @@ function Projects() {
   );
   const [loading, setLoading] = useState(false);
   const [newlyLoaded, setNewlyLoaded] = useState<Set<number>>(new Set());
-  const skeletonRef = useRef<HTMLDivElement>(null);
+  const loadTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const hasMore = visibleCount < projects.length;
 
@@ -546,7 +548,7 @@ function Projects() {
     if (!hasMore || loading) return;
     setLoading(true);
 
-    setTimeout(() => {
+    loadTimerRef.current = setTimeout(() => {
       const prevCount = visibleCount;
       const nextCount = Math.min(prevCount + LOAD_MORE_COUNT, projects.length);
       const indices = new Set<number>();
@@ -557,6 +559,12 @@ function Projects() {
       setLoading(false);
     }, 600);
   }, [hasMore, loading, visibleCount]);
+
+  useEffect(() => {
+    return () => {
+      if (loadTimerRef.current) clearTimeout(loadTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (newlyLoaded.size > 0) {

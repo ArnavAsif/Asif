@@ -20,7 +20,6 @@ export function useHoverScroll() {
   const offsetRef = useRef(0);
   const startTimeRef = useRef(0);
   const loadHandlerRef = useRef<(() => void) | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const [imageAspect, setImageAspect] = useState<number | null>(null);
   const prefersReducedMotion = useRef(false);
 
@@ -99,7 +98,6 @@ export function useHoverScroll() {
   }, []);
 
   const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
     removeLoadListener();
 
     const maxOffset = getMaxOffset();
@@ -117,7 +115,6 @@ export function useHoverScroll() {
   }, [animate, getMaxOffset, removeLoadListener, handleImageLoad]);
 
   const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
     removeLoadListener();
     animate(offsetRef.current, 0);
   }, [animate, removeLoadListener]);
@@ -132,7 +129,6 @@ export function useHoverScroll() {
   return {
     containerRef,
     imageRef,
-    isHovered,
     imageAspect,
     handleImageLoad,
     handlers: {

@@ -1,24 +1,24 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-BOC9KmUT.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-CdyQ_mhV.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "D:/projects/Asif/src/routes/__root.tsx",
 		children: ["/", "/projects/$slug"],
-		preloads: ["/assets/index-DQcWTW6d.js"],
+		preloads: ["/assets/index-CeJMwcck.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-DQcWTW6d.js"
+			src: "/assets/index-CeJMwcck.js"
 		} }]
 	},
 	"/": {
 		filePath: "D:/projects/Asif/src/routes/index.tsx",
 		children: void 0,
-		preloads: ["/assets/routes-FPanxJVs.js", "/assets/use-hover-scroll-DzdWezBq.js"]
+		preloads: ["/assets/routes--qpdFJoc.js", "/assets/use-hover-scroll-BFg7Md-P.js"]
 	},
 	"/projects/$slug": {
 		filePath: "D:/projects/Asif/src/routes/projects/$slug.tsx",
 		children: void 0,
-		preloads: ["/assets/_slug-C0sb9zse.js", "/assets/use-hover-scroll-DzdWezBq.js"]
+		preloads: ["/assets/_slug-mbzXmPgs.js", "/assets/use-hover-scroll-BFg7Md-P.js"]
 	}
 } });
 //#endregion

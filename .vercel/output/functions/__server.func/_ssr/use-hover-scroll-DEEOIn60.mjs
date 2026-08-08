@@ -1,6 +1,6 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/use-hover-scroll-BoDsNX_K.js
+//#region node_modules/.nitro/vite/services/ssr/assets/use-hover-scroll-DEEOIn60.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var SCROLL_DURATION = 5e3;
 function easeInOut(t) {
@@ -20,7 +20,6 @@ function useHoverScroll() {
 	const offsetRef = (0, import_react.useRef)(0);
 	const startTimeRef = (0, import_react.useRef)(0);
 	const loadHandlerRef = (0, import_react.useRef)(null);
-	const [isHovered, setIsHovered] = (0, import_react.useState)(false);
 	const [imageAspect, setImageAspect] = (0, import_react.useState)(null);
 	const prefersReducedMotion = (0, import_react.useRef)(false);
 	(0, import_react.useEffect)(() => {
@@ -70,7 +69,6 @@ function useHoverScroll() {
 		loadHandlerRef.current = null;
 	}, []);
 	const handleMouseEnter = (0, import_react.useCallback)(() => {
-		setIsHovered(true);
 		removeLoadListener();
 		const maxOffset = getMaxOffset();
 		if (maxOffset > 0) animate(offsetRef.current, maxOffset);
@@ -90,7 +88,6 @@ function useHoverScroll() {
 		handleImageLoad
 	]);
 	const handleMouseLeave = (0, import_react.useCallback)(() => {
-		setIsHovered(false);
 		removeLoadListener();
 		animate(offsetRef.current, 0);
 	}, [animate, removeLoadListener]);
@@ -103,7 +100,6 @@ function useHoverScroll() {
 	return {
 		containerRef,
 		imageRef,
-		isHovered,
 		imageAspect,
 		handleImageLoad,
 		handlers: {
