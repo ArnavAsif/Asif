@@ -3,10 +3,10 @@ import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider 
 import { N as useRouter, c as HeadContent, d as Outlet, f as lazyRouteComponent, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as Route } from "../_slug-nafUGGSp.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-QXEnoS1O.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-Cv_5x9zD.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-DlZaoGEV.css";
+var styles_default = "/assets/styles-Cod91OZV.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -160,9 +160,50 @@ function RootShell({ children }) {
 		lang: "en",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", {
 			className: "overflow-x-hidden",
-			children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})]
+			children: [
+				children,
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClickSound, {}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})
+			]
 		})]
 	});
+}
+function ClickSound() {
+	(0, import_react.useEffect)(() => {
+		let audioContext;
+		const playClickSound = () => {
+			audioContext ??= new AudioContext();
+			const createBuzz = () => {
+				const now = audioContext.currentTime;
+				const mainOscillator = audioContext.createOscillator();
+				const accentOscillator = audioContext.createOscillator();
+				const gain = audioContext.createGain();
+				mainOscillator.type = "square";
+				mainOscillator.frequency.setValueAtTime(360, now);
+				mainOscillator.frequency.exponentialRampToValueAtTime(180, now + .12);
+				accentOscillator.type = "sine";
+				accentOscillator.frequency.setValueAtTime(720, now);
+				accentOscillator.frequency.exponentialRampToValueAtTime(360, now + .08);
+				gain.gain.setValueAtTime(.18, now);
+				gain.gain.exponentialRampToValueAtTime(.001, now + .12);
+				mainOscillator.connect(gain);
+				accentOscillator.connect(gain);
+				gain.connect(audioContext.destination);
+				mainOscillator.start(now);
+				accentOscillator.start(now);
+				mainOscillator.stop(now + .12);
+				accentOscillator.stop(now + .12);
+			};
+			if (audioContext.state === "suspended") audioContext.resume().then(createBuzz);
+			else createBuzz();
+		};
+		document.addEventListener("click", playClickSound, { passive: true });
+		return () => {
+			document.removeEventListener("click", playClickSound);
+			audioContext?.close();
+		};
+	}, []);
+	return null;
 }
 function RootComponent() {
 	const { queryClient } = Route$1.useRouteContext();

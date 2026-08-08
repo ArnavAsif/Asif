@@ -275,3 +275,22 @@
     transition: none !important;
   }
 }
+
+/* ---- Game Cursor ---- */
+@media (pointer: fine) {
+  html {
+    cursor: url("/assets/cursors/game-pointer.png") 7 1, auto;
+  }
+
+  a[href],
+  button:not(:disabled),
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  label[for],
+  select,
+  summary {
+    cursor: url("/assets/cursors/game-link.png") 6 1, pointer;
+  }
+}

@@ -114,10 +114,59 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body className="overflow-x-hidden">
         {children}
+        <ClickSound />
         <Scripts />
       </body>
     </html>
   );
+}
+
+function ClickSound() {
+  useEffect(() => {
+    let audioContext: AudioContext | undefined;
+
+    const playClickSound = () => {
+      audioContext ??= new AudioContext();
+
+      const createBuzz = () => {
+        const now = audioContext.currentTime;
+        const mainOscillator = audioContext.createOscillator();
+        const accentOscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        mainOscillator.type = "square";
+        mainOscillator.frequency.setValueAtTime(360, now);
+        mainOscillator.frequency.exponentialRampToValueAtTime(180, now + 0.12);
+        accentOscillator.type = "sine";
+        accentOscillator.frequency.setValueAtTime(720, now);
+        accentOscillator.frequency.exponentialRampToValueAtTime(360, now + 0.08);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+        mainOscillator.connect(gain);
+        accentOscillator.connect(gain);
+        gain.connect(audioContext.destination);
+        mainOscillator.start(now);
+        accentOscillator.start(now);
+        mainOscillator.stop(now + 0.12);
+        accentOscillator.stop(now + 0.12);
+      };
+
+      if (audioContext.state === "suspended") {
+        void audioContext.resume().then(createBuzz);
+      } else {
+        createBuzz();
+      }
+    };
+
+    document.addEventListener("click", playClickSound, { passive: true });
+    return () => {
+      document.removeEventListener("click", playClickSound);
+      void audioContext?.close();
+    };
+  }, []);
+
+  return null;
 }
 
 function RootComponent() {
