@@ -1,6 +1,7 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/lazy-video-Cdwgy_KE.js
+import { l as Moon, n as Sun } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/theme-toggle-DyC4xSGp.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var SCROLL_DURATION = 5e3;
@@ -131,5 +132,36 @@ function LazyVideo({ src, ...props }) {
 		...props
 	});
 }
+var THEME_KEY = "asif-portfolio-theme";
+function ThemeToggle() {
+	const [isDark, setIsDark] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		const dark = window.localStorage.getItem(THEME_KEY) === "dark";
+		document.documentElement.classList.toggle("dark", dark);
+		setIsDark(dark);
+	}, []);
+	const toggleTheme = () => {
+		setIsDark((current) => {
+			const dark = !current;
+			document.documentElement.classList.toggle("dark", dark);
+			window.localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+			return dark;
+		});
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+		type: "button",
+		onClick: toggleTheme,
+		className: "grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-foreground pop-shadow transition-[transform,box-shadow,background-color] duration-300 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-tertiary hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]",
+		"aria-label": isDark ? "Switch to light theme" : "Switch to dark theme",
+		title: isDark ? "Switch to light theme" : "Switch to dark theme",
+		children: isDark ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Sun, {
+			className: "h-4 w-4",
+			strokeWidth: 2.5
+		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Moon, {
+			className: "h-4 w-4",
+			strokeWidth: 2.5
+		})
+	});
+}
 //#endregion
-export { useHoverScroll as n, LazyVideo as t };
+export { ThemeToggle as n, useHoverScroll as r, LazyVideo as t };

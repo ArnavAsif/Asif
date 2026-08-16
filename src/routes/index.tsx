@@ -23,6 +23,7 @@ import { useReveal } from "@/lib/use-reveal";
 import { useHoverScroll } from "@/lib/use-hover-scroll";
 import type { Project } from "@/data/projects";
 import { LazyVideo } from "@/components/lazy-video";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -116,7 +117,7 @@ function Index() {
 /* ------------------------------- NAV ------------------------------- */
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-[60] border-b-2 border-foreground bg-background/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <a
           href="#top"
@@ -141,15 +142,18 @@ function Nav() {
             Contact
           </a>
         </nav>
-        <a
-          href="#contact"
-          className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]"
-        >
-          Hire me
-          <span className="grid h-5 w-5 place-items-center rounded-full bg-background text-foreground">
-            <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
-          </span>
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]"
+          >
+            Hire me
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-background text-foreground">
+              <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+            </span>
+          </a>
+        </div>
       </div>
     </header>
   );

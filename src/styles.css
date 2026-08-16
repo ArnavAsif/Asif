@@ -56,27 +56,27 @@
 :root {
   --radius: 1rem;
   /* Playful Geometric tokens */
-  --background: oklch(0.992 0.014 95);          /* #FFFDF5 warm cream */
-  --foreground: oklch(0.29 0.04 257);            /* slate-800 #1E293B */
+  --background: oklch(0.992 0.014 95); /* #FFFDF5 warm cream */
+  --foreground: oklch(0.29 0.04 257); /* slate-800 #1E293B */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.29 0.04 257);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.29 0.04 257);
   --primary: oklch(0.29 0.04 257);
   --primary-foreground: oklch(0.992 0.014 95);
-  --secondary: oklch(0.74 0.18 0);               /* hot pink #F472B6 */
+  --secondary: oklch(0.74 0.18 0); /* hot pink #F472B6 */
   --secondary-foreground: oklch(0.29 0.04 257);
-  --tertiary: oklch(0.83 0.16 80);               /* amber #FBBF24 */
+  --tertiary: oklch(0.83 0.16 80); /* amber #FBBF24 */
   --tertiary-foreground: oklch(0.29 0.04 257);
-  --quaternary: oklch(0.79 0.16 165);            /* emerald #34D399 */
+  --quaternary: oklch(0.79 0.16 165); /* emerald #34D399 */
   --quaternary-foreground: oklch(0.29 0.04 257);
   --muted: oklch(0.968 0.007 247);
   --muted-foreground: oklch(0.55 0.04 257);
-  --accent: oklch(0.62 0.21 295);                /* violet #8B5CF6 */
+  --accent: oklch(0.62 0.21 295); /* violet #8B5CF6 */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.29 0.04 257);                /* chunky dark borders */
+  --border: oklch(0.29 0.04 257); /* chunky dark borders */
   --input: oklch(1 0 0);
   --ring: oklch(0.62 0.21 295);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -95,38 +95,42 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.11 0.01 285);
+  --foreground: oklch(0.96 0.01 285);
+  --card: oklch(0.17 0.014 285);
+  --card-foreground: oklch(0.96 0.01 285);
+  --popover: oklch(0.17 0.014 285);
+  --popover-foreground: oklch(0.96 0.01 285);
+  --primary: oklch(0.96 0.01 285);
+  --primary-foreground: oklch(0.17 0.014 285);
+  --secondary: oklch(0.72 0.18 0);
+  --secondary-foreground: oklch(0.17 0.014 285);
+  --tertiary: oklch(0.82 0.16 80);
+  --tertiary-foreground: oklch(0.17 0.014 285);
+  --quaternary: oklch(0.76 0.15 165);
+  --quaternary-foreground: oklch(0.17 0.014 285);
+  --muted: oklch(0.23 0.014 285);
+  --muted-foreground: oklch(0.72 0.02 285);
+  --accent: oklch(0.62 0.21 295);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --border: oklch(0.96 0.01 285);
+  --input: oklch(0.23 0.014 285);
+  --ring: oklch(0.62 0.21 295);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar: oklch(0.17 0.014 285);
+  --sidebar-foreground: oklch(0.96 0.01 285);
+  --sidebar-primary: oklch(0.62 0.21 295);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.23 0.014 285);
+  --sidebar-accent-foreground: oklch(0.96 0.01 285);
+  --sidebar-border: oklch(0.96 0.01 285);
+  --sidebar-ring: oklch(0.62 0.21 295);
 }
 
 @layer base {
@@ -143,11 +147,20 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    background-image: radial-gradient(circle, oklch(0.29 0.04 257 / 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      oklch(from var(--foreground) l c h / 0.08) 1px,
+      transparent 1px
+    );
     background-size: 24px 24px;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -175,25 +188,40 @@
 }
 
 @keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(3deg); }
-  75% { transform: rotate(-3deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
 }
 @utility animate-wiggle {
   animation: wiggle 0.6s ease-in-out;
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 @utility animate-marquee {
   animation: marquee 45s linear infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 @utility animate-shimmer {
   animation: shimmer 1.5s ease-in-out infinite;
@@ -202,16 +230,28 @@
 }
 
 @keyframes fade-in-up {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @utility animate-fade-in-up {
   animation: fade-in-up 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes pop-in {
-  0% { transform: scale(0.6); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 @utility animate-pop-in {
   animation: pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -258,10 +298,18 @@
   transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   backface-visibility: hidden;
 }
-[data-reveal="up"]    { transform: translateY(50px); }
-[data-reveal="left"]  { transform: translateX(-60px); }
-[data-reveal="right"] { transform: translateX(60px); }
-[data-reveal="scale"] { transform: scale(0.85); }
+[data-reveal="up"] {
+  transform: translateY(50px);
+}
+[data-reveal="left"] {
+  transform: translateX(-60px);
+}
+[data-reveal="right"] {
+  transform: translateX(60px);
+}
+[data-reveal="scale"] {
+  transform: scale(0.85);
+}
 
 [data-reveal].revealed {
   opacity: 1;
@@ -278,14 +326,54 @@
 
 /* ---- Game Cursor ---- */
 @keyframes sharingan-cursor {
-  0%, 12.49% { cursor: url("/assets/cursors/sharingan-frame-1.png") 1 2, auto; }
-  12.5%, 24.99% { cursor: url("/assets/cursors/sharingan-frame-2.png") 1 2, auto; }
-  25%, 37.49% { cursor: url("/assets/cursors/sharingan-frame-3.png") 1 2, auto; }
-  37.5%, 49.99% { cursor: url("/assets/cursors/sharingan-frame-4.png") 1 2, auto; }
-  50%, 62.49% { cursor: url("/assets/cursors/sharingan-frame-5.png") 1 2, auto; }
-  62.5%, 74.99% { cursor: url("/assets/cursors/sharingan-frame-6.png") 1 2, auto; }
-  75%, 87.49% { cursor: url("/assets/cursors/sharingan-frame-7.png") 1 2, auto; }
-  87.5%, 100% { cursor: url("/assets/cursors/sharingan-frame-8.png") 1 2, auto; }
+  0%,
+  12.49% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-1.png") 1 2,
+      auto;
+  }
+  12.5%,
+  24.99% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-2.png") 1 2,
+      auto;
+  }
+  25%,
+  37.49% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-3.png") 1 2,
+      auto;
+  }
+  37.5%,
+  49.99% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-4.png") 1 2,
+      auto;
+  }
+  50%,
+  62.49% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-5.png") 1 2,
+      auto;
+  }
+  62.5%,
+  74.99% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-6.png") 1 2,
+      auto;
+  }
+  75%,
+  87.49% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-7.png") 1 2,
+      auto;
+  }
+  87.5%,
+  100% {
+    cursor:
+      url("/assets/cursors/sharingan-frame-8.png") 1 2,
+      auto;
+  }
 }
 
 @media (pointer: fine) {
@@ -302,6 +390,8 @@
   label[for],
   select,
   summary {
-    cursor: url("/assets/cursors/sharingan-link-selector.png") 13 1, pointer;
+    cursor:
+      url("/assets/cursors/sharingan-link-selector.png") 13 1,
+      pointer;
   }
 }

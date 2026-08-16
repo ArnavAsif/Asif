@@ -2,12 +2,12 @@ import { r as __toESM } from "./_runtime.mjs";
 import { n as projects, t as getProjectBySlug } from "./_ssr/projects-Bspp2Q3d.mjs";
 import { n as require_jsx_runtime, r as require_react } from "./_libs/react+tanstack__react-query.mjs";
 import { h as Link, k as notFound } from "./_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "./_slug-BSdHy7x8.mjs";
-import { n as useHoverScroll, t as LazyVideo } from "./_ssr/lazy-video-Cdwgy_KE.mjs";
-import { _ as ArrowRight, c as Monitor, f as Github, g as ArrowUpRight, h as Check, i as Smartphone, p as ExternalLink, v as ArrowLeft } from "./_libs/lucide-react.mjs";
+import { t as Route } from "./_slug-BV0iQDsw.mjs";
+import { _ as Check, a as Smartphone, b as ArrowLeft, h as ExternalLink, m as Github, u as Monitor, v as ArrowUpRight, y as ArrowRight } from "./_libs/lucide-react.mjs";
+import { n as ThemeToggle, r as useHoverScroll, t as LazyVideo } from "./_ssr/theme-toggle-DyC4xSGp.mjs";
 import { t as clsx } from "./_libs/clsx.mjs";
 import { t as twMerge } from "./_libs/tailwind-merge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_slug-KrBlGuuh.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_slug-Cdwolzrn.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function cn(...inputs) {
@@ -152,7 +152,7 @@ function ProjectDetails() {
 		className: "min-h-screen",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-				className: "sticky top-0 z-50 border-b-2 border-foreground bg-background/90 backdrop-blur",
+				className: "sticky top-0 z-[60] border-b-2 border-foreground bg-background/90 backdrop-blur",
 				children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6",
 					children: [
@@ -196,13 +196,16 @@ function ProjectDetails() {
 								})
 							]
 						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-							to: "/",
-							className: "inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
-								className: "h-4 w-4",
-								strokeWidth: 2.5
-							}), " Back to portfolio"]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-center gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+								to: "/",
+								className: "inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowLeft, {
+									className: "h-4 w-4",
+									strokeWidth: 2.5
+								}), " Back to portfolio"]
+							})]
 						})
 					]
 				})

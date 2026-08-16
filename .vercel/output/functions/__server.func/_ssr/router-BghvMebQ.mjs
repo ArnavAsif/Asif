@@ -1,9 +1,9 @@
 import { r as __toESM } from "../_runtime.mjs";
 import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider } from "../_libs/react+tanstack__react-query.mjs";
 import { N as useRouter, c as HeadContent, d as Outlet, f as lazyRouteComponent, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
-import { t as Route } from "../_slug-BSdHy7x8.mjs";
+import { t as Route } from "../_slug-BV0iQDsw.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BgTJwRVw.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BghvMebQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 /** A full-screen WebGL fluid trail that follows the pointer. */
@@ -309,7 +309,7 @@ function SplashCursor({ SIM_RESOLUTION = 128, DYE_RESOLUTION = 1440, CAPTURE_RES
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("canvas", { ref: canvasRef })
 	});
 }
-var styles_default = "/assets/styles-JaSSoGgV.css";
+var styles_default = "/assets/styles-bPVfq6VZ.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -461,18 +461,18 @@ var Route$1 = createRootRouteWithContext()({
 function RootShell({ children }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("html", {
 		lang: "en",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", {
-			className: "overflow-x-hidden",
-			children: [
-				children,
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SplashCursor, {
-					COLOR: "#9362f4",
-					RAINBOW_MODE: false
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClickSound, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})
-			]
-		})]
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("head", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(HeadContent, {}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("body", { children: [
+			children,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SplashCursor, {
+				COLOR: "#9362f4",
+				RAINBOW_MODE: false,
+				SIM_RESOLUTION: 64,
+				DYE_RESOLUTION: 720,
+				PRESSURE_ITERATIONS: 12
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ClickSound, {}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Scripts, {})
+		] })]
 	});
 }
 function ClickSound() {
@@ -534,7 +534,7 @@ function RootComponent() {
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Outlet, {})
 	});
 }
-var $$splitComponentImporter = () => import("./routes-CqBNU8UP.mjs");
+var $$splitComponentImporter = () => import("./routes-uSUUNh5w.mjs");
 var rootRouteChildren = {
 	IndexRoute: createFileRoute("/")({
 		head: () => ({ meta: [

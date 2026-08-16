@@ -15,6 +15,7 @@ import { DeviceMockup } from "@/components/ui/device-mockup";
 import { useHoverScroll } from "@/lib/use-hover-scroll";
 import type { Project } from "@/data/projects";
 import { LazyVideo } from "@/components/lazy-video";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
@@ -118,7 +119,7 @@ function ProjectDetails() {
   return (
     <div className="min-h-screen">
       {/* Nav */}
-      <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background/90 backdrop-blur">
+      <header className="sticky top-0 z-[60] border-b-2 border-foreground bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <Link
             to="/"
@@ -151,12 +152,15 @@ function ProjectDetails() {
               Contact
             </Link>
           </nav>
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary"
-          >
-            <ArrowLeft className="h-4 w-4" strokeWidth={2.5} /> Back to portfolio
-          </Link>
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-4 py-2 text-sm font-bold transition-colors hover:bg-tertiary"
+            >
+              <ArrowLeft className="h-4 w-4" strokeWidth={2.5} /> Back to portfolio
+            </Link>
+          </div>
         </div>
       </header>
 

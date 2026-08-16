@@ -2,9 +2,9 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as projects } from "./projects-Bspp2Q3d.mjs";
 import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tanstack__react-query.mjs";
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { n as useHoverScroll, t as LazyVideo } from "./lazy-video-Cdwgy_KE.mjs";
-import { _ as ArrowRight, a as Rocket, b as CodeXml, d as Linkedin, f as Github, g as ArrowUpRight, h as Check, l as MapPin, m as ChevronDown, n as Store, o as Phone, r as Star, s as Palette, t as Zap, u as Mail, y as Sparkles } from "../_libs/lucide-react.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-CqBNU8UP.js
+import { S as CodeXml, _ as Check, c as Palette, d as MapPin, f as Mail, g as ChevronDown, i as Star, m as Github, o as Rocket, p as Linkedin, r as Store, s as Phone, t as Zap, v as ArrowUpRight, x as Sparkles, y as ArrowRight } from "../_libs/lucide-react.mjs";
+import { n as ThemeToggle, r as useHoverScroll, t as LazyVideo } from "./theme-toggle-DyC4xSGp.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-uSUUNh5w.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -125,7 +125,7 @@ function Index() {
 }
 function Nav() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("header", {
-		className: "sticky top-0 z-50 border-b-2 border-foreground bg-background/90 backdrop-blur",
+		className: "sticky top-0 z-[60] border-b-2 border-foreground bg-background/90 backdrop-blur",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6",
 			children: [
@@ -165,15 +165,18 @@ function Nav() {
 						})
 					]
 				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-					href: "#contact",
-					className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]",
-					children: ["Hire me", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-						className: "grid h-5 w-5 place-items-center rounded-full bg-background text-foreground",
-						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-							className: "h-3 w-3",
-							strokeWidth: 2.5
-						})
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center gap-3",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThemeToggle, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+						href: "#contact",
+						className: "group inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-accent px-4 py-2 text-sm font-bold text-accent-foreground pop-shadow transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_var(--foreground)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_var(--foreground)]",
+						children: ["Hire me", /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "grid h-5 w-5 place-items-center rounded-full bg-background text-foreground",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+								className: "h-3 w-3",
+								strokeWidth: 2.5
+							})
+						})]
 					})]
 				})
 			]

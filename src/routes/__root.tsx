@@ -120,9 +120,15 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="overflow-x-hidden">
+      <body>
         {children}
-        <SplashCursor COLOR="#9362f4" RAINBOW_MODE={false} />
+        <SplashCursor
+          COLOR="#9362f4"
+          RAINBOW_MODE={false}
+          SIM_RESOLUTION={64}
+          DYE_RESOLUTION={720}
+          PRESSURE_ITERATIONS={12}
+        />
         <ClickSound />
         <Scripts />
       </body>
