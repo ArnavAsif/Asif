@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import SplashCursor from "@/components/splash-cursor";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -121,6 +122,7 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body className="overflow-x-hidden">
         {children}
+        <SplashCursor COLOR="#9362f4" RAINBOW_MODE={false} />
         <ClickSound />
         <Scripts />
       </body>
