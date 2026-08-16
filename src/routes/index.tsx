@@ -776,7 +776,7 @@ function Contact() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div
           data-reveal="scale"
-          className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12"
+          className="relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-5 text-accent-foreground pop-shadow-lg sm:p-12"
         >
           <div
             className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary"
@@ -791,7 +791,7 @@ function Contact() {
             <span className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase tracking-wider text-foreground">
               Let's build
             </span>
-            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-7xl">
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-5xl lg:text-7xl">
               Got a project in mind?
             </h2>
             <p className="mt-3 max-w-xl text-base sm:text-lg">
@@ -834,8 +834,9 @@ function Contact() {
               </div>
             </div>
 
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground">
-              <MapPin className="h-3.5 w-3.5" strokeWidth={2.5} /> Khilkhet, Dhaka, Bangladesh
+            <div className="mt-6 inline-flex max-w-full items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground">
+              <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />
+              <span className="min-w-0 break-words">Khilkhet, Dhaka, Bangladesh</span>
             </div>
           </div>
         </div>
@@ -869,7 +870,7 @@ function ContactRow({
         <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
           {label}
         </span>
-        <span className="block truncate font-semibold">{value}</span>
+        <span className="block break-all font-semibold sm:truncate">{value}</span>
       </span>
       <ArrowUpRight
         className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

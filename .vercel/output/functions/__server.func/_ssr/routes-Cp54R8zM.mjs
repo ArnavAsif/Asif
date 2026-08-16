@@ -4,7 +4,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as CodeXml, _ as Check, c as Palette, d as MapPin, f as Mail, g as ChevronDown, i as Star, m as Github, o as Rocket, p as Linkedin, r as Store, s as Phone, t as Zap, v as ArrowUpRight, x as Sparkles, y as ArrowRight } from "../_libs/lucide-react.mjs";
 import { n as ThemeToggle, r as useHoverScroll, t as LazyVideo } from "./theme-toggle-DyC4xSGp.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-uSUUNh5w.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-Cp54R8zM.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -857,7 +857,7 @@ function Contact() {
 			className: "mx-auto max-w-5xl px-4 sm:px-6",
 			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 				"data-reveal": "scale",
-				className: "relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-8 text-accent-foreground pop-shadow-lg sm:p-12",
+				className: "relative overflow-hidden rounded-3xl border-2 border-foreground bg-accent p-5 text-accent-foreground pop-shadow-lg sm:p-12",
 				children: [
 					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 						className: "pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full border-2 border-foreground bg-tertiary",
@@ -875,7 +875,7 @@ function Contact() {
 								children: "Let's build"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
-								className: "mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl lg:text-7xl",
+								className: "mt-4 font-display text-3xl font-extrabold leading-tight sm:text-5xl lg:text-7xl",
 								children: "Got a project in mind?"
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -928,11 +928,14 @@ function Contact() {
 								]
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-								className: "mt-6 inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground",
+								className: "mt-6 inline-flex max-w-full items-center gap-2 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold text-foreground",
 								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MapPin, {
-									className: "h-3.5 w-3.5",
+									className: "h-3.5 w-3.5 shrink-0",
 									strokeWidth: 2.5
-								}), " Khilkhet, Dhaka, Bangladesh"]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "min-w-0 break-words",
+									children: "Khilkhet, Dhaka, Bangladesh"
+								})]
 							})
 						]
 					})
@@ -961,7 +964,7 @@ function ContactRow({ icon: Icon, label, value, href }) {
 					className: "block text-[10px] font-bold uppercase tracking-wider text-muted-foreground",
 					children: label
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "block truncate font-semibold",
+					className: "block break-all font-semibold sm:truncate",
 					children: value
 				})]
 			}),

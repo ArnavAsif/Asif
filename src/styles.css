@@ -144,6 +144,9 @@
   }
 
   body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -321,6 +324,15 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+}
+
+/* Mobile sections should never wait for an observer to settle their layout. */
+@media (max-width: 639px) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
