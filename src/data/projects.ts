@@ -28,8 +28,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-accent",
     shape: "△",
-    image: "/assets/project-images/otap-hero-desktop.webp",
-    imageMobile: "/assets/project-images/otap-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/otap-hero-desktop.png?v=1786506209",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/otap-hero-mobile.png?v=1786506206",
     features: [
       "8 fully built pages",
       "16-product catalog with filtering",
@@ -47,13 +49,14 @@ export const projects: Project[] = [
     slug: "voltix",
     name: "VOLTIX",
     tag: "3D Interactive Car Showcase",
-    description: "A premium 3D interactive product showcase built on Shopify — not a traditional store. A GPU-accelerated showroom where users tap any car to instantly load its full 3D model, explore live specs, zoom into individual parts, and buy — all without a single page reload. Built with Three.js, WebGL, GSAP, and Shopify Liquid.",
+    description:
+      "A premium 3D interactive product showcase built on Shopify — not a traditional store. A GPU-accelerated showroom where users tap any car to instantly load its full 3D model, explore live specs, zoom into individual parts, and buy — all without a single page reload. Built with Three.js, WebGL, GSAP, and Shopify Liquid.",
     url: "https://voltix-ig1mrmai.myshopify.com/",
     repo: "https://github.com/ArnavAsif/Voltix",
     pw: "1",
     accent: "bg-tertiary",
     shape: "◆",
-    video: "/assets/project-videos/voltix-video.mp4",
+    video: "https://cdn.shopify.com/videos/c/o/v/2e89f6b8864144fa964c99ce03a479db.mp4",
     features: [
       "Interactive 3D GLB/GLTF car models",
       "Drag, swipe & rotation controls",
@@ -69,7 +72,7 @@ export const projects: Project[] = [
       "Memory & renderer cleanup",
     ],
     tech: ["Shopify 2.0", "Liquid", "Three.js", "WebGL", "GSAP", "JavaScript", "CSS3"],
-    image: ""
+    image: "",
   },
   {
     slug: "heyva-health",
@@ -82,8 +85,9 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-secondary",
     shape: "❋",
-    image: "/assets/project-images/heyva-desktop.png",
-    imageMobile: "/assets/project-images/heyva-mobile.png",
+    image: "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/heyva-desktop.png?v=1786506057",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/heyva-mobile.png?v=1786506056",
     features: [
       "French-language UI",
       "Kids product shop",
@@ -107,7 +111,8 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-secondary",
     shape: "●",
-    image: "/assets/project-images/bro&co-hero-desktop.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/bro_co-hero-desktop.png?v=1786505674",
     features: [
       "French-language UI",
       "Pet product shop",
@@ -131,8 +136,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-secondary",
     shape: "✿",
-    image: "/assets/project-images/sweetpaw-hero-desktop.png",
-    imageMobile: "/assets/project-images/sweetpaw-hero-mobile.png",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/sweetpaw-hero-desktop.png?v=1786506247",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/sweetpaw-hero-mobile.png?v=1786506246",
     features: [
       "5-category tropical collection grid",
       "Best sellers scroll carousel",
@@ -157,8 +164,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-tertiary",
     shape: "✦",
-    image: "/assets/project-images/manga-mint-hero-desktop.webp",
-    imageMobile: "/assets/project-images/manga-mint-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/manga-mint-hero-desktop.png?v=1786506102",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/manga-mint-hero-mobile.png?v=1786506101",
     features: [
       "6-category collection grid",
       "Trending manga series carousel",
@@ -183,8 +192,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-quaternary",
     shape: "◆",
-    image: "/assets/project-images/cybernexus-hero-desktop.webp",
-    imageMobile: "/assets/project-images/cybernexus-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/cybernexus-hero-desktop.png?v=1786505741",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/cybernexus-hero-mobile.png?v=1786505740",
     features: [
       "Cinematic hero with anime character art",
       "Live server status dashboard",
@@ -209,8 +220,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-secondary",
     shape: "✿",
-    image: "/assets/project-images/vantique-hero-desktop.webp",
-    imageMobile: "/assets/project-images/vantique-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/vantique-hero-desktop.png?v=1786853646",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/vantique-mobile.png?v=1786853667",
     features: [
       "Dynamic hero campaign banner",
       "Featured collection product grid",
@@ -234,7 +247,7 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-quaternary",
     shape: "✦",
-    image: "/assets/project-images/booyah-hero.png",
+    image: "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/booyah-hero.png?v=1786505629",
     features: [
       "Single-page lobby architecture — zero reloads",
       "Cinematic loading screen intro",
@@ -259,8 +272,10 @@ export const projects: Project[] = [
     pw: "1",
     accent: "bg-accent",
     shape: "▲",
-    image: "/assets/project-images/fast-clean-hero-desktop.webp",
-    imageMobile: "/assets/project-images/fast-clean-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/fast-clean-hero-desktop.png?v=1786505798",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/fast-clean-hero-mobile.png?v=1786505797",
     features: [
       "Before & after comparison slider",
       "4-step process guide",
@@ -285,8 +300,10 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-quaternary",
     shape: "⬟",
-    image: "/assets/project-images/neon-arc-hero-desktop.webp",
-    imageMobile: "/assets/project-images/neon-arc-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/neon-arc-hero-desktop.png?v=1786506157",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/neon-arc-hero-mobile.png?v=1786506155",
     features: [
       "Shop by category grid",
       "Interactive PC builder configurator",
@@ -311,8 +328,10 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-secondary",
     shape: "⬡",
-    image: "/assets/project-images/gamoratecha-hero-desktop.webp",
-    imageMobile: "/assets/project-images/gamoratecha-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/gamoratecha-hero-desktop.png?v=1786505957",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/gamoratecha-hero-mobile.png?v=1786505954",
     features: [
       "6-category collection grid",
       "Trending products tabbed feed",
@@ -337,8 +356,10 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-tertiary",
     shape: "⬢",
-    image: "/assets/project-images/armoryx-hero-desktop.webp",
-    imageMobile: "/assets/project-images/armoryx-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/armoryx-hero-desktop.png?v=1786505500",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/armoryx-hero-mobile.png?v=1786505499",
     features: [
       "Tactical hero banner",
       "Product category grid",
@@ -360,8 +381,10 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-accent",
     shape: "⬤",
-    image: "/assets/project-images/work-offshore-hero-desktop.webp",
-    imageMobile: "/assets/project-images/work-offshore-hero-mobile.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/work-offshore-hero-desktop.png?v=1786853719",
+    imageMobile:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/work-offshore-hero-mobile.png?v=1786853717",
     features: [
       "4-step career path guide",
       "3 tiered career packages with pricing",
@@ -386,7 +409,8 @@ export const projects: Project[] = [
     pw: "",
     accent: "bg-secondary",
     shape: "❋",
-    image: "/assets/project-images/heels-heros-hero-desktop.webp",
+    image:
+      "https://cdn.shopify.com/s/files/1/1022/1151/8743/files/heels-heros-hero-desktop.png?v=1786506013",
     features: [
       "4-pillar product highlight section",
       "Brand story section",

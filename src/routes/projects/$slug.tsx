@@ -14,6 +14,7 @@ import { projects, getProjectBySlug } from "@/data/projects";
 import { DeviceMockup } from "@/components/ui/device-mockup";
 import { useHoverScroll } from "@/lib/use-hover-scroll";
 import type { Project } from "@/data/projects";
+import { LazyVideo } from "@/components/lazy-video";
 
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
@@ -47,14 +48,14 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
         className={`relative h-44 overflow-hidden border-b-2 border-foreground ${project.accent}`}
       >
         {project.video ? (
-          <video
+          <LazyVideo
             src={project.video}
             aria-label={`${project.name} — ${project.tag}`}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover object-top"
           />
         ) : project.image ? (

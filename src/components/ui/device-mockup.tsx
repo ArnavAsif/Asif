@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { LazyVideo } from "@/components/lazy-video";
 
 interface DeviceMockupProps {
   src: string;
@@ -16,14 +17,14 @@ export function DeviceMockup({
   className,
 }: DeviceMockupProps) {
   const media = video ? (
-    <video
+    <LazyVideo
       src={video}
       aria-label={alt}
       autoPlay
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="none"
       className="h-auto w-full object-cover object-top"
     />
   ) : (

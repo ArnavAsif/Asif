@@ -78,10 +78,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "MD Asif Shah Diner — Shopify Developer" },
-      { name: "description", content: "Freelance Shopify developer building high-converting, custom Shopify 2.0 stores with Liquid, metafields, and pixel-perfect theme work." },
+      {
+        name: "description",
+        content:
+          "Freelance Shopify developer building high-converting, custom Shopify 2.0 stores with Liquid, metafields, and pixel-perfect theme work.",
+      },
       { name: "author", content: "MD Asif Shah Diner" },
       { property: "og:title", content: "MD Asif Shah Diner — Shopify Developer" },
-      { property: "og:description", content: "Custom Shopify 2.0 themes, Liquid sections, and conversion-focused storefronts." },
+      {
+        property: "og:description",
+        content: "Custom Shopify 2.0 themes, Liquid sections, and conversion-focused storefronts.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -128,34 +135,53 @@ function ClickSound() {
     const playClickSound = () => {
       audioContext ??= new AudioContext();
 
-      const createBuzz = () => {
+      const createMechanicalClick = () => {
         const now = audioContext.currentTime;
-        const mainOscillator = audioContext.createOscillator();
-        const accentOscillator = audioContext.createOscillator();
-        const gain = audioContext.createGain();
+        const impact = audioContext.createOscillator();
+        const click = audioContext.createOscillator();
+        const resonance = audioContext.createOscillator();
+        const impactGain = audioContext.createGain();
+        const clickGain = audioContext.createGain();
+        const resonanceGain = audioContext.createGain();
 
-        mainOscillator.type = "square";
-        mainOscillator.frequency.setValueAtTime(360, now);
-        mainOscillator.frequency.exponentialRampToValueAtTime(180, now + 0.12);
-        accentOscillator.type = "sine";
-        accentOscillator.frequency.setValueAtTime(720, now);
-        accentOscillator.frequency.exponentialRampToValueAtTime(360, now + 0.08);
-        gain.gain.setValueAtTime(0.18, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        // A short low impact, sharp surface click, and restrained mechanical resonance.
+        impact.type = "triangle";
+        impact.frequency.setValueAtTime(185, now);
+        impact.frequency.exponentialRampToValueAtTime(105, now + 0.055);
+        impactGain.gain.setValueAtTime(0.08, now);
+        impactGain.gain.exponentialRampToValueAtTime(0.001, now + 0.065);
 
-        mainOscillator.connect(gain);
-        accentOscillator.connect(gain);
-        gain.connect(audioContext.destination);
-        mainOscillator.start(now);
-        accentOscillator.start(now);
-        mainOscillator.stop(now + 0.12);
-        accentOscillator.stop(now + 0.12);
+        click.type = "sine";
+        click.frequency.setValueAtTime(1250, now);
+        click.frequency.exponentialRampToValueAtTime(720, now + 0.022);
+        clickGain.gain.setValueAtTime(0.045, now);
+        clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.028);
+
+        resonance.type = "sine";
+        resonance.frequency.setValueAtTime(480, now);
+        resonance.frequency.exponentialRampToValueAtTime(340, now + 0.11);
+        resonanceGain.gain.setValueAtTime(0.018, now);
+        resonanceGain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+
+        impact.connect(impactGain);
+        impactGain.connect(audioContext.destination);
+        click.connect(clickGain);
+        clickGain.connect(audioContext.destination);
+        resonance.connect(resonanceGain);
+        resonanceGain.connect(audioContext.destination);
+
+        impact.start(now);
+        click.start(now);
+        resonance.start(now);
+        impact.stop(now + 0.065);
+        click.stop(now + 0.028);
+        resonance.stop(now + 0.11);
       };
 
       if (audioContext.state === "suspended") {
-        void audioContext.resume().then(createBuzz);
+        void audioContext.resume().then(createMechanicalClick);
       } else {
-        createBuzz();
+        createMechanicalClick();
       }
     };
 
