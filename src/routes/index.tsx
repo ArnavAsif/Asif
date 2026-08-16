@@ -435,21 +435,87 @@ function Skills() {
 }
 
 /* --------------------------- PROJECT CARD -------------------------- */
-const shadows = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"] as const;
-
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { containerRef, imageRef, imageAspect, handleImageLoad, handlers } = useHoverScroll();
-  const shadowClass = shadows[index % shadows.length];
-
-  // Dynamic image height based on actual screenshot aspect ratio
-  const imgStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : undefined;
+  const shadowClass = ["pop-shadow-pink", "pop-shadow-amber", "pop-shadow-mint"][index % 3];
+  const imageStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : undefined;
 
   return (
-    <Link to="/projects/$slug" params={{ slug: project.slug }}>
-      <article
-        className={`project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`}
-        {...handlers}
+    <article
+      className={`project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`}
+      {...handlers}
+    >
+      <div
+        ref={containerRef}
+        className={`relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`}
       >
+        {project.video ? (
+          <LazyVideo
+            src={project.video}
+            aria-label={`${project.name} preview`}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="none"
+            className="absolute inset-0 h-full w-full object-cover object-top"
+          />
+        ) : (
+          <picture>
+            {project.imageMobile && (
+              <source media="(max-width: 639px)" srcSet={project.imageMobile} />
+            )}
+            <img
+              ref={imageRef}
+              src={project.image}
+              alt={`${project.name} — ${project.tag}`}
+              loading="lazy"
+              decoding="async"
+              onLoad={handleImageLoad}
+              style={imageStyle}
+              className="hover-preview-image absolute inset-0 w-full object-cover object-top"
+            />
+          </picture>
+        )}
+        <span className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black">
+          {project.shape}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col gap-4 p-5">
+        <div className="flex items-center justify-between gap-2">
+          <h3 className="font-display text-xl font-extrabold">{project.name}</h3>
+          <span className="rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+            {project.tech.includes("Shopify 2.0") ? "Shopify 2.0" : project.tech[0]}
+          </span>
+        </div>
+        <p className="text-sm text-muted-foreground">{project.tag}</p>
+        <div className="mt-auto flex flex-wrap gap-2 pt-2">
+          <Link
+            to="/projects/$slug"
+            params={{ slug: project.slug }}
+            className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5"
+          >
+            View details <ArrowRight className="h-3 w-3" strokeWidth={2.5} />
+          </Link>
+          <a
+            href={project.repo}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary"
+          >
+            <Github className="h-3 w-3" strokeWidth={2.5} /> Code
+          </a>
+          {project.pw && (
+            <span className="ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
+              pw: {project.pw}
+            </span>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+/*
         <div
           ref={containerRef}
           className={`relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`}
@@ -529,10 +595,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </span>
           </div>
         </div>
-      </article>
-    </Link>
-  );
-}
+*/
 
 /* ----------------------------- PROJECTS --------------------------- */
 const INITIAL_COUNT = 9;

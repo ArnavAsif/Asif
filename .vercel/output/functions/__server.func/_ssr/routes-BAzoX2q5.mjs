@@ -4,7 +4,7 @@ import { n as require_jsx_runtime, r as require_react } from "../_libs/react+tan
 import { h as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as CodeXml, _ as Check, c as Palette, d as MapPin, f as Mail, g as ChevronDown, i as Star, m as Github, o as Rocket, p as Linkedin, r as Store, s as Phone, t as Zap, v as ArrowUpRight, x as Sparkles, y as ArrowRight } from "../_libs/lucide-react.mjs";
 import { n as ThemeToggle, r as useHoverScroll, t as LazyVideo } from "./theme-toggle-DyC4xSGp.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-Cp54R8zM.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BAzoX2q5.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function useReveal() {
@@ -497,116 +497,92 @@ function Skills() {
 		})]
 	});
 }
-var shadows = [
-	"pop-shadow-pink",
-	"pop-shadow-amber",
-	"pop-shadow-mint"
-];
 function ProjectCard({ project, index }) {
 	const { containerRef, imageRef, imageAspect, handleImageLoad, handlers } = useHoverScroll();
-	const shadowClass = shadows[index % shadows.length];
-	const imgStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : void 0;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-		to: "/projects/$slug",
-		params: { slug: project.slug },
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-			className: `project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`,
-			...handlers,
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				ref: containerRef,
-				className: `relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`,
-				children: [project.video ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LazyVideo, {
-					src: project.video,
-					"aria-label": `${project.name} — ${project.tag}`,
-					autoPlay: true,
-					loop: true,
-					muted: true,
-					playsInline: true,
-					preload: "none",
-					className: "absolute inset-0 h-full w-full object-cover object-top"
-				}) : project.imageMobile ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
-						media: "(max-width: 639px)",
-						srcSet: project.imageMobile
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						ref: imageRef,
-						src: project.image,
-						alt: `${project.name} — ${project.tag}`,
-						loading: "lazy",
-						decoding: "async",
-						onLoad: handleImageLoad,
-						style: imgStyle,
-						className: "hover-preview-image absolute inset-0 w-full object-cover object-top"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						"data-src": project.imageMobile,
-						alt: `${project.name} — ${project.tag}`,
-						loading: "lazy",
-						decoding: "async",
-						style: imgStyle,
-						className: "hidden"
-					})
-				] }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-					ref: imageRef,
-					src: project.image,
-					alt: `${project.name} — ${project.tag}`,
-					loading: "lazy",
-					decoding: "async",
-					onLoad: handleImageLoad,
-					style: imgStyle,
-					className: "hover-preview-image absolute inset-0 w-full object-cover object-top"
-				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-					className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
-					children: project.shape
-				})]
-			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "flex flex-1 flex-col gap-4 p-5",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "flex items-center justify-between gap-2",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
-							className: "font-display text-xl font-extrabold",
-							children: project.name
-						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-							className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
-							children: project.tech.includes("Shopify 2.0") ? "Shopify 2.0" : project.tech[0]
-						})]
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "text-sm text-muted-foreground",
-						children: project.tag
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "mt-auto flex flex-wrap gap-2 pt-2",
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
-								children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
-									className: "h-3 w-3",
-									strokeWidth: 2.5
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
-								href: project.repo,
-								target: "_blank",
-								rel: "noreferrer",
-								onClick: (e) => e.stopPropagation(),
-								className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
-									className: "h-3 w-3",
-									strokeWidth: 2.5
-								}), " Code"]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
-								children: ["pw: ", project.pw]
-							})
-						]
-					})
-				]
+	const shadowClass = [
+		"pop-shadow-pink",
+		"pop-shadow-amber",
+		"pop-shadow-mint"
+	][index % 3];
+	const imageStyle = imageAspect ? { aspectRatio: `1 / ${imageAspect}` } : void 0;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+		className: `project-card-hover group flex h-full flex-col overflow-hidden rounded-2xl border-2 border-foreground bg-card ${shadowClass}`,
+		...handlers,
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			ref: containerRef,
+			className: `relative h-48 overflow-hidden border-b-2 border-foreground ${project.accent}`,
+			children: [project.video ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LazyVideo, {
+				src: project.video,
+				"aria-label": `${project.name} preview`,
+				autoPlay: true,
+				loop: true,
+				muted: true,
+				playsInline: true,
+				preload: "none",
+				className: "absolute inset-0 h-full w-full object-cover object-top"
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [project.imageMobile && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
+				media: "(max-width: 639px)",
+				srcSet: project.imageMobile
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+				ref: imageRef,
+				src: project.image,
+				alt: `${project.name} — ${project.tag}`,
+				loading: "lazy",
+				decoding: "async",
+				onLoad: handleImageLoad,
+				style: imageStyle,
+				className: "hover-preview-image absolute inset-0 w-full object-cover object-top"
+			})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full border-2 border-foreground bg-background text-xl font-black",
+				children: project.shape
 			})]
-		})
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex flex-1 flex-col gap-4 p-5",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "flex items-center justify-between gap-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+						className: "font-display text-xl font-extrabold",
+						children: project.name
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "rounded-full border-2 border-foreground bg-background px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide",
+						children: project.tech.includes("Shopify 2.0") ? "Shopify 2.0" : project.tech[0]
+					})]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "text-sm text-muted-foreground",
+					children: project.tag
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-auto flex flex-wrap gap-2 pt-2",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+							to: "/projects/$slug",
+							params: { slug: project.slug },
+							className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground transition-transform group-hover:-translate-y-0.5",
+							children: ["View details ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowRight, {
+								className: "h-3 w-3",
+								strokeWidth: 2.5
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+							href: project.repo,
+							target: "_blank",
+							rel: "noreferrer",
+							className: "inline-flex items-center gap-1.5 rounded-full border-2 border-foreground bg-background px-3 py-1.5 text-xs font-bold transition-colors hover:bg-tertiary",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {
+								className: "h-3 w-3",
+								strokeWidth: 2.5
+							}), " Code"]
+						}),
+						project.pw && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "ml-auto self-center text-[10px] font-bold uppercase tracking-wide text-muted-foreground",
+							children: ["pw: ", project.pw]
+						})
+					]
+				})
+			]
+		})]
 	});
 }
 var INITIAL_COUNT = 9;
