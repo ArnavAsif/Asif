@@ -133,16 +133,16 @@ function ClickSound() {
     let audioContext: AudioContext | undefined;
 
     const playClickSound = () => {
-      audioContext ??= new AudioContext();
+      const context = (audioContext ??= new AudioContext());
 
       const createMechanicalClick = () => {
-        const now = audioContext.currentTime;
-        const impact = audioContext.createOscillator();
-        const click = audioContext.createOscillator();
-        const resonance = audioContext.createOscillator();
-        const impactGain = audioContext.createGain();
-        const clickGain = audioContext.createGain();
-        const resonanceGain = audioContext.createGain();
+        const now = context.currentTime;
+        const impact = context.createOscillator();
+        const click = context.createOscillator();
+        const resonance = context.createOscillator();
+        const impactGain = context.createGain();
+        const clickGain = context.createGain();
+        const resonanceGain = context.createGain();
 
         // A short low impact, sharp surface click, and restrained mechanical resonance.
         impact.type = "triangle";
@@ -164,11 +164,11 @@ function ClickSound() {
         resonanceGain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
 
         impact.connect(impactGain);
-        impactGain.connect(audioContext.destination);
+        impactGain.connect(context.destination);
         click.connect(clickGain);
-        clickGain.connect(audioContext.destination);
+        clickGain.connect(context.destination);
         resonance.connect(resonanceGain);
-        resonanceGain.connect(audioContext.destination);
+        resonanceGain.connect(context.destination);
 
         impact.start(now);
         click.start(now);
@@ -178,8 +178,8 @@ function ClickSound() {
         resonance.stop(now + 0.11);
       };
 
-      if (audioContext.state === "suspended") {
-        void audioContext.resume().then(createMechanicalClick);
+      if (context.state === "suspended") {
+        void context.resume().then(createMechanicalClick);
       } else {
         createMechanicalClick();
       }

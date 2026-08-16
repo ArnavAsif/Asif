@@ -3,10 +3,10 @@ import { n as require_jsx_runtime, r as require_react, t as QueryClientProvider 
 import { N as useRouter, c as HeadContent, d as Outlet, f as lazyRouteComponent, h as Link, m as createRootRouteWithContext, p as createFileRoute, s as Scripts, u as createRouter } from "../_libs/@tanstack/react-router+[...].mjs";
 import { t as Route } from "../_slug-BSdHy7x8.mjs";
 import { t as QueryClient } from "../_libs/tanstack__query-core.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/router-DlxEajlf.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DkmgdONr.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-var styles_default = "/assets/styles-Cod91OZV.css";
+var styles_default = "/assets/styles-CsL71lfd.css";
 function reportLovableError(error, context = {}) {
 	if (typeof window === "undefined") return;
 	window.__lovableEvents?.captureException?.(error, {
@@ -172,15 +172,15 @@ function ClickSound() {
 	(0, import_react.useEffect)(() => {
 		let audioContext;
 		const playClickSound = () => {
-			audioContext ??= new AudioContext();
+			const context = audioContext ??= new AudioContext();
 			const createMechanicalClick = () => {
-				const now = audioContext.currentTime;
-				const impact = audioContext.createOscillator();
-				const click = audioContext.createOscillator();
-				const resonance = audioContext.createOscillator();
-				const impactGain = audioContext.createGain();
-				const clickGain = audioContext.createGain();
-				const resonanceGain = audioContext.createGain();
+				const now = context.currentTime;
+				const impact = context.createOscillator();
+				const click = context.createOscillator();
+				const resonance = context.createOscillator();
+				const impactGain = context.createGain();
+				const clickGain = context.createGain();
+				const resonanceGain = context.createGain();
 				impact.type = "triangle";
 				impact.frequency.setValueAtTime(185, now);
 				impact.frequency.exponentialRampToValueAtTime(105, now + .055);
@@ -197,11 +197,11 @@ function ClickSound() {
 				resonanceGain.gain.setValueAtTime(.018, now);
 				resonanceGain.gain.exponentialRampToValueAtTime(.001, now + .11);
 				impact.connect(impactGain);
-				impactGain.connect(audioContext.destination);
+				impactGain.connect(context.destination);
 				click.connect(clickGain);
-				clickGain.connect(audioContext.destination);
+				clickGain.connect(context.destination);
 				resonance.connect(resonanceGain);
-				resonanceGain.connect(audioContext.destination);
+				resonanceGain.connect(context.destination);
 				impact.start(now);
 				click.start(now);
 				resonance.start(now);
@@ -209,7 +209,7 @@ function ClickSound() {
 				click.stop(now + .028);
 				resonance.stop(now + .11);
 			};
-			if (audioContext.state === "suspended") audioContext.resume().then(createMechanicalClick);
+			if (context.state === "suspended") context.resume().then(createMechanicalClick);
 			else createMechanicalClick();
 		};
 		document.addEventListener("click", playClickSound, { passive: true });
